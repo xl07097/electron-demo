@@ -42,4 +42,11 @@ ul li {
 }
 .app-wrapper .app-right-content {
   flex: auto;
+  display: flex;
+}
+.app-wrapper .app-right-content .editor-content {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  outline: none;
 }
