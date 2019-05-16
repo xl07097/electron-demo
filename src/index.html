@@ -11,16 +11,24 @@
 <body>
     <div class="app-wrapper">
         <div class="app-left-side">
-            <img class="avatar" src="./image/photo.png" alt="avatar">
+            <div class="app-left-side-inner">
+                <img class="avatar" src="./image/photo.png" alt="avatar">
+            </div>
         </div>
         <div class="app-right-content">
-            <div class="editor-content" contenteditable="true"></div>
+            <!-- <div class="editor-content" contenteditable="true"></div> -->
+            <textarea name="editor" class="editor-content"></textarea>
 
         </div>
     </div>
 
     <script>
-
+        window.onload = function(){
+            var editor = document.querySelector(".editor-content");
+            editor.oninput = function(){
+                console.log(editor.value);
+            }
+        }
     </script>
 </body>
 </html>

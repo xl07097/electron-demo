@@ -34,12 +34,16 @@ ul {
     display: flex;
     height: 100%;
     .app-left-side{
-        display: flex;
-        justify-content: center;
         width: 100px;
         padding-top: 20px;
         background: #CCC;
         box-shadow: 0 2px 6px silver;
+        .app-left-side-inner{
+             display: flex;
+             justify-content: center;
+            width: 100px;
+            height: 100%;
+        }
         .avatar{
             width: 60px;
             height: 60px;
@@ -48,12 +52,18 @@ ul {
     }
     .app-right-content{
         flex: auto;
-        display: flex;
         .editor-content{
-            padding: 10px;
+            display: block;
             width: 100%;
+            padding: 10px;
             height: 100%;
             outline: none;
+            text-align: justify;
+            word-wrap: break-word;
+            word-break: break-all;
+            overflow: hidden;
+            border: none;
+            resize: none;
         }
     }
 }
