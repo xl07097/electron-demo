@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -8,12 +9,19 @@
     <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
     <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
     <div class="app-wrapper">
         <div class="app-left-side">
             <div class="app-left-side-inner">
                 <img class="avatar" src="./image/photo.png" alt="avatar">
+                <ul>
+                    <li>
+                        <a href="http://github.com">github</a>
+                    </li>
+                </ul>
             </div>
+
         </div>
         <div class="app-right-content">
             <!-- <div class="editor-content" contenteditable="true"></div> -->
@@ -23,13 +31,17 @@
     </div>
 
     <script>
-        window.onload = function(){
+        window.onload = function () {
             var editor = document.querySelector(".editor-content");
-            editor.oninput = function(){
+            editor.oninput = function () {
                 console.log(editor.value);
             }
         }
+        function $attr(attr){
+            return document.querySelectorAll(attr);
+        }
+        require('./main_process/link')
     </script>
 </body>
-</html>
 
+</html>
