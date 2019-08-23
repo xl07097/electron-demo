@@ -18,7 +18,7 @@ function createWindow () {
       nodeIntegration: true
     }
   })
-
+  // mainWindow.loadURL('http://localhost:9000')
   mainWindow.loadURL(`file://${__dirname}/index.html`)
   mainWindow.on('closed', function () {
     mainWindow = null
