@@ -2,7 +2,7 @@ require('update-electron-app')({
 	logger: require('electron-log'),
 });
 
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, ipcMain } = require('electron');
 
 const glob = require('glob');
 const path = require('path');
@@ -72,8 +72,27 @@ function initApplication() {
 initApplication();
 
 function loadMainProcess() {
-	// const files = glob.sync(path.join(__dirname, 'main_process/**/*.js'));
-	// files.forEach(file => {
-	// 	require(file);
-	// });
+	const files = glob.sync(path.join(__dirname, 'main_process/**/*.js'));
+	files.forEach(file => {
+		require(file);
+	});
 }
+
+ipcMain.on('window-min', function () {
+	mainWindow.minimize();
+});
+
+ipcMain.on('window-max', function (event, args) {
+	mainWindow.maximize();
+	mainWindow.webContents.send('window-max-min', 1);
+});
+
+ipcMain.on('window-normal', function (event, args) {
+	mainWindow.restore();
+	mainWindow.webContents.send('window-max-min', 2);
+	// if (mainWindow.isMaximized()) {
+
+	// } else {
+	// 	mainWindow.maximize();
+	// }
+});
