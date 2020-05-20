@@ -14,15 +14,15 @@ function createWindow () {
     minWidth: 800,
     minHeight: 600,
     // frame:false,
-    backgroundColor: '#000000',
+    // backgroundColor: '#000000',
     transparent: true,
     darkTheme: true,
     webPreferences:{
       nodeIntegration: true
     }
   })
-  // mainWindow.loadURL('http://localhost:9000')
-  mainWindow.loadURL(`file://${__dirname}/index.html`)
+  mainWindow.loadURL('http://localhost:9830/login')
+  // mainWindow.loadURL(`file://${__dirname}/index.html`)
   mainWindow.on('closed', function () {
     mainWindow = null
   })
