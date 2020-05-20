@@ -1,14 +1,14 @@
 const shell = require('electron').shell;
 
-const alink = $elAll("a[href]");
+const alink = document.querySelectorAll('a[href]');
 
 Array.prototype.forEach.call(alink, link => {
-    const url = link.getAttribute('href');
-    console.log(url.startsWith("http"))
-    if (url.startsWith("http")) {
-        link.addEventListener('click', (e) => {
-            e.preventDefault();
-            shell.openExternal(url); // 使用外部应用打开链接
-        })
-    }
-})
+	const url = link.getAttribute('href');
+	console.log(url.startsWith('http'));
+	if (url.startsWith('http')) {
+		link.addEventListener('click', e => {
+			e.preventDefault();
+			shell.openExternal(url); // 使用外部应用打开链接
+		});
+	}
+});

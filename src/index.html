@@ -111,20 +111,18 @@
 
 		<script>
 			window.onload = function () {
-				var editor = $elOne('.editor-content');
+				var editor = $el('.editor-content')[0];
 				editor.oninput = function () {
 					console.log(editor.value);
 				};
 
-				$elOne('.window-close').onclick = function () {
+				$el('.window-close')[0].onclick = function () {
 					alert(90);
 				};
 			};
 
-			function $el(selecter) {}
-
-			function $elOne(attr) {
-				return document.querySelector(attr);
+			function $el(selecter) {
+				return document.querySelectorAll(selecter);
 			}
 
 			function $elAll(attr) {
