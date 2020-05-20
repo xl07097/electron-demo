@@ -25,3 +25,11 @@ $el('.window-max').onclick = function () {
 $el('.window-normal').onclick = function () {
 	ipcRenderer.send('window-normal');
 };
+
+$el('.nav-item').onclick = function () {
+	ipcRenderer.send('open-file-dialog');
+};
+
+ipcRenderer.on('selected-directory', (event, path) => {
+	console.log(path);
+});

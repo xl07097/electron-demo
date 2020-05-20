@@ -58,6 +58,15 @@ ul li {
   height: 60px;
   border-radius: 50%;
 }
+.window-container .app-left-side .nav {
+  padding-top: 40px;
+}
+.window-container .app-left-side .nav-item {
+  padding: 4px 10px;
+}
+.window-container .app-left-side .nav-item:hover {
+  background-color: #447740;
+}
 .window-container .app-right-content {
   flex: auto;
 }
