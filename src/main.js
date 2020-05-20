@@ -11,12 +11,14 @@ let mainWindow = null;
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
+		title: '创客',
 		width: 800,
 		height: 600,
-		// minWidth: 800,
-		// minHeight: 600,
+		minWidth: 800,
+		minHeight: 600,
+		show: false,
 		frame: false,
-		// backgroundColor: '#000000',
+		backgroundColor: '#2e2c29',
 		// transparent: true,
 		// darkTheme: true,
 		webPreferences: {
@@ -27,6 +29,11 @@ function createWindow() {
 	mainWindow.loadURL(`file://${__dirname}/index.html`);
 	mainWindow.on('closed', function () {
 		mainWindow = null;
+	});
+
+	mainWindow.once('ready-to-show', () => {
+		mainWindow.show();
+		mainWindow.flashFrame(true);
 	});
 
 	require('devtron').install();
@@ -53,8 +60,6 @@ function initApplication() {
 	// 加载主进程文件
 	loadMainProcess();
 
-	app.on('ready', createWindow);
-
 	app.on('window-all-closed', function () {
 		if (process.platform !== 'darwin') {
 			app.quit();
@@ -66,6 +71,8 @@ function initApplication() {
 			createWindow();
 		}
 	});
+
+	app.on('ready', createWindow);
 }
 
 // 初始化
@@ -84,12 +91,13 @@ ipcMain.on('window-min', function () {
 
 ipcMain.on('window-max', function (event, args) {
 	mainWindow.maximize();
-	mainWindow.webContents.send('window-max-min', 1);
+	event.reply('window-max-min', 1);
+	// event.sender.send('asynchronous-reply', 'pong');
 });
 
 ipcMain.on('window-normal', function (event, args) {
 	mainWindow.restore();
-	mainWindow.webContents.send('window-max-min', 2);
+	event.reply('window-max-min', 2);
 	// if (mainWindow.isMaximized()) {
 
 	// } else {
