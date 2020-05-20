@@ -5,15 +5,12 @@ ipcMain.on('window-close', function (event, args) {
 });
 
 ipcMain.on('open-file-dialog', event => {
-	dialog.showOpenDialog(
-		{
+	dialog
+		.showOpenDialog({
 			properties: ['openFile', 'openDirectory'],
-		},
-		files => {
-			if (files) {
-				console.log(files);
-				event.reply('selected-directory', files);
-			}
-		}
-	);
+		})
+		.then(obj => {
+			console.log(obj);
+			event.reply('selected-directory', obj.filePaths);
+		});
 });
