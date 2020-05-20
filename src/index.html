@@ -1,99 +1,136 @@
 <!DOCTYPE html>
 <html lang="en">
+	<head>
+		<meta charset="UTF-8" />
+		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+		<title>创客</title>
+		<!-- <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"> -->
+		<link rel="stylesheet" href="style.css" />
+		<style>
+			span {
+				width: 46px;
+				line-height: 30px;
+				display: inline-block;
+				text-align: center;
+				transition: background 0.2s ease-in;
+			}
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>创客</title>
-    <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css">
-    <link rel="stylesheet" href="style.css">
-    <style>
-        span{
-                width: 46px;
-                display: inline-block;
-                text-align: center;
-        }
-        span:hover{
-            background: #e5e5e5;
-        }
-        .window-close:hover{
-            background: #e81123;
+			span:hover {
+				background: #e5e5e5;
+			}
 
-        }
-        .window-close:hover svg{
-                fill: #ffffff;
-            color: #ffffff;
-        }
-    </style>
-</head>
+			.window-close:hover {
+				background: #e81123;
+			}
 
-<body>
-    <header class="app-header" style="width:100%;height: 24px;-webkit-app-region: drag;cursor: default;">
-        <div style="font: 13px/24px sans-serif;">创客</div>
-        <div class="header-action">
-    <span>
-        <svg aria-hidden="true" version="1.1" width="10" height="10">
-            <path d="M 0,5 10,5 10,6 0,6 Z"></path>
-        </svg>
-    </span>
-    <span >
-        <svg aria-hidden="true" version="1.1" width="10" height="10">
-            <path d="M 0,0 0,10 10,10 10,0 Z M 1,1 9,1 9,9 1,9 Z"></path>
-        </svg>
-    </span>
-    <span>
-        <svg aria-hidden="true" version="1.1" width="10" height="10">
-            <path d="m 2,1e-5 0,2 -2,0 0,8 8,0 0,-2 2,0 0,-8 z m 1,1 6,0 0,6 -1,0 0,-5 -5,0 z m -2,2 6,0 0,6 -6,0 z">
-            </path>
-        </svg>
-    </span>
-    <span class="window-close">
-        <svg aria-hidden="true" version="1.1" width="10" height="10">
-            <path
-                d="M 0,0 0,0.7 4.3,5 0,9.3 0,10 0.7,10 5,5.7 9.3,10 10,10 10,9.3 5.7,5 10,0.7 10,0 9.3,0 5,4.3 0.7,0 Z">
-            </path>
-        </svg>
-    </span>
-        </div>
-    </header>
-    <div class="app-wrapper">
-        <div class="app-left-side">
-            <div class="app-left-side-inner">
-                <img class="avatar" src="./image/photo.png" alt="avatar">
-                <ul>
-                    <li>
-                        <a href="http://github.com">github</a>
-                    </li>
-                </ul>
-            </div>
+			.window-close:hover svg {
+				fill: #ffffff;
+				color: #ffffff;
+			}
 
-        </div>
-        <div class="app-right-content">
-            <!-- <div class="editor-content" contenteditable="true"></div> -->
-            <textarea name="editor" class="editor-content"></textarea>
+			.titlebar-drag-region {
+				position: absolute;
+				top: 0;
+				left: 0;
+				width: 100%;
+				height: 100%;
+				display: block;
+				-webkit-app-region: drag;
+			}
 
-        </div>
-    </div>
+			.window-controls-tool {
+				position: relative;
+				z-index: 1000;
+				-webkit-app-region: no-drag;
+			}
 
-    <script>
-        window.onload = function () {
-            var editor = $elOne(".editor-content");
-            editor.oninput = function () {
-                console.log(editor.value);
-            }
-        }
-        function $el(selecter){
+			.window-title {
+				width: 35px;
+				position: relative;
+				z-index: 1000;
+				font: 13px/30px sans-serif;
+				text-align: center;
+				-webkit-app-region: drag;
+				user-select: none;
+			}
+		</style>
+	</head>
 
-        }
-        function $elOne(attr){
-            return document.querySelector(attr);
-        }
-        function $elAll(attr){
-            return document.querySelectorAll(attr);
-        }
-        require('./main_process/link')
-    </script>
-</body>
+	<body>
+		<div class="window-body-wrapper">
+			<header class="window-toolbar">
+				<div class="titlebar-drag-region"></div>
+				<div class="window-title">
+					创客
+				</div>
+				<div class="window-controls-tool">
+					<span>
+						<svg aria-hidden="true" version="1.1" width="10" height="10">
+							<path d="M 0,5 10,5 10,6 0,6 Z"></path>
+						</svg>
+					</span>
+					<span>
+						<svg aria-hidden="true" version="1.1" width="10" height="10">
+							<path d="M 0,0 0,10 10,10 10,0 Z M 1,1 9,1 9,9 1,9 Z"></path>
+						</svg>
+					</span>
+					<span>
+						<svg aria-hidden="true" version="1.1" width="10" height="10">
+							<path
+								d="m 2,1e-5 0,2 -2,0 0,8 8,0 0,-2 2,0 0,-8 z m 1,1 6,0 0,6 -1,0 0,-5 -5,0 z m -2,2 6,0 0,6 -6,0 z"
+							></path>
+						</svg>
+					</span>
+					<span class="window-close">
+						<svg aria-hidden="true" version="1.1" width="10" height="10">
+							<path
+								d="M 0,0 0,0.7 4.3,5 0,9.3 0,10 0.7,10 5,5.7 9.3,10 10,10 10,9.3 5.7,5 10,0.7 10,0 9.3,0 5,4.3 0.7,0 Z"
+							></path>
+						</svg>
+					</span>
+				</div>
+			</header>
+			<div class="window-container">
+				<div class="app-left-side">
+					<div class="app-left-side-inner">
+						<img class="avatar" src="./image/photo.png" alt="avatar" />
+						<ul>
+							<li>
+								<a href="http://github.com">github</a>
+							</li>
+						</ul>
+					</div>
+				</div>
+				<div class="app-right-content">
+					<!-- <div class="editor-content" contenteditable="true"></div> -->
+					<textarea name="editor" class="editor-content"></textarea>
+				</div>
+			</div>
+		</div>
 
+		<script>
+			window.onload = function () {
+				var editor = $elOne('.editor-content');
+				editor.oninput = function () {
+					console.log(editor.value);
+				};
+
+				$elOne('.window-close').onclick = function () {
+					alert(90);
+				};
+			};
+
+			function $el(selecter) {}
+
+			function $elOne(attr) {
+				return document.querySelector(attr);
+			}
+
+			function $elAll(attr) {
+				return document.querySelectorAll(attr);
+			}
+			require('./main_process/link');
+		</script>
+	</body>
 </html>

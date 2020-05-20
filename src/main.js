@@ -2,27 +2,27 @@ require('update-electron-app')({
   logger: require('electron-log')
 })
 
-const {app, BrowserWindow} = require('electron')
+const { app, BrowserWindow } = require('electron')
 
 let mainWindow = null;
 
-function createWindow () {
+function createWindow() {
 
   mainWindow = new BrowserWindow({
-    width: 800, 
+    width: 800,
     height: 600,
     // minWidth: 800,
     // minHeight: 600,
-    // frame:false,
+    frame: false,
     // backgroundColor: '#000000',
     // transparent: true,
     // darkTheme: true,
-    webPreferences:{
+    webPreferences: {
       nodeIntegration: true
     }
   })
-  mainWindow.loadURL('http://localhost:9830/login')
-  // mainWindow.loadURL(`file://${__dirname}/index.html`)
+  // mainWindow.loadURL('http://localhost:9830/login')
+  mainWindow.loadURL(`file://${__dirname}/index.html`)
   mainWindow.on('closed', function () {
     mainWindow = null
   })
