@@ -33,7 +33,7 @@ function createWindow() {
 
 	mainWindow.once('ready-to-show', () => {
 		mainWindow.show();
-		mainWindow.flashFrame(true);
+		// mainWindow.flashFrame(true);
 	});
 
 	require('devtron').install();
@@ -51,8 +51,8 @@ function makeSingleInstance() {
 }
 
 function initApplication() {
-	const singleInstance = makeSingleInstance();
-	console.log(singleInstance);
+	// const singleInstance = makeSingleInstance();
+	// console.log(singleInstance);
 	// if (singleInstance) {
 	// 	return app.quit();
 	// }

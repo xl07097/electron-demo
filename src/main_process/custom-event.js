@@ -10,7 +10,6 @@ ipcMain.on('open-file-dialog', event => {
 			properties: ['openFile', 'openDirectory'],
 		})
 		.then(obj => {
-			console.log(obj);
 			event.reply('selected-directory', obj.filePaths);
 		});
 });

@@ -1,11 +1,9 @@
 const { ipcRenderer } = require('electron');
 
+const fs = require('fs');
+
 // 接受最大化，最小化完成
 ipcRenderer.on('window-max-min', (event, args) => {
-	console.log(args);
-	if (args === 1) {
-		// 最大
-	}
 	$el('.window-max').classList.toggle('active');
 	$el('.window-normal').classList.toggle('active');
 });
@@ -32,4 +30,7 @@ $el('.nav-item').onclick = function () {
 
 ipcRenderer.on('selected-directory', (event, path) => {
 	console.log(path);
+	fs.readdir(path[0], function (err, files) {
+		console.log(files);
+	});
 });
