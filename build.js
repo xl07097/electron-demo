@@ -6,14 +6,15 @@ async function bundleElectronApp() {
 		appVersion: '1.0.0',
 		overwrite: true,
 		platform: 'win32',
-        arch: 'x64',
-        dir: './',
-		// asar: true,
+		arch: 'x64',
+		ignore: [/build.js/, /.gitignore/, /package.json/, /package-lock.json/],
+		dir: './',
+		asar: true,
 		out: 'dist',
-		asar: {
-			unpack: 'app.asar.unpacked',
-			unpackDir: 'node_modules',
-		},
+		// asar: {
+		// 	unpack: 'app.asar.unpacked',
+		// 	unpackDir: 'node_modules',
+		// },
 		buildVersion: '202005.1152',
 	});
 	console.log(`Electron app bundles created:\n${appPaths.join('\n')}`);
