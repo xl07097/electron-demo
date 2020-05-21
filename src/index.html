@@ -5,61 +5,7 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
 		<title>创客</title>
-		<!-- <link rel="stylesheet" href="./font-awesome/css/font-awesome.min.css"> -->
 		<link rel="stylesheet" href="style.css" />
-		<style>
-			span {
-				width: 46px;
-				line-height: 30px;
-				display: inline-block;
-				text-align: center;
-				transition: background 0.2s ease-in;
-			}
-
-			span:hover {
-				background: #e5e5e5;
-			}
-
-			.window-close:hover {
-				background: #e81123;
-			}
-
-			.window-close:hover svg {
-				fill: #ffffff;
-				color: #ffffff;
-			}
-
-			.titlebar-drag-region {
-				position: absolute;
-				top: 0;
-				left: 0;
-				width: 100%;
-				height: 100%;
-				display: block;
-				-webkit-app-region: drag;
-			}
-
-			.window-controls-tool {
-				position: relative;
-				z-index: 1000;
-				-webkit-app-region: no-drag;
-			}
-			.window-max-restore {
-				display: none;
-			}
-			.window-max-restore.active {
-				display: inline-block;
-			}
-			.window-title {
-				width: 35px;
-				position: relative;
-				z-index: 1000;
-				font: 13px/30px sans-serif;
-				text-align: center;
-				-webkit-app-region: drag;
-				user-select: none;
-			}
-		</style>
 	</head>
 
 	<body>
@@ -97,7 +43,7 @@
 				</div>
 			</header>
 			<div class="window-container">
-				<div class="app-left-side">
+				<div class="app-left-side scrollbar">
 					<div class="app-left-side-inner">
 						<img class="avatar" src="./image/photo.png" alt="avatar" />
 						<ul>

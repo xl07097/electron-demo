@@ -12,6 +12,26 @@
 	box-sizing: border-box;
 }
 
+.scrollbar {
+	overflow-x: hidden;
+	overflow-y: hidden;
+	&:hover {
+		overflow-y: auto;
+	}
+	&::-webkit-scrollbar-track {
+		box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+		background-color: transparent;
+	}
+	&::-webkit-scrollbar {
+		width: 6px;
+		background-color: transparent;
+	}
+
+	&::-webkit-scrollbar-thumb {
+		background-color: #000000;
+	}
+}
+
 html,
 body {
 	margin: 0;
@@ -50,7 +70,7 @@ ul {
 	.app-left-side {
 		width: 100px;
 		padding-top: 20px;
-		background: #ccc;
+		background: #e5e5e5;
 		box-shadow: 0 2px 6px silver;
 		.app-left-side-inner {
 			width: 100px;
@@ -88,4 +108,55 @@ ul {
 			resize: none;
 		}
 	}
+}
+
+.window-controls-tool {
+	span {
+		width: 46px;
+		line-height: 30px;
+		display: inline-block;
+		text-align: center;
+		transition: background 0.2s ease-in;
+		&:hover {
+			background: #e5e5e5;
+		}
+	}
+	.window-close:hover {
+		background: #e81123;
+	}
+	.window-close:hover svg {
+		fill: #ffffff;
+		color: #ffffff;
+	}
+}
+
+.titlebar-drag-region {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	display: block;
+	-webkit-app-region: drag;
+}
+
+.window-controls-tool {
+	position: relative;
+	z-index: 1000;
+	-webkit-app-region: no-drag;
+}
+.window-max-restore {
+	display: none;
+}
+.window-max-restore.active {
+	display: inline-block;
+}
+.window-title {
+	width: 35px;
+	position: relative;
+	z-index: 1000;
+	font: 13px/30px sans-serif;
+	text-align: center;
+	-webkit-app-region: drag;
+	user-select: none;
 }
