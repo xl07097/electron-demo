@@ -128,6 +128,13 @@ ul {
 		fill: #ffffff;
 		color: #ffffff;
 	}
+	.window-max-restore {
+		display: none;
+	}
+
+	.window-max-restore.active {
+		display: inline-block;
+	}
 }
 
 .titlebar-drag-region {
@@ -145,12 +152,7 @@ ul {
 	z-index: 1000;
 	-webkit-app-region: no-drag;
 }
-.window-max-restore {
-	display: none;
-}
-.window-max-restore.active {
-	display: inline-block;
-}
+
 .window-title {
 	width: 35px;
 	position: relative;
