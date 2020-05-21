@@ -35,8 +35,6 @@ function createWindow() {
 		mainWindow.show();
 		// mainWindow.flashFrame(true);
 	});
-
-	require('devtron').install();
 }
 
 function makeSingleInstance() {
