@@ -10,9 +10,7 @@ async function bundleElectronApp() {
         dir: './',
 		// asar: true,
 		out: 'dist',
-		path: './',
 		asar: {
-			path: './',
 			unpack: 'app.asar.unpacked',
 			unpackDir: 'node_modules',
 		},
