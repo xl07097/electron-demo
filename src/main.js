@@ -7,7 +7,7 @@ const { app, BrowserWindow, ipcMain } = require('electron');
 const glob = require('glob');
 const path = require('path');
 
-let mainWindow = null;
+global.mainWindow = null;
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
@@ -83,22 +83,3 @@ function loadMainProcess() {
 	});
 }
 
-ipcMain.on('window-min', function () {
-	mainWindow.minimize();
-});
-
-ipcMain.on('window-max', function (event, args) {
-	mainWindow.maximize();
-	event.reply('window-max-min', 1);
-	// event.sender.send('asynchronous-reply', 'pong');
-});
-
-ipcMain.on('window-normal', function (event, args) {
-	mainWindow.restore();
-	event.reply('window-max-min', 2);
-	// if (mainWindow.isMaximized()) {
-
-	// } else {
-	// 	mainWindow.maximize();
-	// }
-});
