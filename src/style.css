@@ -81,9 +81,11 @@ ul li {
 }
 .window-container .app-left-side .nav-item {
   padding: 4px 10px;
+  cursor: default;
 }
 .window-container .app-left-side .nav-item:hover {
   background-color: #447740;
+  color: rgba(255, 255, 255, 0.8);
 }
 .window-container .app-right-content {
   flex: auto;
