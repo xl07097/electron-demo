@@ -39,3 +39,12 @@ ipcRenderer.on('selected-directory', (event, path) => {
 		console.log(files);
 	});
 });
+
+ipcRenderer.on('screen-full', (event, args) => {
+	if (args === 1) {
+		// 全屏
+		$el('.window-toolbar').style.display = 'none';
+	} else {
+		$el('.window-toolbar').style.display = 'flex';
+	}
+});

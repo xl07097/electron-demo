@@ -45,6 +45,14 @@ function createWindow() {
 		console.log('2');
 		event.sender.send('window-max-min', 2);
 	});
+
+	mainWindow.on('enter-full-screen', function (event) {
+		event.sender.send('screen-full', 1);
+	});
+
+	mainWindow.on('leave-full-screen', function (event) {
+		event.sender.send('screen-full', 2);
+	});
 }
 
 function makeSingleInstance() {
