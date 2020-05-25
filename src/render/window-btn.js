@@ -4,8 +4,13 @@ const fs = require('fs');
 
 // 接受最大化，最小化完成
 ipcRenderer.on('window-max-min', (event, args) => {
-	$el('.window-max').classList.toggle('active');
-	$el('.window-normal').classList.toggle('active');
+	if (args === 1) {
+		$el('.window-max').classList.remove('active');
+		$el('.window-normal').classList.add('active');
+	} else {
+		$el('.window-max').classList.add('active');
+		$el('.window-normal').classList.remove('active');
+	}
 });
 
 $el('.window-close').onclick = function () {

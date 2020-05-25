@@ -2,7 +2,7 @@ require('update-electron-app')({
 	logger: require('electron-log'),
 });
 
-const { app, BrowserWindow, ipcMain } = require('electron');
+const { app, BrowserWindow } = require('electron');
 
 const glob = require('glob');
 const path = require('path');
@@ -34,6 +34,16 @@ function createWindow() {
 	mainWindow.once('ready-to-show', () => {
 		mainWindow.show();
 		// mainWindow.flashFrame(true);
+	});
+
+	mainWindow.on('maximize', function (event) {
+		console.log('1');
+		event.sender.send('window-max-min', 1);
+	});
+
+	mainWindow.on('unmaximize', function (event) {
+		console.log('2');
+		event.sender.send('window-max-min', 2);
 	});
 }
 
@@ -82,4 +92,3 @@ function loadMainProcess() {
 		require(file);
 	});
 }
-

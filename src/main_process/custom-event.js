@@ -10,13 +10,13 @@ ipcMain.on('window-min', function () {
 
 ipcMain.on('window-max', function (event, args) {
 	global.mainWindow.maximize();
-	event.reply('window-max-min', 1);
+	// event.reply('window-max-min', 1);
 	// event.sender.send('asynchronous-reply', 'pong');
 });
 
 ipcMain.on('window-normal', function (event, args) {
 	global.mainWindow.restore();
-	event.reply('window-max-min', 2);
+	// event.reply('window-max-min', 2);
 	// if (mainWindow.isMaximized()) {
 
 	// } else {
