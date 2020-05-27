@@ -24,12 +24,27 @@ ipcMain.on('window-normal', function (event, args) {
 	// }
 });
 
-ipcMain.on('open-file-dialog', event => {
+ipcMain.on('open-file-dialog', (event, ...args) => {
+	//'openDirectory', 'openFile'
 	dialog
 		.showOpenDialog({
-			properties: ['openFile', 'openDirectory'],
+			properties: [...args],
+			filters: [
+				{
+					name: 'Text',
+					extensions: ['icode'],
+				},
+				{
+					name: 'Custom File Type',
+					extensions: ['as'],
+				},
+				{
+					name: 'All Files',
+					extensions: ['*'],
+				},
+			],
 		})
 		.then(obj => {
-			event.reply('selected-directory', obj.filePaths);
+			event.reply('selected-directory', obj.filePaths, ...args);
 		});
 });

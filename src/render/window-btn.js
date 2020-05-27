@@ -30,14 +30,16 @@ $el('.window-normal').onclick = function () {
 };
 
 $el('.nav-item').onclick = function () {
-	ipcRenderer.send('open-file-dialog');
+	ipcRenderer.send('open-file-dialog', 'openFile');
 };
 
-ipcRenderer.on('selected-directory', (event, path) => {
+ipcRenderer.on('selected-directory', (event, path, ...args) => {
 	console.log(path);
-	fs.readdir(path[0], function (err, files) {
-		console.log(files);
-	});
+	if (args.includes('openDirectory')) {
+		fs.readdir(path[0], function (err, files) {
+			console.log(files);
+		});
+	}
 });
 
 ipcRenderer.on('screen-full', (event, args) => {

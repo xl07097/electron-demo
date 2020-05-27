@@ -68,7 +68,7 @@ ul li {
   line-height: 30px;
   display: inline-block;
   text-align: center;
-  transition: background 0.2s ease-in;
+  transition: all 0.2s linear;
 }
 .window-controls-tool span:hover {
   background: #0c884f;
@@ -147,9 +147,10 @@ ul li {
   padding: 4px;
   cursor: default;
   color: rgba(255, 255, 255, 0.8);
+  transition: all 0.2s linear;
 }
 .window-container .app-left-side .nav-item:hover {
-  background-color: #0e9f5d;
+  background: #0e9f5d;
   color: #ffffff;
 }
 .window-container .app-right-content {
