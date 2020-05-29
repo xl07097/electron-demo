@@ -12,7 +12,7 @@ global.mainWindow = null;
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: '创客',
-		width: 800,
+		width: 1000,
 		height: 600,
 		minWidth: 800,
 		minHeight: 600,
