@@ -2,7 +2,7 @@ const packager = require('electron-packager');
 
 async function bundleElectronApp() {
 	const appPaths = await packager({
-		name: 'electron-demo',
+		name: '创客',
 		appVersion: '1.0.0',
 		overwrite: true,
 		platform: 'win32',
