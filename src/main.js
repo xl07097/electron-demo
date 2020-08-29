@@ -1,7 +1,3 @@
-require('update-electron-app')({
-	logger: require('electron-log'),
-});
-
 const { app, BrowserWindow } = require('electron');
 
 const glob = require('glob');
@@ -23,6 +19,7 @@ function createWindow() {
 		// darkTheme: true,
 		webPreferences: {
 			nodeIntegration: true,
+			enableRemoteModule: true
 		},
 	});
 	// mainWindow.loadURL('http://localhost:9830/login')
@@ -34,6 +31,7 @@ function createWindow() {
 	mainWindow.once('ready-to-show', () => {
 		mainWindow.show();
 		// mainWindow.flashFrame(true);
+		console.log(app.getVersion());
 	});
 
 	mainWindow.on('maximize', function (event) {

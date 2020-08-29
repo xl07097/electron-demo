@@ -1,6 +1,11 @@
 .DS_Store
 node_modules
 /dist
+build/win*
+build/*.exe
+build/*.yml
+build/*.yaml
+build/*.exe.*
 
 # local env files
 .env.local

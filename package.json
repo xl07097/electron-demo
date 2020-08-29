@@ -6,17 +6,19 @@
   "scripts": {
     "start": "electron .",
     "build1": "electron-packager . --overwrite  --platform=win32 --arch=ia32 --out=dist",
-    "build": "electron-packager . --overwrite  --appName=创客 --asar  --win --out=dist --arch=x64",
+    "build": "electron-packager . --overwrite --ignore=build/  --appName=创客 --asar  --win --out=dist --arch=x64",
+    "pack": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "dependencies": {
-    "electron-log": "^2.2.17",
-    "glob": "^7.1.6",
-    "update-electron-app": "^1.3.0"
+    "electron-log": "^4.2.4",
+    "electron-updater": "^4.3.1",
+    "glob": "^7.1.6"
   },
   "devDependencies": {
     "devtron": "^1.4.0",
     "electron": "^9.1.1",
+    "electron-builder": "^22.8.0",
     "electron-packager": "^14.2.1"
   },
   "repository": {
@@ -24,5 +26,34 @@
     "url": "git@github.com:xl07097/electron-demo.git"
   },
   "author": "xueliang",
-  "license": "ISC"
+  "license": "ISC",
+  "build": {
+    "productName": "demo",
+    "appId": "com.xueliang.demo ",
+    "directories": {
+      "output": "build"
+    },
+    "publish": [
+      {
+        "provider": "generic",
+        "url": "http://122.51.129.51/update/install/"
+      }
+    ],
+    "files": [
+      "src/**/*"
+    ],
+    "win": {
+      "icon": "build/icons/icon.ico",
+      "target": "nsis"
+    },
+    "nsis": {
+      "oneClick": false,
+      "perMachine": true,
+      "allowToChangeInstallationDirectory": true,
+      "allowElevation": false,
+      "deleteAppDataOnUninstall": true,
+      "installerIcon": "build/icons/icon.ico",
+      "createDesktopShortcut": true
+    }
+  }
 }
