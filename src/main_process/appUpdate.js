@@ -1,4 +1,4 @@
-const { app, ipcMain } = require('electron');
+const { ipcMain } = require('electron');
 const { autoUpdater } = require('electron-updater');
 var log = require('electron-log')
 const path = require('path')

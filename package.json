@@ -28,8 +28,8 @@
   "author": "xueliang",
   "license": "ISC",
   "build": {
-    "productName": "demo",
-    "appId": "com.xueliang.demo ",
+    "productName": "创客",
+    "appId": "com.xueliang.demo",
     "directories": {
       "output": "build"
     },
@@ -44,13 +44,14 @@
     ],
     "win": {
       "icon": "build/icons/icon.ico",
+      "artifactName": "${productName}.${ext}",
       "target": "nsis"
     },
     "nsis": {
       "oneClick": false,
-      "perMachine": true,
+      "perMachine": false,
       "allowToChangeInstallationDirectory": true,
-      "allowElevation": false,
+      "allowElevation": true,
       "deleteAppDataOnUninstall": true,
       "installerIcon": "build/icons/icon.ico",
       "createDesktopShortcut": true
