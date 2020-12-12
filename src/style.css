@@ -10,7 +10,7 @@
 .clearfix:before,
 .clearfix:after {
   display: table;
-  content: ' ';
+  content: " ";
 }
 .clearfix:after {
   clear: both;
@@ -79,6 +79,8 @@ ul li {
   margin-left: auto;
   z-index: 1000;
   -webkit-app-region: no-drag;
+  display: flex;
+  flex-wrap: nowrap;
 }
 .window-controls-tool span {
   width: 46px;
