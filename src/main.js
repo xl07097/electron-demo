@@ -1,13 +1,14 @@
 const { app, BrowserWindow } = require('electron');
+const path = require('path');
 
 const glob = require('glob');
-const path = require('path');
 
 global.mainWindow = null;
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: '创客',
+		icon: path.join(__dirname, './image/icons/256x256.ico'),
 		width: 1000,
 		height: 600,
 		minWidth: 800,
@@ -19,7 +20,7 @@ function createWindow() {
 		// darkTheme: true,
 		webPreferences: {
 			nodeIntegration: true,
-			enableRemoteModule: true
+			enableRemoteModule: true,
 		},
 	});
 	// mainWindow.loadURL('http://localhost:9830/login')

@@ -6,7 +6,7 @@
   "scripts": {
     "start": "electron .",
     "build1": "electron-packager . --overwrite  --platform=win32 --arch=ia32 --out=dist",
-    "build": "electron-packager . --overwrite --ignore=build/  --appName=创客 --asar  --win --out=dist --arch=x64",
+    "build": "electron-packager . --overwrite --ignore=build/  --appName=创客 --asar  --win --out=dist --arch=x64 --icon=build/icons/48x48.ico",
     "pack": "electron-builder",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -29,14 +29,14 @@
   "license": "ISC",
   "build": {
     "productName": "创客",
-    "appId": "com.xueliang.demo",
+    "appId": "com.xueliang.xiangshuye",
     "directories": {
       "output": "build"
     },
     "publish": [
       {
         "provider": "generic",
-        "url": "http://122.51.129.51/update/install/"
+        "url": "https://files.zhiqiuge.com/software/install/"
       }
     ],
     "files": [
@@ -44,7 +44,7 @@
     ],
     "win": {
       "icon": "build/icons/icon.ico",
-      "artifactName": "${productName}.${ext}",
+      "artifactName": "${productName}-${version}.${ext}",
       "target": "nsis"
     },
     "nsis": {
