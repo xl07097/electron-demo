@@ -8,7 +8,10 @@
     "build1": "electron-packager . --overwrite  --platform=win32 --arch=ia32 --out=dist",
     "build": "electron-packager . --overwrite --ignore=build/  --appName=创客 --asar  --win --out=dist --arch=x64 --icon=build/icons/48x48.ico",
     "pack": "cross-env NODE_ENV=development electron-builder",
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "major": "npm version major",
+    "minor": "npm version minor",
+    "patch": "npm version patch"
   },
   "dependencies": {
     "electron-log": "^4.2.4",
