@@ -1,7 +1,8 @@
 const { ipcMain, dialog } = require('electron');
 
 ipcMain.on('window-close', function (event, args) {
-	global.mainWindow.close();
+	// global.mainWindow.close();
+	global.mainWindow.hide();
 });
 
 ipcMain.on('window-min', function () {

@@ -1,4 +1,4 @@
-const { app, BrowserWindow } = require('electron');
+const { app, BrowserWindow, Tray, Menu } = require('electron');
 const path = require('path');
 
 const glob = require('glob');
@@ -21,6 +21,7 @@ function createWindow() {
 		webPreferences: {
 			nodeIntegration: true,
 			enableRemoteModule: true,
+			contextIsolation: false,
 		},
 	});
 	// mainWindow.loadURL('http://localhost:9830/login')
@@ -99,3 +100,24 @@ function loadMainProcess() {
 		require(file);
 	});
 }
+
+let tray = null;
+app.whenReady().then(() => {
+	tray = new Tray(path.join(__dirname, './image/icons/64x64.ico'));
+	const contextMenu = Menu.buildFromTemplate([
+		{
+			label: '退出',
+			click: () => {
+				if (process.platform !== 'darwin') {
+					app.quit();
+				}
+			},
+		},
+	]);
+	tray.setToolTip('创客');
+	tray.setContextMenu(contextMenu);
+
+	tray.on('click', () => {
+		global.mainWindow.show();
+	});
+});

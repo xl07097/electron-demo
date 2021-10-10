@@ -1,7 +1,7 @@
 {
   "name": "electron-demo",
   "version": "1.0.3",
-  "description": "lecetron demo",
+  "description": "electron demo",
   "main": "src/main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron .",
@@ -21,9 +21,9 @@
   "devDependencies": {
     "cross-env": "^7.0.3",
     "devtron": "^1.4.0",
-    "electron": "^11.3.0",
-    "electron-builder": "^22.8.0",
-    "electron-packager": "^14.2.1"
+    "electron": "^15.1.0",
+    "electron-builder": "^22.13.1",
+    "electron-packager": "^15.4.0"
   },
   "repository": {
     "type": "git",
@@ -40,7 +40,7 @@
     "publish": [
       {
         "provider": "generic",
-        "url": "https://files.zhiqiuge.com/software/install/"
+        "url": "https://file.zhiqiuge.com/software/install/"
       }
     ],
     "files": [
