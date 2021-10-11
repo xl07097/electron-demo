@@ -47,7 +47,7 @@
       "src/**/*"
     ],
     "win": {
-      "icon": "build/icons/icon.ico",
+      "icon": "build/icons/512x512.ico",
       "artifactName": "${productName}-${version}.${ext}",
       "target": "nsis"
     },
@@ -57,7 +57,7 @@
       "allowToChangeInstallationDirectory": true,
       "allowElevation": true,
       "deleteAppDataOnUninstall": true,
-      "installerIcon": "build/icons/icon.ico",
+      "installerIcon": "build/icons/512x512.ico",
       "createDesktopShortcut": true
     }
   }
