@@ -2,13 +2,12 @@
   "name": "electron-demo",
   "version": "1.0.4",
   "description": "electron demo",
-  "main": "src/main.js",
+  "main": "src/main/main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron .",
     "build1": "electron-packager . --overwrite  --platform=win32 --arch=ia32 --out=dist",
     "build": "electron-packager . --overwrite --ignore=build/  --appName=创客 --asar  --win --out=dist --arch=x64 --icon=build/icons/48x48.ico",
     "pack": "electron-builder",
-    "test": "echo \"Error: no test specified\" && exit 1",
     "major": "npm version major",
     "minor": "npm version minor",
     "patch": "npm version patch"

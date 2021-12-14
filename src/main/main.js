@@ -8,7 +8,7 @@ global.mainWindow = null;
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: '创客',
-		icon: path.join(__dirname, './image/icons/256x256.ico'),
+		icon: path.resolve(__dirname, '..', 'render/image/icons/256x256.ico'),
 		width: 1000,
 		height: 600,
 		minWidth: 800,
@@ -25,7 +25,7 @@ function createWindow() {
 		},
 	});
 	// mainWindow.loadURL('http://localhost:9830/login')
-	mainWindow.loadURL(`file://${__dirname}/index.html`);
+	mainWindow.loadURL(path.resolve(__dirname, '..', 'render/index.html'));
 	mainWindow.on('closed', function () {
 		mainWindow = null;
 	});
@@ -95,15 +95,18 @@ function initApplication() {
 initApplication();
 
 function loadMainProcess() {
-	const files = glob.sync(path.join(__dirname, 'main_process/**/*.js'));
-	files.forEach(file => {
-		require(file);
-	});
+	// const files = glob.sync(path.join(__dirname, 'main_process/**/*.js'));
+	// files.forEach(file => {
+	// 	require(file);
+	// });
+	require('./application-menu.js')
+	require('./appUpdate.js')
+	require('./custom-event.js')
 }
 
 let tray = null;
 app.whenReady().then(() => {
-	tray = new Tray(path.join(__dirname, './image/icons/64x64.ico'));
+	tray = new Tray(path.join(__dirname, '..', 'render/image/icons/64x64.ico'));
 	const contextMenu = Menu.buildFromTemplate([
 		{
 			label: '退出',

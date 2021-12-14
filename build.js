@@ -19,5 +19,4 @@ async function bundleElectronApp() {
 	});
 	console.log(`Electron app bundles created:\n${appPaths.join('\n')}`);
 }
-
 bundleElectronApp();
