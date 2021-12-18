@@ -5,7 +5,7 @@
   "main": "src/main/main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron .",
-    "build:app": "electron-builder && npm run upload:app",
+    "build:app": "electron-builder build --x64 && npm run upload:app",
     "upload:app": "ts-node ./scripts/upload.ts",
     "major": "npm version major",
     "minor": "npm version minor",
