@@ -5,10 +5,8 @@
   "main": "src/main/main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron .",
-    "build1": "electron-packager . --overwrite  --ignore=build/ --platform=win32 --arch=ia32 --out=dist",
-    "build": "electron-packager . --overwrite --ignore=build/  --appName=创客 --asar  --win --out=dist --arch=x64 --icon=build/icons/48x48.ico",
+    "build:app": "electron-builder && npm run upload:app",
     "upload:app": "ts-node ./scripts/upload.ts",
-    "pack": "electron-builder && npm run upload:app",
     "major": "npm version major",
     "minor": "npm version minor",
     "patch": "npm version patch"
@@ -41,7 +39,7 @@
     "productName": "创客",
     "appId": "com.xueliang.xiangshuye",
     "directories": {
-      "output": "build"
+      "output": "release"
     },
     "publish": [
       {

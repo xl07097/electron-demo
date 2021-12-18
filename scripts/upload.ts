@@ -1,5 +1,4 @@
 import * as path from 'path';
-import * as fs from 'fs';
 import uploadToOSS from './uploadOss';
 
 const packageJson = require('../package.json');
@@ -11,7 +10,7 @@ const {
 
 (async function () {
 	const OSSObjectDir = 'software/install';
-	const buildDir = path.join(__dirname, '..', 'build');
+	const buildDir = path.join(__dirname, '..', 'release');
 
 	const fileLists = [
 		{ ossObjectFile: `latest.yml`, localFile: `latest.yml` },
