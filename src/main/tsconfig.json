@@ -1,0 +1,10 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "./",
+    "rootDir": "./",
+    "outDir": "../../dist",
+    "target": "es5",
+    "moduleResolution": "node"
+  }
+}

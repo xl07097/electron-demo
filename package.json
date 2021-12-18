@@ -2,14 +2,16 @@
   "name": "electron-demo",
   "version": "1.0.5",
   "description": "electron demo",
-  "main": "src/main/main.js",
+  "main": "dist/main.js",
   "scripts": {
-    "start": "cross-env NODE_ENV=development electron .",
+    "start": "cross-env NODE_ENV=development electron ./dist/main.js",
     "build:app": "electron-builder build --x64 && npm run upload:app",
+    "build:main": "tsc --build ./src/main/tsconfig.json",
     "upload:app": "ts-node ./scripts/upload.ts",
     "major": "npm version major",
     "minor": "npm version minor",
-    "patch": "npm version patch"
+    "patch": "npm version patch",
+    "watch:main": "tsc --build ./src/main/tsconfig.json -w"
   },
   "dependencies": {
     "electron-log": "^4.2.4",
