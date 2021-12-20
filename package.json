@@ -50,7 +50,8 @@
       }
     ],
     "files": [
-      "src/**/*"
+      "dist",
+      "src/render/**/*"
     ],
     "win": {
       "icon": "build/icons/256x256.ico",

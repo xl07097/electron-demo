@@ -7,10 +7,10 @@ async function bundleElectronApp() {
 		overwrite: true,
 		platform: 'win32',
 		arch: 'x64',
-		ignore: [/build.js/, /.gitignore/, /package.json/, /package-lock.json/],
+		ignore: [/release/, /scripts/, /build.js/, /.gitignore/, /package.json/, /package-lock.json/],
 		dir: './',
-		asar: true,
-		out: 'dist',
+		asar: false,
+		out: 'dists',
 		// asar: {
 		// 	unpack: 'app.asar.unpacked',
 		// 	unpackDir: 'node_modules',

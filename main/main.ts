@@ -29,7 +29,7 @@ function createWindow() {
 	if (process.env.NODE_ENV === 'development') {
 		mainWindow.loadURL('https://www.zhiqiuge.com');
 	} else {
-		mainWindow.loadURL(path.resolve(__dirname, '..', 'render/index.html'));
+		mainWindow.loadFile(path.resolve(__dirname, '..', 'src/render/index.html'));
 	}
 	// mainWindow.on('closed', function () {
 	// 	mainWindow = null;
