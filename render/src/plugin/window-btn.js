@@ -17,9 +17,7 @@ $el('.window-close').onclick = function () {
 	ipcRenderer.send('window-close');
 };
 
-$el('.window-minimize').onclick = function () {
-	ipcRenderer.send('window-min');
-};
+
 
 $el('.window-max').onclick = function () {
 	ipcRenderer.send('window-max');
@@ -33,14 +31,7 @@ $el('.nav-item').onclick = function () {
 	ipcRenderer.send('open-file-dialog', 'openFile');
 };
 
-ipcRenderer.on('selected-directory', (event, path, ...args) => {
-	console.log(path);
-	if (args.includes('openDirectory')) {
-		fs.readdir(path[0], function (err, files) {
-			console.log(files);
-		});
-	}
-});
+
 
 ipcRenderer.on('screen-full', (event, args) => {
 	if (args === 1) {

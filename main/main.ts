@@ -1,15 +1,14 @@
-import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron';
+import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
+import createTray from './tray/index'
+import createWindowEvent from './custom-event'
+import * as path from 'path'
 
-import * as path from 'path';
-
-// import glob from 'glob';
-
-let mainWindow: BrowserWindow;
+let mainWindow: BrowserWindow
 
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: '创客',
-		// icon: path.resolve(__dirname, '..', 'render/image/icons/256x256.ico'),
+		icon: path.resolve(__dirname, '..', 'assets/icons/256x256.ico'),
 		width: 1000,
 		height: 600,
 		minWidth: 800,
@@ -17,47 +16,50 @@ function createWindow() {
 		show: false,
 		frame: false,
 		titleBarStyle: 'hiddenInset',
-		// backgroundColor: '#2e2c29',
-		// transparent: true,
-		// darkTheme: true,
+		backgroundColor: '#2e2c29',
+		transparent: true,
+		darkTheme: true,
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
+			nodeIntegrationInWorker: true,
+			webSecurity: true,
+			navigateOnDragDrop: true,
+			devTools: true,
+			preload: path.join(__dirname, '..', 'preload/index.js'),
 		},
-	});
+	})
 	//
 	if (process.env.NODE_ENV === 'development') {
-		mainWindow.loadURL('https://www.zhiqiuge.com');
+		mainWindow.loadURL('http://localhost:3000')
 	} else {
-		mainWindow.loadFile(path.resolve(__dirname, '..', 'src/render/index.html'));
+		mainWindow.loadFile(path.resolve(__dirname, '..', 'src/render/index.html'))
 	}
 	// mainWindow.on('closed', function () {
 	// 	mainWindow = null;
 	// });
 
 	mainWindow.once('ready-to-show', () => {
-		mainWindow.show();
+		mainWindow.show()
 		// mainWindow.flashFrame(true);
-		console.log(app.getVersion());
-	});
+		console.log(app.getVersion())
+	})
 
 	mainWindow.on('maximize', function (event: IpcMainInvokeEvent) {
-		console.log('1');
-		event.sender.send('window-max-min', 1);
-	});
+		event.sender.send('window-max-min', 1)
+	})
 
 	mainWindow.on('unmaximize', function (event: IpcMainInvokeEvent) {
-		console.log('2');
-		event.sender.send('window-max-min', 2);
-	});
+		event.sender.send('window-max-min', 2)
+	})
 
 	mainWindow.on('enter-full-screen', function (event: IpcMainInvokeEvent) {
-		event.sender.send('screen-full', 1);
-	});
+		event.sender.send('screen-full', 1)
+	})
 
 	mainWindow.on('leave-full-screen', function (event: IpcMainInvokeEvent) {
-		event.sender.send('screen-full', 2);
-	});
+		event.sender.send('screen-full', 2)
+	})
 }
 
 // function makeSingleInstance() {
@@ -78,35 +80,26 @@ function initApplication() {
 	// 	return app.quit();
 	// }
 
-	// 加载主进程文件
-	// loadMainProcess();
-
 	app.on('window-all-closed', function () {
 		if (process.platform !== 'darwin') {
-			app.quit();
+			app.quit()
 		}
-	});
+	})
 
 	app.on('activate', function () {
 		if (mainWindow === null) {
-			createWindow();
+			createWindow()
 		}
-	});
+	})
 
-	app.on('ready', createWindow);
+	app.on('ready', () => {
+		createWindow()
+		createTray(mainWindow)
+		createWindowEvent(mainWindow)
+	})
 }
 
 // 初始化
-initApplication();
+initApplication()
 
-// function loadMainProcess() {
-// 	// const files = glob.sync(path.join(__dirname, 'main_process/**/*.js'));
-// 	// files.forEach(file => {
-// 	// 	require(file);
-// 	// });
-// 	require('./application-menu.js');
-// 	require('./appUpdate.js');
-// 	require('./custom-event.js');
-// }
-
-export { mainWindow };
+export { mainWindow }
