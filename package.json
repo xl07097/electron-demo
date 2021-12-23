@@ -5,6 +5,7 @@
   "main": "dist/main.js",
   "scripts": {
     "start": "cross-env NODE_ENV=development electron ./dist/main.js",
+    "precompiler": "electron-builder build --x64 --dir --config.asar=false",
     "build:app": "electron-builder build --x64 && npm run upload:app",
     "build:main": "tsc --build ./main/tsconfig.json",
     "upload:app": "ts-node ./scripts/upload.ts",
@@ -49,6 +50,7 @@
       }
     ],
     "files": [
+      "assets",
       "dist",
       "preload",
       "build"
