@@ -8,7 +8,7 @@ let mainWindow: BrowserWindow
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: '创客',
-		icon: path.resolve(__dirname, '..', 'assets/icons/256x256.ico'),
+		// icon: path.resolve(__dirname, '..', 'assets/icons/256x256.ico'),
 		width: 1000,
 		height: 600,
 		minWidth: 800,
@@ -33,7 +33,7 @@ function createWindow() {
 	if (process.env.NODE_ENV === 'development') {
 		mainWindow.loadURL('http://localhost:3000')
 	} else {
-		mainWindow.loadFile(path.resolve(__dirname, '..', 'src/render/index.html'))
+		mainWindow.loadFile(path.resolve(__dirname, '..', 'build/index.html'))
 	}
 	// mainWindow.on('closed', function () {
 	// 	mainWindow = null;

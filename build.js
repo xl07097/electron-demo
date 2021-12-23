@@ -1,13 +1,23 @@
-const packager = require('electron-packager');
+const packager = require('electron-packager')
 
 async function bundleElectronApp() {
 	const appPaths = await packager({
 		name: '创客',
-		appVersion: '1.0.0',
+		appVersion: '1.0.5',
 		overwrite: true,
 		platform: 'win32',
 		arch: 'x64',
-		ignore: [/release/, /scripts/, /build.js/, /.gitignore/, /package.json/, /package-lock.json/],
+		ignore: [
+			/main/,
+			/release/,
+			/render/,
+			/scripts/,
+			/build.js/,
+			/gitignore/,
+			/package.json/,
+			/package-lock.json/,
+			/tsconfog.json/,
+		],
 		dir: './',
 		asar: false,
 		out: 'dists',
@@ -16,7 +26,7 @@ async function bundleElectronApp() {
 		// 	unpackDir: 'node_modules',
 		// },
 		buildVersion: '202005.1152',
-	});
-	console.log(`Electron app bundles created:\n${appPaths.join('\n')}`);
+	})
+	console.log(`Electron app bundles created:\n${appPaths.join('\n')}`)
 }
-bundleElectronApp();
+bundleElectronApp()
