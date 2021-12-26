@@ -22,7 +22,7 @@
 :not(input):not(textarea)::before {
 	-webkit-user-select: none;
 	user-select: none;
-	cursor: default;
+	// cursor: default;
 }
 * {
 	box-sizing: border-box;
@@ -133,8 +133,8 @@ ul {
 
 .window-title {
 	position: relative;
-	width: 36px;
-	margin: 0 10px;
+	width: 40px;
+	// margin: 0 10px;
 	font: 14px/30px sans-serif;
 	text-align: center;
 	color: rgba(256, 256, 256, 0.8);
@@ -224,6 +224,7 @@ ul {
 	}
 	.app-right-content {
 		flex: auto;
+		padding: 10px;
 		.editor-content {
 			display: block;
 			width: 100%;
@@ -237,5 +238,39 @@ ul {
 			border: none;
 			resize: none;
 		}
+	}
+}
+
+.linkBack {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	width: 50px;
+	background: var(--color-primary);
+	-webkit-app-region: no-drag;
+	&:hover {
+		background-color: var(--color-control-tool-hover);
+	}
+	.i-icon {
+		display: flex;
+	}
+}
+
+.app-left-setting {
+	display: flex;
+	justify-content: center;
+	margin-top: auto;
+	width: 100%;
+	padding-bottom: 10px;
+	color: #fff;
+	font-size: 14px;
+
+	.i-icon {
+		display: inline-flex;
+		position: relative;
+		transition: all linear 0.4s;
+	}
+	&:hover .i-icon {
+		transform: rotate(90deg);
 	}
 }

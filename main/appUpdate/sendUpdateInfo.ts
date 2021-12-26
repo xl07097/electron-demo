@@ -18,6 +18,10 @@ export function updateAvailable(info: UpdateInfo) {
 	mainWindow.webContents.send('update-available', '检测到新版本，是否更新……', info);
 }
 
+export function downloadUpdate(info: UpdateInfo) {
+	mainWindow.webContents.send('download-update', '下载更新')
+}
+
 export function downloadProgress(progressObj: ProgressInfo) {
 	mainWindow.webContents.send('download-progress', progressObj);
 }

@@ -1,31 +1,44 @@
 const { ipcRenderer } = require('electron')
+import events from '@/utils/event'
 
-ipcRenderer.on('error', function (event, args) {
-	console.log(args)
+// 更新错误
+ipcRenderer.on('update-error', function (event, args) {
+	events.emit('update-error', args)
 })
-ipcRenderer.on('update', function (event, args) {
-	console.log(args)
+
+// 正在检查更新……
+ipcRenderer.on('checking-for-update', function (event, args) {
+	events.emit('checking-for-update', args)
 })
-ipcRenderer.on('available', function (event, args) {
-	console.log(args)
+
+// 检测到新版本，是否更新……
+ipcRenderer.on('update-available', function (event, args) {
+	events.emit('update-available', args)
 	ipcRenderer.send('downloadUpdate')
 })
-ipcRenderer.on('not-available', function (event, args) {
-	console.log(args)
-})
-ipcRenderer.on('downloadProgress', function (event, args) {
-	console.log(args)
-})
-ipcRenderer.on('isUpdateNow', function (event, args) {
-	console.log(args)
-	ipcRenderer.send('isUpdateNow')
-})
-ipcRenderer.on('checkForUpdate', function (event, args) {
-	console.log(args)
-})
-ipcRenderer.on('downloadUpdate', function (event, args) {
-	console.log(args)
-})
-ipcRenderer.send('checkForUpdate')
 
-console.log(909)
+// 现在使用的就是最新版本，无需更新
+ipcRenderer.on('update-not-available', function (event, args) {
+	events.emit('update-not-available', args)
+})
+
+// 开始更新
+ipcRenderer.on('download-update', function (event, args) {
+	events.emit('download-update', args)
+})
+
+// 下载进度
+ipcRenderer.on('download-progress', function (event, args) {
+	events.emit('download-progress', args)
+})
+
+// 下载完成
+ipcRenderer.on('update-downloaded', function (event, args) {
+	events.emit('update-downloaded', args)
+	// ipcRenderer.send('isUpdateNow')
+})
+
+// 检查更新
+ipcRenderer.on('checkForUpdate', function (event, args) {
+	events.emit('checkForUpdate', args)
+})

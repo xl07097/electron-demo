@@ -96,6 +96,7 @@ function initApplication() {
 		createWindow()
 		createTray(mainWindow)
 		createWindowEvent(mainWindow)
+		import('./appUpdate/index')
 	})
 }
 

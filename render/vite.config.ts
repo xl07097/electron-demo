@@ -1,18 +1,42 @@
 import { defineConfig } from 'vite'
-// import legacy from '@vitejs/plugin-legacy'
 import react from '@vitejs/plugin-react'
+import path from 'path'
+import createImportPlugin from 'vite-plugin-import'
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	base: './',
 	plugins: [
 		react(),
-		// legacy({
-		// 	targets: ['defaults', 'not IE 11'],
-		// }),
+		createImportPlugin({
+			onlyBuild: false,
+			babelImportPluginOptions: [
+				{
+					libraryName: 'antd',
+					libraryDirectory: 'es',
+					style: true,
+				},
+			],
+		}),
 	],
-
+	resolve: {
+		alias: {
+			'@': path.resolve(__dirname, 'src'),
+		},
+	},
 	build: {
 		outDir: '../build',
+	},
+	css: {
+		preprocessorOptions: {
+			less: {
+				// 支持内联 JavaScript
+				javascriptEnabled: true,
+				// 重写 less 变量，定制样式
+				modifyVars: {
+					// '@primary-color': 'red',
+				},
+			},
+		},
 	},
 })
