@@ -16,6 +16,11 @@ export default defineConfig({
 					libraryDirectory: 'es',
 					style: true,
 				},
+				{
+					libraryName: '@icon-park/react',
+					libraryDirectory: 'es/icons',
+					camel2DashComponentName: false, // default: true,
+				},
 			],
 		}),
 	],
