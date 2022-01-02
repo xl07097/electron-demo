@@ -1,5 +1,5 @@
 import { ipcMain } from 'electron'
-import { NsisUpdater } from 'electron-updater'
+import { autoUpdater } from 'electron-updater'
 import log from 'electron-log'
 import {
 	checkingForUpdate,
@@ -15,7 +15,7 @@ log.transports.console.level = 'silly'
 
 // autoUpdater.autoDownload = false;
 
-let autoUpdater = new NsisUpdater()
+// let autoUpdater = new NsisUpdater()
 
 autoUpdater.on('checking-for-update', function (info) {
 	log.info(info)
