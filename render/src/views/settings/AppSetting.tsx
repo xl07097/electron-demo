@@ -73,7 +73,7 @@ const AppSetting: React.FC<{}> = () => {
 		} else if (updateStatus === 3) {
 			return <Button onClick={updateNow}>立即更新</Button>
 		}
-	}, [updateStatus])
+	}, [updateStatus, progress])
 
 	return <>{action}</>
 }
