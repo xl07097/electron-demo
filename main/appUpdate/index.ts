@@ -74,12 +74,4 @@ ipcMain.on('checkForUpdate', () => {
 	autoUpdater.checkForUpdates()
 })
 
-export function checkForUpdate() {
-	// if (process.env.NODE_ENV === 'development') {
-	// 	return;
-	// }
-
-	autoUpdater.checkForUpdates()
-}
-
 export default autoUpdater

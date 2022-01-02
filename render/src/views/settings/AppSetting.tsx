@@ -9,7 +9,7 @@ export enum UpdateStatus {
 	NOCHECKUPDATE = 0, // 还未检测更新
 	DOWNLOADINGUPDATE = 1, // 正在下载更新
 	NOUPDATE = 2, // 不用更新，
-	DOWNLOADEDINGUPDATE = 3, // 更新下载完成
+	DOWNLOADEDUPDATE = 3, // 更新下载完成
 }
 
 const AppSetting: React.FC<{}> = () => {
@@ -17,6 +17,7 @@ const AppSetting: React.FC<{}> = () => {
 	let [progress, setProgress] = useState(0)
 
 	function checkUpdate() {
+		console.log(90)
 		ipcRenderer.send('checkForUpdate')
 	}
 
@@ -30,15 +31,21 @@ const AppSetting: React.FC<{}> = () => {
 			setProgress(args.percent)
 		}
 
+		function updateAvailable() {
+			setUpdateStatus(UpdateStatus.DOWNLOADINGUPDATE)
+		}
+
 		events.on('download-progress', downloadProgress)
+		events.on('update-available', updateAvailable)
 		return () => {
-			events.off('download-progress', downloadProgress)
+			events.off('download-progress', () => {})
+			events.off('update-available', () => {})
 		}
 	}, [])
 
 	useEffect(() => {
 		function updateFn() {
-			setUpdateStatus(UpdateStatus.DOWNLOADEDINGUPDATE)
+			setUpdateStatus(UpdateStatus.DOWNLOADEDUPDATE)
 		}
 
 		events.on('update-downloaded', updateFn)
@@ -49,8 +56,8 @@ const AppSetting: React.FC<{}> = () => {
 
 		events.on('update-not-available', updateNot)
 		return () => {
-			events.off('update-downloaded', updateFn)
-			events.off('update-not-available', updateNot)
+			events.off('update-downloaded', () => {})
+			events.off('update-not-available', () => {})
 		}
 	}, [])
 
