@@ -7,8 +7,6 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 import 'dayjs/locale/zh-cn'
 import App from './views/App'
 
-// require('./plugin/link')
-// require('./plugin/window-btn.js')
 import './plugin/appUpdate.js'
 
 ReactDOM.render(
