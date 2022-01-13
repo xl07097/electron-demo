@@ -46,7 +46,7 @@
     "publish": [
       {
         "provider": "generic",
-        "url": "https://files.zhiqiuge.com/software/install/"
+        "url": "https://file.zhiqiuge.com/software/install/"
       }
     ],
     "files": [

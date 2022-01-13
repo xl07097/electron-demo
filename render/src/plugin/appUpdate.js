@@ -29,11 +29,13 @@ ipcRenderer.on('download-update', function (event, args) {
 
 // 下载进度
 ipcRenderer.on('download-progress', function (event, args) {
+	console.log('下载进度：', args)
 	events.emit('download-progress', args)
 })
 
 // 下载完成
 ipcRenderer.on('update-downloaded', function (event, args) {
+	console.log('下载完成：', args)
 	events.emit('update-downloaded', args)
 	// ipcRenderer.send('isUpdateNow')
 })

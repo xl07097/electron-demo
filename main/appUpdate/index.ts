@@ -13,7 +13,7 @@ import {
 log.transports.console.level = false
 log.transports.console.level = 'silly'
 
-// autoUpdater.autoDownload = false;
+autoUpdater.autoDownload = false
 
 // let autoUpdater = new NsisUpdater()
 

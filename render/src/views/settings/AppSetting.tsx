@@ -14,7 +14,7 @@ export enum UpdateStatus {
 
 const AppSetting: React.FC<{}> = () => {
 	let [updateStatus, setUpdateStatus] = useState(UpdateStatus.NOCHECKUPDATE)
-	let [progress, setProgress] = useState(0)
+	let [progress, setProgress] = useState<number>(0)
 
 	function checkUpdate() {
 		console.log(90)
@@ -28,7 +28,7 @@ const AppSetting: React.FC<{}> = () => {
 	useEffect(() => {
 		function downloadProgress(args: ProgressInfo) {
 			console.log(args)
-			setProgress(args.percent)
+			setProgress(Number(args.percent.toFixed(0)))
 		}
 
 		function updateAvailable() {
@@ -51,6 +51,7 @@ const AppSetting: React.FC<{}> = () => {
 		events.on('update-downloaded', updateFn)
 
 		function updateNot() {
+			message.info('最新版本，不用更新')
 			setUpdateStatus(UpdateStatus.NOUPDATE)
 		}
 
@@ -61,21 +62,27 @@ const AppSetting: React.FC<{}> = () => {
 		}
 	}, [])
 
-	const action = useMemo(() => {
-		if (updateStatus === 0) {
-			return <Button onClick={checkUpdate}>检查更新</Button>
-		} else if (updateStatus === 1) {
-			return <Progress percent={progress} />
-		} else if (updateStatus === 2) {
-			message.info('最新版本，不用更新')
-			setUpdateStatus(UpdateStatus.NOCHECKUPDATE)
-			return <Button onClick={checkUpdate}>检查更新</Button>
-		} else if (updateStatus === 3) {
-			return <Button onClick={updateNow}>立即更新</Button>
-		}
-	}, [updateStatus, progress])
+	// const action = useMemo(() => {
+	// 	if (updateStatus === 0) {
+	// 		return <Button onClick={checkUpdate}>检查更新</Button>
+	// 	} else if (updateStatus === 1) {
+	// 		return <Progress percent={progress} />
+	// 	} else if (updateStatus === 2) {
+	// 		message.info('最新版本，不用更新')
+	// 		setUpdateStatus(UpdateStatus.NOCHECKUPDATE)
+	// 		return <Button onClick={checkUpdate}>检查更新</Button>
+	// 	} else if (updateStatus === 3) {
+	// 		return <Button onClick={updateNow}>立即更新</Button>
+	// 	}
+	// }, [updateStatus, progress])
 
-	return <>{action}</>
+	return (
+		<>
+			{updateStatus === 0 || updateStatus === 2 ? <Button onClick={checkUpdate}>检查更新</Button> : null}
+			{updateStatus === 1 ? <Progress percent={progress} /> : null}
+			{updateStatus === 3 ? <Button onClick={updateNow}>立即更新</Button> : null}
+		</>
+	)
 }
 
 export default AppSetting
