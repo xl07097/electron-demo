@@ -14,7 +14,7 @@ export default defineConfig({
 				{
 					libraryName: 'antd',
 					libraryDirectory: 'es',
-					style: true,
+					style: false,
 				},
 				{
 					libraryName: '@icon-park/react',
