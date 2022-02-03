@@ -38,8 +38,8 @@ const AppSetting: React.FC<{}> = () => {
 		events.on('download-progress', downloadProgress)
 		events.on('update-available', updateAvailable)
 		return () => {
-			events.off('download-progress', () => {})
-			events.off('update-available', () => {})
+			events.off('download-progress', downloadProgress)
+			events.off('update-available', updateAvailable)
 		}
 	}, [])
 
@@ -57,8 +57,8 @@ const AppSetting: React.FC<{}> = () => {
 
 		events.on('update-not-available', updateNot)
 		return () => {
-			events.off('update-downloaded', () => {})
-			events.off('update-not-available', () => {})
+			events.off('update-downloaded', updateFn)
+			events.off('update-not-available', updateNot)
 		}
 	}, [])
 
