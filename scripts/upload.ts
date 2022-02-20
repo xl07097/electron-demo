@@ -1,5 +1,5 @@
 import * as path from 'path';
-import uploadToOSS from './uploadOss';
+import uploadToOSS from './uploadOSS';
 
 const packageJson = require('../package.json');
 
