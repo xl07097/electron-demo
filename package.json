@@ -15,8 +15,8 @@
     "watch:main": "tsc --build ./main/tsconfig.json -w"
   },
   "dependencies": {
-    "electron-log": "^4.2.4",
-    "electron-updater": "^4.3.1",
+    "electron-log": "^4.4.6",
+    "electron-updater": "^4.6.5",
     "tslib": "^2.3.1"
   },
   "devDependencies": {
@@ -25,11 +25,11 @@
     "ali-oss": "^6.16.0",
     "cross-env": "^7.0.3",
     "devtron": "^1.4.0",
-    "electron": "^15.3.1",
-    "electron-builder": "^22.13.1",
+    "electron": "^18.0.0",
+    "electron-builder": "^22.14.13",
     "electron-packager": "^15.4.0",
     "ts-node": "^10.4.0",
-    "typescript": "^4.5.4"
+    "typescript": "^4.6.3"
   },
   "repository": {
     "type": "git",

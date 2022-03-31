@@ -1,4 +1,4 @@
-import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
+import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut } from 'electron'
 import createTray from './tray/index'
 import createWindowEvent from './custom-event'
 import * as path from 'path'
@@ -97,6 +97,14 @@ function initApplication() {
 		createTray(mainWindow)
 		createWindowEvent(mainWindow)
 		import('./appUpdate/index')
+
+		// globalShortcut.register('CommandOrControl+R', () => {
+		// 	console.log('CommandOrControl')
+		// })
+		console.log(globalShortcut.isRegistered('CommandOrControl+R'))
+
+		// globalShortcut.unregister('CommandOrControl+R')
+		console.log(90)
 	})
 }
 
