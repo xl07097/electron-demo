@@ -1,5 +1,5 @@
 import React from 'react'
-import ReactDOM from 'react-dom'
+import { createRoot } from 'react-dom/client'
 import { HashRouter } from 'react-router-dom'
 import './styles/style.less'
 import { ConfigProvider } from 'antd'
@@ -9,13 +9,14 @@ import App from './views/App'
 
 import './plugin/appUpdate.js'
 
-ReactDOM.render(
+const root = createRoot(document.getElementById('root') as HTMLElement)
+
+root.render(
 	<React.StrictMode>
 		<HashRouter>
 			<ConfigProvider locale={zhCN}>
 				<App />
 			</ConfigProvider>
 		</HashRouter>
-	</React.StrictMode>,
-	document.getElementById('root')
+	</React.StrictMode>
 )
