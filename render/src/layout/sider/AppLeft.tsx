@@ -10,9 +10,9 @@ function AppNavigation() {
 	const navigate = useNavigate()
 
 	useEffect(() => {
-		ipcRenderer.on('selected-directory', (event: any, path: string, ...args: string[]) => {
+		ipcRenderer.on('selected-directory', (event: any, path: string | undefined, ...args: string[]) => {
 			console.log(path)
-			if (args.includes('openDirectory')) {
+			if (args.includes('openDirectory') && path) {
 				readdir(path[0], function (err: NodeJS.ErrnoException | null, files: string[]) {
 					console.log(files)
 				})
