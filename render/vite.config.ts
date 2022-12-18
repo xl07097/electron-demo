@@ -12,11 +12,6 @@ export default defineConfig({
 			onlyBuild: false,
 			babelImportPluginOptions: [
 				{
-					libraryName: 'antd',
-					libraryDirectory: 'es',
-					style: false,
-				},
-				{
 					libraryName: '@icon-park/react',
 					libraryDirectory: 'es/icons',
 					camel2DashComponentName: false, // default: true,
