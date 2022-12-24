@@ -21,7 +21,6 @@ const createTray = mainWindow => {
 		tray.on('click', () => {
 			mainWindow.show()
 		})
-		// console.log(tray)
 	})
 }
 

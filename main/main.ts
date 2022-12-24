@@ -42,7 +42,6 @@ function createWindow() {
 	mainWindow.once('ready-to-show', () => {
 		mainWindow.show()
 		// mainWindow.flashFrame(true);
-		console.log(app.getVersion())
 	})
 
 	mainWindow.on('maximize', function (event: IpcMainInvokeEvent) {
@@ -101,10 +100,9 @@ function initApplication() {
 		// globalShortcut.register('CommandOrControl+R', () => {
 		// 	console.log('CommandOrControl')
 		// })
-		console.log(globalShortcut.isRegistered('CommandOrControl+R'))
+		// console.log(globalShortcut.isRegistered('CommandOrControl+R'))
 
 		// globalShortcut.unregister('CommandOrControl+R')
-		console.log(90)
 	})
 }
 

@@ -11,10 +11,7 @@ function AppHeader() {
 		navigate(-1)
 	}
 
-	console.log('location:', location)
-
 	function toIndex() {
-		console.log('lp')
 		navigate('/')
 	}
 

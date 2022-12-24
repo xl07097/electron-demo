@@ -17,33 +17,32 @@ autoUpdater.autoDownload = false
 
 // let autoUpdater = new NsisUpdater()
 
-autoUpdater.on('checking-for-update', function (info) {
-	log.info(info)
-	checkingForUpdate(info)
+autoUpdater.on('checking-for-update', () => {
+	checkingForUpdate()
 })
 
-autoUpdater.on('update-not-available', function (info) {
+autoUpdater.on('update-not-available', info => {
 	log.info(info)
 	updateNotAvailable(info)
 })
 
-autoUpdater.on('error', function (error) {
+autoUpdater.on('error', error => {
 	log.error(error)
 	updateError(error)
 })
 
-autoUpdater.on('update-available', function (info) {
+autoUpdater.on('update-available', info => {
 	log.info(info)
 	updateAvailable(info)
 })
 
 // 更新下载进度事件
-autoUpdater.on('download-progress', function (progressObj) {
+autoUpdater.on('download-progress', progressObj => {
 	log.info('触发下载。。。')
 	downloadProgress(progressObj)
 })
 
-autoUpdater.on('update-downloaded', function () {
+autoUpdater.on('update-downloaded', () => {
 	log.info('下载完成。。。')
 	ipcMain.once('isUpdateNow', () => {
 		log.info('开始更新。。。')

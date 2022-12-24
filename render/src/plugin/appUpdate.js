@@ -7,8 +7,8 @@ ipcRenderer.on('update-error', function (event, args) {
 })
 
 // 正在检查更新……
-ipcRenderer.on('checking-for-update', function (event, args) {
-	events.emit('checking-for-update', args)
+ipcRenderer.on('checking-for-update', function (event) {
+	events.emit('checking-for-update')
 })
 
 // 检测到新版本，是否更新……

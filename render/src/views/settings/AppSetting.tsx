@@ -17,7 +17,6 @@ const AppSetting: React.FC<{}> = () => {
 	let [progress, setProgress] = useState<number>(0)
 
 	function checkUpdate() {
-		console.log(90)
 		ipcRenderer.send('checkForUpdate')
 	}
 
@@ -27,7 +26,6 @@ const AppSetting: React.FC<{}> = () => {
 
 	useEffect(() => {
 		function downloadProgress(args: ProgressInfo) {
-			console.log(args)
 			setProgress(Number(args.percent.toFixed(0)))
 		}
 
