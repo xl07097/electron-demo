@@ -13,7 +13,7 @@ ipcMain.on('open-file-dialog', (event, ...args) => {
 			],
 		})
 		.then(obj => {
-			if (obj.canceled) {
+			if (obj.canceled === false) {
 				event.reply('selected-directory', obj.filePaths, ...args)
 			}
 		})
