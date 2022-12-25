@@ -7,7 +7,9 @@ import zhCN from 'antd/lib/locale-provider/zh_CN'
 import 'dayjs/locale/zh-cn'
 import App from './views/App'
 
+// if (import.meta.env.PROD) {
 import './plugin/appUpdate.js'
+// }
 
 const root = createRoot(document.getElementById('root') as HTMLElement)
 
