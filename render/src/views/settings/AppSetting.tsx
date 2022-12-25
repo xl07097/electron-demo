@@ -78,7 +78,7 @@ const AppSetting: React.FC<{}> = () => {
 		<>
 			{updateStatus === 0 || updateStatus === 2 ? <Button onClick={checkUpdate}>检查更新</Button> : null}
 			{updateStatus === 1 ? <Progress percent={progress} /> : null}
-			{updateStatus === 3 ? <Button onClick={updateNow}>立即更新</Button> : null}
+			{updateStatus === 3 ? <Button onClick={updateNow}>立即安装</Button> : null}
 		</>
 	)
 }
