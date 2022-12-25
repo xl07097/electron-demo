@@ -1,12 +1,13 @@
 import React from 'react'
-import { NavLink } from 'react-router-dom'
+import LinkCard from '@/components/link/LInkCard'
+import { Home, MessageSecurity, MessageOne } from '@icon-park/react'
 
 const AppIndex: React.FC<{}> = () => {
 	return (
-		<div>
-			<NavLink to={'/'}>首页</NavLink>&emsp;
-			<NavLink to={'/crypto'}>加密</NavLink>&emsp;
-			<NavLink to={'/message'}>消息</NavLink>&emsp;
+		<div className="link-card">
+			<LinkCard img={<Home theme="outline" size="24" fill="#333" />} title="首页" link="/"></LinkCard>
+			<LinkCard img={<MessageSecurity theme="outline" size="24" fill="#333" />} title="加密" link="/crypto"></LinkCard>
+			<LinkCard img={<MessageOne theme="outline" size="24" fill="#333" />} title="消息" link="/message"></LinkCard>
 		</div>
 	)
 }
