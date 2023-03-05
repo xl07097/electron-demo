@@ -8,7 +8,7 @@
 	--color-control-tool-hover: #0c884f;
 	--color-control-tool-close-hover: #e81123;
 	--color-title-bar-hover-bg: #0e9f5d;
-	--title-bar-height: 30px;
+	--title-bar-height: 34px;
 	--spacing: 10px;
 }
 
@@ -83,7 +83,7 @@ ul {
 	display: flex;
 	// justify-content: space-between;
 	width: 100%;
-	height: 30px;
+	height: var(--title-bar-height);
 	// background: cadetblue;
 	background: var(--color-primary);
 	cursor: default;
@@ -99,7 +99,7 @@ ul {
 	flex-wrap: nowrap;
 	span {
 		width: 46px;
-		line-height: 30px;
+		line-height: var(--title-bar-height);
 		display: inline-block;
 		text-align: center;
 		// transition: all 0.2s linear;
@@ -138,9 +138,8 @@ ul {
 
 .window-title {
 	position: relative;
-	width: 40px;
-	// margin: 0 10px;
-	font: 14px/30px sans-serif;
+	padding: 0 16px;
+	font: 14px / var(--title-bar-height) sans-serif;
 	text-align: center;
 	color: rgba(256, 256, 256, 0.8);
 	-webkit-app-region: no-drag;
@@ -183,7 +182,7 @@ ul {
 .window-container {
 	display: flex;
 	flex: 1;
-	height: calc(100% - 30px);
+	height: calc(100% - var(--title-bar-height));
 	.app-left-side {
 		width: 100px;
 		padding-top: 20px;

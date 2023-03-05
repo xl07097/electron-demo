@@ -1,9 +1,4 @@
-import {
-	app,
-	BrowserWindow,
-	IpcMainInvokeEvent,
-	// globalShortcut
-} from 'electron'
+import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut } from 'electron'
 import createTray from './tray/index'
 import createWindowEvent from './custom-event'
 import * as path from 'path'
@@ -108,6 +103,9 @@ function initApplication() {
 		// console.log(globalShortcut.isRegistered('CommandOrControl+R'))
 
 		// globalShortcut.unregister('CommandOrControl+R')
+		if (process.env.NODE_ENV === 'production') {
+			globalShortcut.unregister('CommandOrControl+R')
+		}
 	})
 }
 

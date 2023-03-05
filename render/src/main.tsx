@@ -3,7 +3,7 @@ import { createRoot } from 'react-dom/client'
 import { Routes, HashRouter } from 'react-router-dom'
 import './styles/style.less'
 import { ConfigProvider } from 'antd'
-import zhCN from 'antd/lib/locale-provider/zh_CN'
+import zhCN from 'antd/locale/zh_CN.js'
 import 'dayjs/locale/zh-cn'
 import App from './views/App'
 
