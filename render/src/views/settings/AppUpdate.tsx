@@ -1,21 +1,11 @@
 import { useEffect } from 'react'
 import { ProgressInfo } from 'electron-builder'
 import { useSelector, useDispatch } from 'react-redux'
-
 import { Button, Progress, message } from 'antd'
-
 const { ipcRenderer } = require('electron')
-
 import events from '@/utils/event'
-
 import { setStatus, setProgress } from '@/store/modules/update'
-
-export enum UpdateStatus {
-	NOCHECKUPDATE = 0, // 还未检测更新
-	DOWNLOADINGUPDATE = 1, // 正在下载更新
-	NOUPDATE = 2, // 不用更新，
-	DOWNLOADEDUPDATE = 3, // 更新下载完成
-}
+import { UpdateStatus } from '@/config/enums/update'
 
 const AppUpdate: React.FC<{}> = () => {
 	const { progress, status } = useSelector((state: any) => state.updateReducer)
