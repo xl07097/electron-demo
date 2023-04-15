@@ -1,6 +1,6 @@
 import React, { Suspense } from 'react'
-
 import { Routes, Route } from 'react-router-dom'
+import { Spin } from 'antd'
 
 import AppNavigation from '@/layout/sider/AppLeft'
 import AppRouter from '@/layout/router/AppRouter'
@@ -12,7 +12,7 @@ function AppContent() {
 	return (
 		<div className="window-container">
 			<AppNavigation></AppNavigation>
-			<Suspense fallback={<div>加载中···</div>}>
+			<Suspense fallback={<Spin></Spin>}>
 				<AppRouter>
 					<Routes>
 						<Route path="/" element={<AppIndex></AppIndex>}></Route>
