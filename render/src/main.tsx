@@ -20,7 +20,14 @@ root.render(
 	<React.StrictMode>
 		<HashRouter>
 			<Provider store={store}>
-				<ConfigProvider locale={zhCN}>
+				<ConfigProvider
+					locale={zhCN}
+					theme={{
+						token: {
+							colorPrimary: '#0a7042',
+						},
+					}}
+				>
 					<App />
 				</ConfigProvider>
 			</Provider>
