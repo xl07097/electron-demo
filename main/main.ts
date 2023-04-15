@@ -61,23 +61,31 @@ function createWindow() {
 	})
 }
 
-// function makeSingleInstance() {
-// 	if (process.mas) return false;
-
-// 	return app.requestSingleInstanceLock(() => {
-// 		if (mainWindow) {
-// 			if (mainWindow.isMinimized()) mainWindow.restore();
-// 			mainWindow.focus();
-// 		}
-// 	});
-// }
+function makeSingleInstance() {
+	if (process.mas) return false
+	const gotTheLock = app.requestSingleInstanceLock()
+	if (!gotTheLock) {
+		app.quit()
+		return gotTheLock
+	}
+	app.on('second-instance', (event, commandLine, workingDirectory) => {
+		if (mainWindow) {
+			if (mainWindow.isVisible()) {
+				mainWindow.show()
+			} else if (mainWindow.isMinimized()) {
+				mainWindow.restore()
+			}
+			mainWindow.focus()
+		}
+	})
+	return gotTheLock
+}
 
 function initApplication() {
-	// const singleInstance = makeSingleInstance();
-	// console.log(singleInstance);
-	// if (singleInstance) {
-	// 	return app.quit();
-	// }
+	const gotTheLock = makeSingleInstance()
+	if (!gotTheLock) {
+		return
+	}
 
 	app.on('window-all-closed', function () {
 		if (process.platform !== 'darwin') {
