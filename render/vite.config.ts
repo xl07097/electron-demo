@@ -1,6 +1,7 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
+import vitePluginImp from 'vite-plugin-imp'
 import createImportPlugin from 'vite-plugin-import'
 
 // https://vitejs.dev/config/
@@ -8,6 +9,16 @@ export default defineConfig({
 	base: './',
 	plugins: [
 		react(),
+		vitePluginImp({
+			optimize: true,
+			libList: [
+				{
+					libName: 'antd',
+					libDirectory: 'es',
+					style: name => `antd/es/${name}/style`,
+				},
+			],
+		}),
 		createImportPlugin({
 			onlyBuild: false,
 			babelImportPluginOptions: [
