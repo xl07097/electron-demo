@@ -1,12 +1,9 @@
-import AppHeader from '../layout/header/AppHeader'
-import AppContent from '../layout/content/AppContent'
+import { RouterProvider } from 'react-router-dom'
+
+import router from '@/router/Router'
+
 function App() {
-	return (
-		<div className="window-body-wrapper">
-			<AppHeader></AppHeader>
-			<AppContent></AppContent>
-		</div>
-	)
+	return <RouterProvider router={router}></RouterProvider>
 }
 
 export default App

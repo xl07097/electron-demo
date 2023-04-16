@@ -1,6 +1,5 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
-import { HashRouter } from 'react-router-dom'
 import { Provider } from 'react-redux'
 import { ConfigProvider } from 'antd'
 
@@ -18,19 +17,29 @@ const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
 	<React.StrictMode>
-		<HashRouter>
-			<Provider store={store}>
-				<ConfigProvider
-					locale={zhCN}
-					theme={{
-						token: {
-							colorPrimary: '#0a7042',
+		<Provider store={store}>
+			<ConfigProvider
+				locale={zhCN}
+				theme={{
+					token: {
+						colorPrimary: '#0a7042',
+					},
+					components: {
+						Menu: {
+							colorItemBgSelected: '#fff2e8',
+							colorItemBgHover: '#fff2e8',
+							colorItemTextSelected: '#fa541c',
+							colorItemTextHover: '#fa541c',
+							radiusItem: 0,
+							borderRadius: 0,
+							itemMarginInline: 0,
+							borderRadiusOuter: 0,
 						},
-					}}
-				>
-					<App />
-				</ConfigProvider>
-			</Provider>
-		</HashRouter>
+					},
+				}}
+			>
+				<App />
+			</ConfigProvider>
+		</Provider>
 	</React.StrictMode>
 )

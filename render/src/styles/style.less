@@ -171,14 +171,6 @@ ul {
 	}
 }
 
-.menu-item {
-	span[aria-label] {
-		display: flex;
-		font-size: 12px;
-		color: rgba(256, 256, 256, 0.8);
-	}
-}
-
 .window-container {
 	display: flex;
 	flex: 1;
@@ -279,4 +271,7 @@ ul {
 	&:hover .i-icon {
 		transform: rotate(90deg);
 	}
+}
+.ant-menu-light.ant-menu .ant-menu-item-selected {
+	border-right: 3px solid #fa541c;
 }

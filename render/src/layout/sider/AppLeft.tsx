@@ -6,7 +6,7 @@ function AppNavigation() {
 	const navigate = useNavigate()
 
 	function openSetting() {
-		navigate('/settings')
+		navigate('/setting')
 	}
 
 	return (
