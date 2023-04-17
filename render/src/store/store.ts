@@ -1,14 +1,18 @@
 import { configureStore } from '@reduxjs/toolkit'
-import counterReducer from './modules/counter'
-import loginReducer from './modules/login'
-import updateReducer from './modules/update'
+
+const modules = import.meta.glob('./modules/*.ts', {
+	import: 'default',
+	eager: true,
+})
+
+const reducers = Object.keys(modules).reduce((acc, modulePath) => {
+	const moduleName = modulePath.replace(/\.\/modules\/(.*)\.ts/, '$1')
+	acc[`${moduleName}Reducer`] = modules[modulePath]
+	return acc
+}, {} as Record<string, any>)
 
 const store = configureStore({
-	reducer: {
-		counterReducer,
-		loginReducer,
-		updateReducer,
-	},
+	reducer: reducers,
 })
 
 export default store
