@@ -44,6 +44,6 @@ ipcRenderer.on('update-downloaded', function (event, args) {
 })
 
 // 检查更新
-ipcRenderer.on('checkForUpdate', function (event, args) {
-	events.emit('checkForUpdate', args)
-})
+// ipcRenderer.on('checkForUpdate', function (event, args) {
+// 	events.emit('checkForUpdate', args)
+// })
