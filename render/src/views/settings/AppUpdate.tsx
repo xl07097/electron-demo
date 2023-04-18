@@ -1,68 +1,27 @@
-import { useEffect } from 'react'
-import { ProgressInfo } from 'electron-builder'
-import { useSelector, useDispatch } from 'react-redux'
-import { Button, Progress, message } from 'antd'
+import { useSelector } from 'react-redux'
+import { Button, Progress } from 'antd'
 const { ipcRenderer } = require('electron')
-import events from '@/utils/event'
-import { setStatus, setProgress } from '@/store/modules/update'
 import { UpdateStatus } from '@/config/enums/update'
 
 const AppUpdate: React.FC<{}> = () => {
 	const { progress, status } = useSelector((state: any) => state.updateReducer)
 
-	const dispatch = useDispatch()
 
-	function checkUpdate() {
+	function checkForUpdate() {
 		ipcRenderer.send('checkForUpdate')
 	}
 
-	function updateNow() {
-		ipcRenderer.send('isUpdateNow')
+	function installNow() {
+		ipcRenderer.send('install-now')
 	}
-
-	useEffect(() => {
-		function downloadProgress(args: ProgressInfo) {
-			dispatch(setProgress(Math.floor(args.percent)))
-		}
-
-		function updateAvailable() {
-			dispatch(setStatus(UpdateStatus.DOWNLOADINGUPDATE))
-		}
-
-		events.on('download-progress', downloadProgress)
-		events.on('update-available', updateAvailable)
-		return () => {
-			events.off('download-progress', downloadProgress)
-			events.off('update-available', updateAvailable)
-		}
-	}, [])
-
-	useEffect(() => {
-		function updateFn() {
-			dispatch(setStatus(UpdateStatus.DOWNLOADEDUPDATE))
-		}
-
-		events.on('update-downloaded', updateFn)
-
-		function updateNot() {
-			message.info('最新版本，不用更新')
-			dispatch(setStatus(UpdateStatus.NOUPDATE))
-		}
-
-		events.on('update-not-available', updateNot)
-		return () => {
-			events.off('update-downloaded', updateFn)
-			events.off('update-not-available', updateNot)
-		}
-	}, [])
 
 	return (
 		<>
 			{status === UpdateStatus.NOCHECKUPDATE || status === UpdateStatus.NOUPDATE ? (
-				<Button onClick={checkUpdate}>检查更新</Button>
+				<Button onClick={checkForUpdate}>检查更新</Button>
 			) : null}
 			{status === UpdateStatus.DOWNLOADINGUPDATE ? <Progress percent={progress} /> : null}
-			{status === UpdateStatus.DOWNLOADEDUPDATE ? <Button onClick={updateNow}>立即安装</Button> : null}
+			{status === UpdateStatus.DOWNLOADEDUPDATE ? <Button onClick={installNow}>立即安装</Button> : null}
 		</>
 	)
 }

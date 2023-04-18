@@ -15,8 +15,6 @@ log.transports.console.level = 'silly'
 
 autoUpdater.autoDownload = false
 
-// let autoUpdater = new NsisUpdater()
-
 autoUpdater.on('checking-for-update', () => {
 	checkingForUpdate()
 })
@@ -44,7 +42,7 @@ autoUpdater.on('download-progress', progressObj => {
 
 autoUpdater.on('update-downloaded', () => {
 	log.info('下载完成。。。')
-	ipcMain.once('isUpdateNow', () => {
+	ipcMain.once('install-now', () => {
 		log.info('开始更新。。。')
 		autoUpdater.quitAndInstall()
 	})
@@ -55,20 +53,11 @@ autoUpdater.on('update-downloaded', () => {
 ipcMain.on('downloadUpdate', () => {
 	log.info('执行下载')
 	autoUpdater.downloadUpdate()
-	// mainWindow.webContents.send('downloadUpdate', 'downloadUpdate');
 })
 
 // 监听是否检查更新事件
 ipcMain.on('checkForUpdate', () => {
-	// 执行自动更新检查
 	log.info('执行自动更新检查')
-	//清除每次更新下载的文件，否则无法进行更新
-	// let updaterCacheDirName = 'note-updater'
-	// const updatePendingPath = path.join(autoUpdater.app.baseCachePath, updaterCacheDirName, 'pending')
-	// log.warn(updatePendingPath)
-	// rm(updatePendingPath, function (err) {
-	//   log.warn(autoUpdater.app.baseCachePath)
-	// })
 
 	autoUpdater.checkForUpdates()
 })
