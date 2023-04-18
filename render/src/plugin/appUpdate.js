@@ -4,6 +4,7 @@ import { message } from 'antd'
 import events from '@/utils/event'
 import store from '@/store/store'
 import { setProgress, setStatus } from '@/store/modules/update'
+import { UpdateStatus } from '@/config/enums/update'
 
 // 更新错误
 ipcRenderer.on('update-error', function (event, args) {

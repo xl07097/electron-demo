@@ -6,7 +6,6 @@
     "noImplicitThis": true,
     "noImplicitAny": false,
     "importHelpers": true,
-    "suppressImplicitAnyIndexErrors": true,
     "noUnusedLocals": true,
     "skipLibCheck": true,
   }
