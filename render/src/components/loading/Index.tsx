@@ -1,3 +1,4 @@
+import { Spin } from 'antd'
 import './style.less'
 
 function Index() {
@@ -6,14 +7,7 @@ function Index() {
 			<div className="app-loading__logo">
 				<img src="https://files.zhiqiuge.com/images/logos/logo3.png" />
 			</div>
-			<div>
-				<span className="dot dot-spin">
-					<i></i>
-					<i></i>
-					<i></i>
-					<i></i>
-				</span>
-			</div>
+			<div>{/* <Spin size="large" /> */}</div>
 			<div className="app-loading__title">香树叶</div>
 		</div>
 	)

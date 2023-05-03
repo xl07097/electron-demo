@@ -8,17 +8,12 @@ let mainWindow: BrowserWindow
 function createWindow() {
 	mainWindow = new BrowserWindow({
 		title: '创客',
-		// icon: path.resolve(__dirname, '..', 'assets/icons/256x256.ico'),
 		width: 1000,
 		height: 600,
 		minWidth: 800,
 		minHeight: 600,
 		show: false,
 		frame: false,
-		// titleBarStyle: 'hiddenInset',
-		// backgroundColor: '#2e2c29',
-		// transparent: true,
-		// darkTheme: true,
 		webPreferences: {
 			nodeIntegration: true,
 			contextIsolation: false,
@@ -35,13 +30,9 @@ function createWindow() {
 	} else {
 		mainWindow.loadFile(path.resolve(__dirname, '..', 'build/index.html'))
 	}
-	// mainWindow.on('closed', function () {
-	// 	mainWindow = null;
-	// });
 
 	mainWindow.once('ready-to-show', () => {
 		mainWindow.show()
-		// mainWindow.flashFrame(true);
 	})
 
 	mainWindow.on('maximize', function (event: IpcMainInvokeEvent) {
