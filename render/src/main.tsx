@@ -26,11 +26,11 @@ root.render(
 					},
 					components: {
 						Menu: {
-							colorItemBgSelected: '#fff2e8',
-							colorItemBgHover: '#fff2e8',
-							colorItemTextSelected: '#fa541c',
-							colorItemTextHover: '#fa541c',
-							radiusItem: 0,
+							itemSelectedBg: '#fff2e8',
+							itemHoverBg: '#fff2e8',
+							itemSelectedColor: '#fa541c',
+							itemHoverColor: '#fa541c',
+							itemBorderRadius: 0,
 							borderRadius: 0,
 							itemMarginInline: 0,
 							borderRadiusOuter: 0,

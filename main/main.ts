@@ -2,6 +2,7 @@ import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut } from 'electron
 import createTray from './tray/index'
 import createWindowEvent from './custom-event'
 import * as path from 'path'
+import logger from 'electron-log'
 
 let mainWindow: BrowserWindow
 
@@ -36,19 +37,21 @@ function createWindow() {
 	})
 
 	mainWindow.on('maximize', function (event: IpcMainInvokeEvent) {
-		event.sender.send('window-max-min', 1)
+		logger.info('maximize:')
+		mainWindow.webContents.send('window-max-min', 1)
 	})
 
 	mainWindow.on('unmaximize', function (event: IpcMainInvokeEvent) {
-		event.sender.send('window-max-min', 2)
+		logger.info('unmaximize:')
+		mainWindow.webContents.send('window-max-min', 2)
 	})
 
 	mainWindow.on('enter-full-screen', function (event: IpcMainInvokeEvent) {
-		event.sender.send('screen-full', 1)
+		mainWindow.webContents.send('screen-full', 1)
 	})
 
 	mainWindow.on('leave-full-screen', function (event: IpcMainInvokeEvent) {
-		event.sender.send('screen-full', 2)
+		mainWindow.webContents.send('screen-full', 2)
 	})
 }
 

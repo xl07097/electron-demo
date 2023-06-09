@@ -29,15 +29,6 @@ function WindowControl() {
 		ipcRenderer.on('window-max-min', (event: any, args: number) => {
 			setMax(args)
 		})
-
-		ipcRenderer.on('screen-full', (event, args) => {
-			// if (args === 1) {
-			// 	// 全屏
-			// 	$el('.window-toolbar').style.display = 'none'
-			// } else {
-			// 	$el('.window-toolbar').style.display = 'flex'
-			// }
-		})
 	}, [])
 
 	const MaxMinControl = useMemo(() => {
