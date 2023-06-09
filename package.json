@@ -25,7 +25,7 @@
     "ali-oss": "^6.16.0",
     "cross-env": "^7.0.3",
     "devtron": "^1.4.0",
-    "electron": "^24.1.2",
+    "electron": "^25.1.0",
     "electron-builder": "^23.6.0",
     "ts-node": "^10.9.1",
     "typescript": "^5.0.4"
