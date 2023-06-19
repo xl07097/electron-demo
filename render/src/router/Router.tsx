@@ -25,6 +25,10 @@ const config: RouteObject[] = [
 				element: Lazyload(lazy(() => import('@/views/settings/AppSetting'))),
 			},
 			{
+				path: '/filelist',
+				element: Lazyload(lazy(() => import('@/views/file/Index'))),
+			},
+			{
 				path: '*',
 				element: Lazyload(lazy(() => import('@/components/404/Index'))),
 			},
