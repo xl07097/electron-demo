@@ -1,7 +1,8 @@
 import React, { useState } from 'react';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
-import { message, Upload } from 'antd';
+import { message, Upload, Button } from 'antd';
+import { Outlet, useNavigate } from 'react-router-dom';
 
 const { Dragger } = Upload;
 
@@ -9,6 +10,7 @@ const { Dragger } = Upload;
 
 const Index: React.FC = () => {
   const [url, setUrl] = useState('')
+  const navigate = useNavigate()
 
   const props: UploadProps = {
     name: 'upfile',
@@ -30,7 +32,19 @@ const Index: React.FC = () => {
     },
   };
 
+  const copy = () => {
+    navigator.clipboard.writeText(url).then(function () {
+      message.success('复制成功')
+    })
+  }
+
+  const entryList = () => {
+    navigate("/filelist")
+  }
+
   return (<div>
+    <Button onClick={entryList}>进入列表</Button>
+
     <Dragger {...props}>
       <p className="ant-upload-drag-icon">
         <CloudUploadOutlined />
@@ -38,7 +52,14 @@ const Index: React.FC = () => {
       <p className="ant-upload-text">文件拖到此处或点击上传</p>
     </Dragger>
 
-    文件地址：{url}
+    <div className='fileurl'>
+      文件地址：{url}
+      {
+        url && <Button type="link" onClick={copy}>复制地址</Button>
+      }
+    </div>
+
+    <Outlet></Outlet>
   </div>)
 };
 

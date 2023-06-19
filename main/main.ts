@@ -1,4 +1,4 @@
-import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut } from 'electron'
+import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut, session } from 'electron'
 import createTray from './tray/index'
 import createWindowEvent from './custom-event'
 import * as path from 'path'
@@ -98,7 +98,7 @@ function initApplication() {
 		}
 	})
 
-	app.on('ready', () => {
+	app.on('ready', async () => {
 		createWindow()
 		createTray(mainWindow)
 		createWindowEvent(mainWindow)
@@ -112,6 +112,21 @@ function initApplication() {
 		// globalShortcut.unregister('CommandOrControl+R')
 		if (process.env.NODE_ENV === 'production') {
 			globalShortcut.unregister('CommandOrControl+R')
+		} else {
+			try {
+				await session.defaultSession.loadExtension(
+					'C:\\Users\\ghy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Extensions\\gpphkfbcpidddadnkolkpfckpihlkkil\\4.27.8_0',
+					// 打开本地文件也应用拓展
+					{ allowFileAccess: true }
+				)
+			} catch (e) {}
+			try {
+				await session.defaultSession.loadExtension(
+					'C:\\Users\\ghy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\3.0.19_0',
+					// 打开本地文件也应用拓展
+					{ allowFileAccess: true }
+				)
+			} catch (e) {}
 		}
 	})
 }
