@@ -1,4 +1,5 @@
 import { ipcMain, dialog } from 'electron'
+import { screenshot } from './screen/snapshop'
 
 ipcMain.on('open-file-dialog', (event, ...args) => {
 	//'openDirectory', 'openFile'
@@ -34,6 +35,10 @@ const createWindowEvent = mainWindow => {
 
 	ipcMain.on('window-normal', function (event, args) {
 		mainWindow.restore()
+	})
+
+	ipcMain.on('screenShop', () => {
+		screenshot()
 	})
 }
 

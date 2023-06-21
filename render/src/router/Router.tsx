@@ -14,7 +14,7 @@ const config: RouteObject[] = [
 			},
 			{
 				path: '/crypto',
-				element: <div>1</div>,
+				element: Lazyload(lazy(() => import('@/views/crypto/Index'))),
 			},
 			{
 				path: '/message',
