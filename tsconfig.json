@@ -6,7 +6,7 @@
     "noImplicitThis": true,
     "noImplicitAny": false,
     "importHelpers": true,
-    "noUnusedLocals": true,
+    "noUnusedLocals": false,
     "skipLibCheck": true,
   }
 }

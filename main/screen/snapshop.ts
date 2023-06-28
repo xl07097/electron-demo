@@ -1,9 +1,11 @@
-import { clipboard } from 'electron'
+import { app, clipboard } from 'electron'
 import { execFile } from 'child_process'
 import { writeFile } from 'fs'
 import { join } from 'path'
+import { mainWindow } from '../main'
+import logger from 'electron-log'
 
-// const appPath = app.getAppPath()
+const appPath = app.getAppPath()
 const clipboardParsing = () => {
 	let pngs = clipboard.readImage().toPNG() //可改变图片格式，如：toJPEG
 	//@ts-ignore
@@ -11,13 +13,19 @@ const clipboardParsing = () => {
 
 	writeFile('./lp.png', imgData, err => {})
 
-	// let imgs =
-	// 	'data:image/png;base64,' +
-	// 	btoa(new Uint8Array(imgData).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+	let imgs =
+		'data:image/png;base64,' +
+		btoa(new Uint8Array(imgData).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+	mainWindow.webContents.send('screenShop', imgs)
 }
 
 export const screenshot = () => {
-	const exPath = join(__dirname, `../../exec/PrintScr.exe`)
+	let exPath = join(appPath, '..', `exec/PrintScr.exe`)
+	if (process.env.NODE_ENV === 'production') {
+		exPath = join(appPath, `exec/PrintScr.exe`)
+	}
+	logger.info(exPath)
+
 	let screen_window = execFile(exPath)
 	screen_window.on('exit', code => {
 		if (code) {
@@ -35,3 +43,5 @@ export const screenshot = () => {
 
 	// }
 }
+
+logger.info(appPath)

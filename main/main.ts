@@ -113,20 +113,20 @@ function initApplication() {
 		if (process.env.NODE_ENV === 'production') {
 			globalShortcut.unregister('CommandOrControl+R')
 		} else {
-			try {
-				await session.defaultSession.loadExtension(
-					'C:\\Users\\ghy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Extensions\\gpphkfbcpidddadnkolkpfckpihlkkil\\4.27.8_0',
-					// 打开本地文件也应用拓展
-					{ allowFileAccess: true }
-				)
-			} catch (e) {}
-			try {
-				await session.defaultSession.loadExtension(
-					'C:\\Users\\ghy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\3.0.19_0',
-					// 打开本地文件也应用拓展
-					{ allowFileAccess: true }
-				)
-			} catch (e) {}
+			// try {
+			// 	await session.defaultSession.loadExtension(
+			// 		'C:\\Users\\ghy\\AppData\\Local\\Microsoft\\Edge\\User Data\\Default\\Extensions\\gpphkfbcpidddadnkolkpfckpihlkkil\\4.27.8_0',
+			// 		// 打开本地文件也应用拓展
+			// 		{ allowFileAccess: true }
+			// 	)
+			// } catch (e) {}
+			// try {
+			// 	await session.defaultSession.loadExtension(
+			// 		'C:\\Users\\ghy\\AppData\\Local\\Google\\Chrome\\User Data\\Default\\Extensions\\lmhkpmbekcpmknklioeibfkpmmfibljd\\3.0.19_0',
+			// 		// 打开本地文件也应用拓展
+			// 		{ allowFileAccess: true }
+			// 	)
+			// } catch (e) {}
 		}
 	})
 }
