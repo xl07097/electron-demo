@@ -20,11 +20,12 @@ const clipboardParsing = () => {
 }
 
 export const screenshot = () => {
-	let exPath = join(appPath, '..', `exec/PrintScr.exe`)
-	if (process.env.NODE_ENV === 'production') {
-		exPath = join(appPath, `exec/PrintScr.exe`)
+	let exPath = join(appPath, `exec/PrintScr.exe`)
+	if (process.env.NODE_ENV === 'development') {
+		exPath = join(appPath, '..', `exec/PrintScr.exe`)
 	}
 	logger.info(exPath)
+	logger.info(process.env.NODE_ENV)
 
 	let screen_window = execFile(exPath)
 	screen_window.on('exit', code => {
