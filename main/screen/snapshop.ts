@@ -7,16 +7,14 @@ import logger from 'electron-log'
 
 const appPath = app.getAppPath()
 const clipboardParsing = () => {
-	let pngs = clipboard.readImage().toPNG() //可改变图片格式，如：toJPEG
-	//@ts-ignore
-	let imgData = Buffer.from(pngs, 'base64')
+	let pngs = clipboard.readImage().toDataURL() //可改变图片格式，如：toJPEG
+	// //@ts-ignore
+	// let imgData = Buffer.from(pngs, 'base64')
 
-	writeFile('./lp.png', imgData, err => {})
-
-	let imgs =
-		'data:image/png;base64,' +
-		btoa(new Uint8Array(imgData).reduce((data, byte) => data + String.fromCharCode(byte), ''))
-	mainWindow.webContents.send('screenShop', imgs)
+	// let imgs =
+	// 	'data:image/png;base64,' +
+	// 	btoa(new Uint8Array(imgData).reduce((data, byte) => data + String.fromCharCode(byte), ''))
+	mainWindow.webContents.send('screenShop', pngs)
 }
 
 export const screenshot = () => {
