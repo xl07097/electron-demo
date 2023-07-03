@@ -2,7 +2,7 @@ import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut, session } from 
 import createTray from './tray/index'
 import createWindowEvent from './custom-event'
 import * as path from 'path'
-import logger from 'electron-log'
+import logger from './logger/index'
 
 let mainWindow: BrowserWindow
 
