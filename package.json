@@ -49,6 +49,9 @@
         "url": "https://files.zhiqiuge.com/software/install/"
       }
     ],
+    "asarUnpack": [
+      "exec"
+    ],
     "files": [
       "assets",
       "dist",

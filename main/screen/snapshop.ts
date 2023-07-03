@@ -20,7 +20,7 @@ const clipboardParsing = () => {
 }
 
 export const screenshot = () => {
-	let exPath = join(appPath, `exec/PrintScr.exe`)
+	let exPath = join(appPath, '..', `app.asar.unpacked/exec/PrintScr.exe`)
 	if (process.env.NODE_ENV === 'development') {
 		exPath = join(appPath, '..', `exec/PrintScr.exe`)
 	}
