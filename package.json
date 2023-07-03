@@ -52,6 +52,9 @@
     "asarUnpack": [
       "exec"
     ],
+    "asar": {
+      "smartUnpack": true
+    },
     "files": [
       "assets",
       "dist",
