@@ -1,6 +1,6 @@
 import { LockOutlined } from "@ant-design/icons"
 import { Button, Table } from "antd"
-import QueryString from "qs"
+import qs from "qs"
 import { useEffect, useState } from "react"
 import { Link, useSearchParams } from "react-router-dom"
 
@@ -61,7 +61,7 @@ function Index(){
         return (
           <>
             <Button icon={<LockOutlined style={{color: 'green'}} />} type='text'>编辑</Button>
-            <Link to={`/area?parentCode=${text}`}> 下一级</Link>
+            <Link to={`/area?parentCode=${text}`}>下一级</Link>
           </>
         ) 
       }
@@ -74,10 +74,10 @@ function Index(){
   let [searchParams] = useSearchParams();
 
   const search = async () => {
-     let qs = QueryString.stringify({
+     let query = qs.stringify({
       parentCode: searchParams.get('parentCode') ?? '0'
     })
-    const res = await fetch('http://localhost:3003/area/list?' + qs).then(response => response.json())
+    const res = await fetch(`http://localhost:3003/area/list?${query}`).then(response => response.json())
     setDataSource(res.rows)
   }
 

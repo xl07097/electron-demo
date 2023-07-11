@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react"
 import { get } from "@/http/http";
 import { Link, useSearchParams, useParams } from "react-router-dom";
-import QueryString from "qs";
+import qs from "qs";
 
 
 interface Files{
@@ -38,12 +38,12 @@ function List() {
   let [searchParams, setSearchParams] = useSearchParams();
 
   const search = async () => {
-    let qs = QueryString.stringify({
+    let query = qs.stringify({
       delimiter: '/',
       'max-keys': 20,
       prefix: searchParams.get('prefix')
     })
-    const res = await fetch('http://localhost:3003/oss/list?' + qs).then(response => response.json())
+    const res = await fetch(`http://localhost:3003/oss/list?${query}`).then(response => response.json())
     setDirs(res.prefixes || [])
     setFiles(res.objects || [])
   }
