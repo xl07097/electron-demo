@@ -1,7 +1,7 @@
 import { app, Tray, Menu } from 'electron'
 import * as path from 'path'
 
-const createTray = mainWindow => {
+const createTray = (mainWindow: Electron.CrossProcessExports.BrowserWindow) => {
 	let tray = null
 	app.whenReady().then(() => {
 		tray = new Tray(path.join(__dirname, '..', '..', 'assets/icons/64x64.ico'))

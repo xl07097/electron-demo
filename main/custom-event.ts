@@ -20,8 +20,8 @@ ipcMain.on('open-file-dialog', (event, ...args) => {
 		})
 })
 
-const createWindowEvent = mainWindow => {
-	ipcMain.on('window-close', function (event, args) {
+const createWindowEvent = (mainWindow: Electron.CrossProcessExports.BrowserWindow) => {
+	ipcMain.on('window-close', function (event) {
 		mainWindow.hide()
 	})
 
@@ -29,11 +29,11 @@ const createWindowEvent = mainWindow => {
 		mainWindow.minimize()
 	})
 
-	ipcMain.on('window-max', function (event, args) {
+	ipcMain.on('window-max', function (event) {
 		mainWindow.maximize()
 	})
 
-	ipcMain.on('window-normal', function (event, args) {
+	ipcMain.on('window-normal', function (event) {
 		mainWindow.restore()
 	})
 
