@@ -66,18 +66,20 @@ function List() {
 	const [state, dispatch] = useReducer(formReducer, initState())
 
 	const search = async () => {
+		const prefix = searchParams.get('prefix')
 		let query = qs.stringify({
 			delimiter: '/',
-			'max-keys': 20,
-			prefix: searchParams.get('prefix'),
+			'max-keys': 1000,
+			prefix: prefix,
+			'start-after': prefix && prefix.endsWith('/') ? prefix : null,
 		})
-		const res = await fetch(`http://localhost:3003/oss/list?${query}`).then(response => response.json())
+		const res = await fetch(`http://localhost:3003/oss/listV2?${query}`).then(response => response.json())
 		setDirs(res.prefixes || [])
 		setFiles(res.objects || [])
 	}
 
 	useEffect(() => {
-		console.log(dirs)
+		console.log(searchParams.get('prefix'))
 		search()
 	}, [searchParams.get('prefix')])
 
