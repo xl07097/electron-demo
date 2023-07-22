@@ -1,6 +1,6 @@
 {
   "name": "electron-demo",
-  "version": "1.1.13",
+  "version": "1.1.14",
   "description": "electron demo",
   "main": "dist/main.js",
   "scripts": {
