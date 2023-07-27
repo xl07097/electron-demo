@@ -1,4 +1,4 @@
-import React, { useEffect, useReducer, useState } from 'react'
+import React, { useEffect, useReducer } from 'react'
 import { get } from '@/http/http'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
 import qs from 'qs'
@@ -24,46 +24,49 @@ interface Files {
 }
 
 interface IAction {
-	data?: any
+	data?: {
+		files: Files[],
+		dirs: any[]
+	},
 	type: string | number
 }
+type StateData = { 
+	files: Files[],
+	dirs: any[] 
+}
 
-const formReducer = (state: object, action: IAction) => {
+type DataReducer = React.Reducer<StateData, IAction>
+
+
+export const formReducer: DataReducer = (state, action) => {
 	const { data, type } = action
 	switch (type) {
 		case 'update':
 			return {
 				...state,
-				data,
+				...data,
 			}
 		case 'add':
-			return {}
+			return {
+				...state,
+			}
 		default:
 			return state
 	}
 }
 
 const initState = () => ({
-	page: 1,
-	size: 20,
 	files: [],
 	dirs: [],
 })
 
 function List() {
-	const [page, setPage] = useState(1)
 
-	const [size, setSize] = useState(20)
+	let [searchParams] = useSearchParams()
 
-	const refresh = useState(1)
+	const [state, dispatch] = useReducer<DataReducer>(formReducer, initState())
 
-	const [files, setFiles] = useState<Files[]>([])
-
-	const [dirs, setDirs] = useState([])
-
-	let [searchParams, setSearchParams] = useSearchParams()
-
-	const [state, dispatch] = useReducer(formReducer, initState())
+	const {dirs, files} = state
 
 	const search = async () => {
 		const prefix = searchParams.get('prefix')
@@ -74,12 +77,17 @@ function List() {
 			'start-after': prefix && prefix.endsWith('/') ? prefix : null,
 		})
 		const res = await fetch(`http://localhost:3003/oss/listV2?${query}`).then(response => response.json())
-		setDirs(res.prefixes || [])
-		setFiles(res.objects || [])
+
+		dispatch({
+			type: 'update',
+			data:{
+				files: res.objects || [],
+				dirs: res.prefixes || [],
+			}
+		})
 	}
 
 	useEffect(() => {
-		console.log(searchParams.get('prefix'))
 		search()
 	}, [searchParams.get('prefix')])
 
