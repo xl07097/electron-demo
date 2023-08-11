@@ -3,6 +3,7 @@ import { Button, Table } from 'antd'
 import qs from 'qs'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import {get} from '@/http/http'
 
 function Index() {
 	const toNextLevel = () => {}
@@ -77,7 +78,7 @@ function Index() {
 		let query = qs.stringify({
 			parentCode: searchParams.get('parentCode') ?? '0',
 		})
-		const res = await fetch(`http://localhost:3003/area/list?${query}`).then(response => response.json())
+		const res = await get(`http://localhost:3003/area/list?${query}`)
 		setDataSource(res.data.records)
 	}
 

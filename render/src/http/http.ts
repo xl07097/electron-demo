@@ -16,10 +16,10 @@ class Http<T> {
 			},
 		})
 		this.instance.interceptors.request.use(config => {
-			const token = storage.getItem('token')
+			const token = 'W88G0R46WEUP9JXKOF6H71WI' // storage.getItem('token')
 			if (token) {
 				config.headers = config.headers || {}
-				config.headers.token = token
+				config.headers.AuthToken = token
 			}
 			return config
 		})

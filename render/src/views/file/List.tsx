@@ -76,13 +76,13 @@ function List() {
 			prefix: prefix,
 			'start-after': prefix && prefix.endsWith('/') ? prefix : null,
 		})
-		const res = await fetch(`http://localhost:3003/oss/listV2?${query}`).then(response => response.json())
+		const res = await get(`http://localhost:3003/oss/listV2?${query}`)
 
 		dispatch({
 			type: 'update',
 			data:{
-				files: res.objects || [],
-				dirs: res.prefixes || [],
+				files: res.data.objects || [],
+				dirs: res.data.prefixes || [],
 			}
 		})
 	}
