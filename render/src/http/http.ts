@@ -10,9 +10,9 @@ class Http<T> {
 	constructor(config?: IConfig) {
 		this.instance = axios.create({
 			baseURL: config?.baseURL || '/api',
-			withCredentials: true,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
+				'content-type': 'application/json',
 			},
 		})
 		this.instance.interceptors.request.use(config => {
