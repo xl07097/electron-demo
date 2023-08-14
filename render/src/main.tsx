@@ -6,9 +6,9 @@ import { ConfigProvider } from 'antd'
 import zhCN from 'antd/locale/zh_CN.js'
 import 'dayjs/locale/zh-cn'
 
-import './plugin/appUpdate.js'
-import store from './store/store'
+import './plugin/index'
 
+import store from './store/store'
 import App from './views/App'
 
 import './styles/style.less'
