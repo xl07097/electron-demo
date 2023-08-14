@@ -2,18 +2,19 @@ import { useSelector } from 'react-redux'
 import { Button, Progress } from 'antd'
 const { ipcRenderer } = require('electron')
 import { UpdateStatus } from '@/config/enums/update'
+import { useCallback } from 'react'
 
 const AppUpdate: React.FC<{}> = () => {
 	const { progress, status } = useSelector((state: any) => state.updateReducer)
 
 
-	function checkForUpdate() {
+	const checkForUpdate = useCallback(() => {
 		ipcRenderer.send('checkForUpdate')
-	}
+	}, [])
 
-	function installNow() {
+	const installNow = useCallback(() => {
 		ipcRenderer.send('install-now')
-	}
+	}, [])
 
 	return (
 		<>
