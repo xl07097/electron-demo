@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload, Button } from 'antd';
-import { Outlet, useNavigate } from 'react-router-dom';
+import { Outlet } from 'react-router-dom';
 
 const { Dragger } = Upload;
 
@@ -10,7 +10,6 @@ const { Dragger } = Upload;
 
 const Index: React.FC = () => {
   const [url, setUrl] = useState('')
-  const navigate = useNavigate()
 
   const props: UploadProps = {
     name: 'upfile',
@@ -38,13 +37,8 @@ const Index: React.FC = () => {
     })
   }
 
-  const entryList = () => {
-    navigate("/filelist")
-  }
 
   return (<div>
-    <Button onClick={entryList}>进入列表</Button>
-
     <Dragger {...props}>
       <p className="ant-upload-drag-icon">
         <CloudUploadOutlined />

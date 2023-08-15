@@ -60,7 +60,7 @@ const initState = () => ({
 	dirs: [],
 })
 
-function List() {
+function Index() {
 
 	let [searchParams] = useSearchParams()
 
@@ -95,7 +95,7 @@ function List() {
 		<ul>
 			{dirs.map(dir => (
 				<li key={dir}>
-					<Link to={`/filelist?prefix=${dir}`}> {dir} </Link>
+					<Link to={`/oss?prefix=${dir}`}> {dir} </Link>
 				</li>
 			))}
 			{files.map(file => (
@@ -105,4 +105,4 @@ function List() {
 	)
 }
 
-export default List
+export default Index
