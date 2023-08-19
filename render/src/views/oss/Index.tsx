@@ -3,6 +3,8 @@ import { get } from '@/http/http'
 import { Link, useSearchParams, useParams } from 'react-router-dom'
 import qs from 'qs'
 
+import FileItem from '@/components/file/Index'
+
 interface Files {
 	name: string
 	url: string
@@ -25,18 +27,17 @@ interface Files {
 
 interface IAction {
 	data?: {
-		files: Files[],
+		files: Files[]
 		dirs: any[]
-	},
+	}
 	type: string | number
 }
-type StateData = { 
-	files: Files[],
-	dirs: any[] 
+type StateData = {
+	files: Files[]
+	dirs: any[]
 }
 
 type DataReducer = React.Reducer<StateData, IAction>
-
 
 export const formReducer: DataReducer = (state, action) => {
 	const { data, type } = action
@@ -61,18 +62,17 @@ const initState = () => ({
 })
 
 function Index() {
-
 	let [searchParams] = useSearchParams()
 
 	const [state, dispatch] = useReducer<DataReducer>(formReducer, initState())
 
-	const {dirs, files} = state
+	const { dirs, files } = state
 
 	const search = async () => {
 		const prefix = searchParams.get('prefix')
 		let query = qs.stringify({
 			delimiter: '/',
-			'max-keys': 1000,
+			'max-keys': 200,
 			prefix: prefix,
 			'start-after': prefix && prefix.endsWith('/') ? prefix : null,
 		})
@@ -80,10 +80,10 @@ function Index() {
 
 		dispatch({
 			type: 'update',
-			data:{
+			data: {
 				files: res.data.objects || [],
 				dirs: res.data.prefixes || [],
-			}
+			},
 		})
 	}
 
@@ -92,16 +92,14 @@ function Index() {
 	}, [searchParams.get('prefix')])
 
 	return (
-		<ul>
+		<div className="file">
 			{dirs.map(dir => (
-				<li key={dir}>
-					<Link to={`/oss?prefix=${dir}`}> {dir} </Link>
-				</li>
+				<FileItem key={dir} name={dir} url={`/oss?prefix=${dir}`} fileType={'dir'}></FileItem>
 			))}
 			{files.map(file => (
-				<li key={file.name}>{file.name}</li>
+				<FileItem key={file.name} name={file.name} url={file.url} size={file.size} fileType={'file'}></FileItem>
 			))}
-		</ul>
+		</div>
 	)
 }
 

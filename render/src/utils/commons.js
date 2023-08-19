@@ -11,33 +11,33 @@ const _toString = Object.prototype.toString
  * @param {*} target
  * @returns
  */
-export const deepClone = (target) => {
-  let result
-  if (Array.isArray(target)) {
-    result = []
-    target.forEach((item) => {
-      result.push(deepClone(item))
-    })
-  } else if (_toString.call(target) === '[object Object]') {
-    result = {}
-    Object.keys(target).forEach((key) => {
-      result[key] = deepClone(target[key])
-    })
-  } else {
-    result = target
-  }
+export const deepClone = target => {
+	let result
+	if (Array.isArray(target)) {
+		result = []
+		target.forEach(item => {
+			result.push(deepClone(item))
+		})
+	} else if (_toString.call(target) === '[object Object]') {
+		result = {}
+		Object.keys(target).forEach(key => {
+			result[key] = deepClone(target[key])
+		})
+	} else {
+		result = target
+	}
 
-  return result
+	return result
 }
 
-export const channelDeepClone = (data) => {
-  return new Promise((resovle) => {
-    const { port1, port2 } = new MessageChannel()
-    port2.onmessage((event) => {
-      resovle(event.data)
-    })
-    port1.postMessage(data)
-  })
+export const channelDeepClone = data => {
+	return new Promise(resovle => {
+		const { port1, port2 } = new MessageChannel()
+		port2.onmessage(event => {
+			resovle(event.data)
+		})
+		port1.postMessage(data)
+	})
 }
 
 /**
@@ -46,46 +46,46 @@ export const channelDeepClone = (data) => {
  * @returns
  */
 export const array2Tree = (data, options) => {
-  const tmpMap = {}
-  const tree = []
-  const key = options.key || 'id'
-  const parentKey = options.parentKey || 'pid'
-  const childKey = options.childKey || 'children'
+	const tmpMap = {}
+	const tree = []
+	const key = options.key || 'id'
+	const parentKey = options.parentKey || 'pid'
+	const childKey = options.childKey || 'children'
 
-  data.forEach((item) => {
-    tmpMap[item[key]] = item
-  })
+	data.forEach(item => {
+		tmpMap[item[key]] = item
+	})
 
-  data.forEach((item) => {
-    if (tmpMap[item[parentKey]] && item[key] !== item[parentKey]) {
-      if (!tmpMap[item[parentKey]][childKey]) tmpMap[item[parentKey]][childKey] = []
-      tmpMap[item[parentKey]][childKey].push(item)
-    } else {
-      tree.push(item)
-    }
-  })
+	data.forEach(item => {
+		if (tmpMap[item[parentKey]] && item[key] !== item[parentKey]) {
+			if (!tmpMap[item[parentKey]][childKey]) tmpMap[item[parentKey]][childKey] = []
+			tmpMap[item[parentKey]][childKey].push(item)
+		} else {
+			tree.push(item)
+		}
+	})
 
-  return tree
+	return tree
 }
 
 /**
  * tree转换成数据
  * @returns
  */
-export const tree2Array = (tree) => {
-  const list = []
-  const stack = [...tree]
-  while (stack.length) {
-    const node = stack.shift()
-    list.push({
-      ...node,
-      children: null,
-    })
-    if (node.children && node.children.length) {
-      stack.push(...node.children)
-    }
-  }
-  return list
+export const tree2Array = tree => {
+	const list = []
+	const stack = [...tree]
+	while (stack.length) {
+		const node = stack.shift()
+		list.push({
+			...node,
+			children: null,
+		})
+		if (node.children && node.children.length) {
+			stack.push(...node.children)
+		}
+	}
+	return list
 }
 
 /**
@@ -93,7 +93,7 @@ export const tree2Array = (tree) => {
  * @returns
  */
 export const delay = (ms = 200) => {
-  return new Promise((resovle) => setTimeout(resovle, ms))
+	return new Promise(resovle => setTimeout(resovle, ms))
 }
 
 /**
@@ -101,84 +101,81 @@ export const delay = (ms = 200) => {
  * @returns
  */
 export function timeout(ms = 1000) {
-  return new Promise((_, reject) => setTimeout(reject, ms))
+	return new Promise((_, reject) => setTimeout(reject, ms))
 }
 
-export const lastIndex = (arr) => {
-  return arr.length - 1
+export const lastIndex = arr => {
+	return arr.length - 1
 }
 
-export const lastItem = (arr) => {
-  return arr.at(-1)
+export const lastItem = arr => {
+	return arr.at(-1)
 }
 
 export const getUrlParam = function (name) {
-  // 获取url参数
-  let reg = new RegExp('(^|&?)' + name + '=([^&]*)(&|$)', 'i')
-  let r = window.location.href.substring(1).match(reg)
-  if (r != null) {
-    return decodeURI(r[2])
-  }
-  return undefined
+	// 获取url参数
+	let reg = new RegExp('(^|&?)' + name + '=([^&]*)(&|$)', 'i')
+	let r = window.location.href.substring(1).match(reg)
+	if (r != null) {
+		return decodeURI(r[2])
+	}
+	return undefined
 }
 import dayjs from 'dayjs'
-export const copyRightConsole = (packageInfo) => {
-  /* 样式代码 */
-  const projectNameStyle = 'font-size: 20px;font-weight: 600;color: rgb(244,167,89);'
-  const descriptionStyle =
-    'font-style: oblique;font-size:14px;color: rgb(244,167,89);font-weight: 400;'
-  const versionStyle = 'color: rgb(30,152,255);padding:8px 0 2px;'
-  const contentStyle = 'color: rgb(30,152,255);padding:0 0 2px;'
-  const dateTimeStyle = 'color: rgb(30,152,255);padding:0 0 5px;'
+export const copyRightConsole = packageInfo => {
+	/* 样式代码 */
+	const projectNameStyle = 'font-size: 20px;font-weight: 600;color: rgb(244,167,89);'
+	const descriptionStyle = 'font-style: oblique;font-size:14px;color: rgb(244,167,89);font-weight: 400;'
+	const versionStyle = 'color: rgb(30,152,255);padding:8px 0 2px;'
+	const contentStyle = 'color: rgb(30,152,255);padding:0 0 2px;'
+	const dateTimeStyle = 'color: rgb(30,152,255);padding:0 0 5px;'
 
-  /* 内容代码 */
-  const projectName = packageInfo.name || ''
-  const description = packageInfo.description || ''
-  const version = `版 本 号：${packageInfo.version}`
-  const dateTime = `编译日期：${dayjs().format('YYYY-MM-DD HH:mm:ss')}`
-  const releaseDateTime = `发布时间：${dayjs(window.REALEASE_DATE_TIME).format(
-    'YYYY-MM-DD HH:mm:ss'
-  )}`
+	/* 内容代码 */
+	const projectName = packageInfo.name || ''
+	const description = packageInfo.description || ''
+	const version = `版 本 号：${packageInfo.version}`
+	const dateTime = `编译日期：${dayjs().format('YYYY-MM-DD HH:mm:ss')}`
+	const releaseDateTime = `发布时间：${dayjs(window.REALEASE_DATE_TIME).format('YYYY-MM-DD HH:mm:ss')}`
 
-  // 空格有意义，不要格式化
-  console.log(
-    `%c${description} %c${projectName}
+	// 空格有意义，不要格式化
+	console.log(
+		`%c${description} %c${projectName}
 %c${version}
 %c${releaseDateTime}
 %c${dateTime}`,
-    projectNameStyle,
-    descriptionStyle,
-    versionStyle,
-    contentStyle,
-    dateTimeStyle
-  )
+		projectNameStyle,
+		descriptionStyle,
+		versionStyle,
+		contentStyle,
+		dateTimeStyle
+	)
 }
 
 export const debounce = function (fn, delay = 300) {
-  let timerId = null
-  return function (...args) {
-    const ctx = this
-    if (timerId) {
-      clearTimeout(timerId)
-    }
-    timerId = setTimeout(() => {
-      fn.apply(ctx, ...args)
-    }, delay)
-  }
+	let timerId = null
+	return function (...args) {
+		const ctx = this
+		if (timerId) {
+			clearTimeout(timerId)
+		}
+		timerId = setTimeout(() => {
+			fn.apply(ctx, ...args)
+		}, delay)
+	}
 }
 
 export const throttle = function throttle(fn, delay = 300) {
-  let timerId = null
-  return function (...args) {
-    const ctx = this
-    if (timerId) {
-      return
-    }
-    timerId = setTimeout(() => {
-      fn.apply(ctx, ...args)
-      timerId = null
-    }, delay)
-  }
+	let timerId = null
+	return function (...args) {
+		const ctx = this
+		if (timerId) {
+			return
+		}
+		timerId = setTimeout(() => {
+			fn.apply(ctx, ...args)
+			timerId = null
+		}, delay)
+	}
 }
 
 /**
@@ -199,33 +196,33 @@ export const throttle = function throttle(fn, delay = 300) {
  * console.log( formatSize( 1024 * 1024 * 1024, 0, ['B', 'KB', 'MB'] ) );    // => 1024MB
  */
 export const formatSize = function (size, pointLength, units) {
-  let unit
+	let unit
 
-  units = units || ['B', 'K', 'M', 'G', 'TB', 'P', 'E']
+	units = units || ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB']
 
-  while ((unit = units.shift()) && size > 1024) {
-    size = size / 1024
-  }
+	while ((unit = units.shift()) && size > 1024) {
+		size = size / 1024
+	}
 
-  return (unit === 'B' ? size : size.toFixed(pointLength || 2)) + unit
+	return (unit === 'B' ? size : size.toFixed(pointLength || 2)) + unit
 }
 
-export const timeAgo = function(time, units){
-  let unit;
-  units = units || [' minute', ' hour', ' day']
-  const between = Date.now() / 1000 - Number(time)
+export const timeAgo = function (time, units) {
+	let unit
+	units = units || [' minute', ' hour', ' day']
+	const between = Date.now() / 1000 - Number(time)
 
-  while ((unit = units.shift()) && between >= 3600) {
-    unit = ~~(between / 60)
-  }
-  return between + unit + 's'
-  // if (between < 3600) {
-  //   return pluralize(~~(between / 60), ' minute')
-  // } else if (between < 86400) {
-  //   return pluralize(~~(between / 3600), ' hour')
-  // } else {
-  //   return pluralize(~~(between / 86400), ' day')
-  // }
+	while ((unit = units.shift()) && between >= 3600) {
+		unit = ~~(between / 60)
+	}
+	return between + unit + 's'
+	// if (between < 3600) {
+	//   return pluralize(~~(between / 60), ' minute')
+	// } else if (between < 86400) {
+	//   return pluralize(~~(between / 3600), ' hour')
+	// } else {
+	//   return pluralize(~~(between / 86400), ' day')
+	// }
 }
 
 /**
@@ -235,16 +232,16 @@ export const timeAgo = function(time, units){
  * @grammar guid( prefx ) => String
  */
 export const guid = (function () {
-  var counter = 0
+	var counter = 0
 
-  return function (prefix) {
-    var guid = (+new Date()).toString(32),
-      i = 0
+	return function (prefix) {
+		var guid = (+new Date()).toString(32),
+			i = 0
 
-    for (; i < 5; i++) {
-      guid += Math.floor(Math.random() * 65535).toString(32)
-    }
+		for (; i < 5; i++) {
+			guid += Math.floor(Math.random() * 65535).toString(32)
+		}
 
-    return (prefix || 'xsy_') + guid + (counter++).toString(32)
-  }
+		return (prefix || 'xsy_') + guid + (counter++).toString(32)
+	}
 })()
