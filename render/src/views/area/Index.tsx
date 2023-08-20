@@ -3,7 +3,7 @@ import { Button, Table } from 'antd'
 import qs from 'qs'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
-import {get} from '@/http/http'
+import { get } from '@/http/http'
 
 function Index() {
 	const toNextLevel = () => {}
@@ -75,6 +75,7 @@ function Index() {
 	let [searchParams] = useSearchParams()
 
 	const search = async () => {
+		console.log(dataSource)
 		let query = qs.stringify({
 			parentCode: searchParams.get('parentCode') ?? '0',
 		})
