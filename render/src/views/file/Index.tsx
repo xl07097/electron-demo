@@ -13,6 +13,9 @@ const Index: React.FC = () => {
 
   const props: UploadProps = {
     name: 'upfile',
+    headers:{
+      AuthToken:'W88G0R46WEUP9JXKOF6H71WI'
+    },
     action: 'http://localhost:3003/upload/alioss',
     onChange(info) {
       const { status } = info.file;
@@ -20,7 +23,7 @@ const Index: React.FC = () => {
         console.log(info.file, info.fileList);
       }
       if (status === 'done') {
-        setUrl(info.file.response.url)
+        setUrl(info.file.response.data.url)
         message.success(`${info.file.name} 上传成功.`);
       } else if (status === 'error') {
         message.error(`${info.file.name} 上传失败.`);

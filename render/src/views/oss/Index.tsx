@@ -11,7 +11,7 @@ import LoadMore from '@/components/loadmore/Index'
 function Index() {
 	let [searchParams] = useSearchParams()
 
-	const [hasMore, setHasMore] = useState(true)
+	const [hasMore, setHasMore] = useState(false)
 	const lastRef = useRef<Files>({ name: '', url: '' })
 
 	const {files, dirs, updateData, resetData} = useOss()
@@ -54,6 +54,7 @@ function Index() {
 	}
 
 	useEffect(() => {
+		setHasMore(false)
 		const prefix = searchParams.get('prefix')
 		const nextMarker = prefix && prefix.endsWith('/') ? prefix : null
 		search(nextMarker, 1)
