@@ -1,6 +1,5 @@
 import { app, clipboard } from 'electron'
 import { execFile } from 'child_process'
-import { writeFile } from 'fs'
 import { join } from 'path'
 import { mainWindow } from '../main'
 import logger from '../logger/index'
