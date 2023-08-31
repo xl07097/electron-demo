@@ -37,8 +37,8 @@ const config: RouteObject[] = [
 				element: Lazyload(lazy(() => import('@/views/area/Index'))),
 			},
 			{
-				path: '/test',
-				element: Lazyload(lazy(() => import('@/views/test/Index'))),
+				path: '/wallpaper',
+				element: Lazyload(lazy(() => import('@/views/wallpaper/Index'))),
 			},
 			{
 				path: '*',
