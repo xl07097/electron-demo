@@ -18,7 +18,7 @@ const config: RouteObject[] = [
 			},
 			{
 				path: '/message',
-				element: Lazyload(lazy(() => import('@/views/menu/Index'))),
+				element: Lazyload(lazy(() => import('@/views/message/Index'))),
 			},
 			{
 				path: '/setting',

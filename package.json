@@ -29,7 +29,7 @@
     "electron-builder": "^24.4.0",
     "ts-node": "^10.9.1",
     "ffi-napi": "^4.0.3",
-    "typescript": "^5.0.4"
+    "typescript": "^5.2.2"
   },
   "repository": {
     "type": "git",
