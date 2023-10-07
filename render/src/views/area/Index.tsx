@@ -6,7 +6,6 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { get } from '@/http/http'
 
 function Index() {
-	const toNextLevel = () => {}
 
 	const columns = useMemo(() => {
 		return [
@@ -14,6 +13,7 @@ function Index() {
 				title: '序号',
 				dataIndex: 'index',
 				key: 'index',
+				width: 60,
 				render: (text: string | number | boolean, record: object, index: number) => {
 					return index + 1
 				},
@@ -21,41 +21,49 @@ function Index() {
 			{
 				title: '名称',
 				dataIndex: 'name',
+				width: 100,
 			},
 			{
 				title: '简称',
 				dataIndex: 'shortName',
+				width: 100,
 			},
 			{
 				title: '父级行政代码',
 				dataIndex: 'parentCode',
+				width: 100,
 			},
 			{
 				title: '行政代码',
 				dataIndex: 'areaCode',
 				key: 'areaCode',
+				width: 100,
 			},
 			{
 				title: '邮政编码',
 				dataIndex: 'zipCode',
+				width: 100,
 			},
 			{
 				title: '区号',
 				dataIndex: 'cityCode',
+				width: 100,
 			},
 			{
 				title: '经度',
 				dataIndex: 'lng',
+				width: 100,
 			},
 			{
 				title: '纬度',
 				dataIndex: 'lat',
+				width: 100,
 			},
 			{
 				title: '操作',
 				dataIndex: 'areaCode',
 				key: 'action',
-				width: 200,
+				width: 160,
 				render: (text: string | number | boolean, record: object, index: number) => {
 					return (
 						<>
@@ -75,7 +83,6 @@ function Index() {
 	let [searchParams] = useSearchParams()
 
 	const search = async () => {
-		console.log(dataSource)
 		let query = qs.stringify({
 			parentCode: searchParams.get('parentCode') ?? '0',
 		})

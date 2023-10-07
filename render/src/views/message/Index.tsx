@@ -18,10 +18,9 @@ function Index(){
     <div>
       <Button onClick={edit}>消息发送</Button>
 
-      {
-        openType==='edit' && <Edit onClose={onClose} />
-      }
-    
+      <Edit onClose={onClose} open={openType==='edit'} />
+      
+
   </div>
   )
 }
