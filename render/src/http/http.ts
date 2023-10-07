@@ -9,7 +9,7 @@ class Http<T> {
 	instance: AxiosInstance
 	constructor(config?: IConfig) {
 		this.instance = axios.create({
-			baseURL: config?.baseURL || '/api',
+			baseURL: config?.baseURL,
 			headers: {
 				'X-Requested-With': 'XMLHttpRequest',
 				'content-type': 'application/json',
@@ -109,7 +109,9 @@ async function retryLogin(config: object) {
 	}
 }
 
-const http = new Http<IResData>({})
+const http = new Http<IResData>({
+	baseURL: 'http://localhost:3003',
+})
 
 export default http
 

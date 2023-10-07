@@ -86,7 +86,7 @@ function Index() {
 		let query = qs.stringify({
 			parentCode: searchParams.get('parentCode') ?? '0',
 		})
-		const res = await get(`http://localhost:3003/area/list?${query}`)
+		const res = await get(`/area/list?${query}`)
 		setDataSource(res.data.records)
 	}
 

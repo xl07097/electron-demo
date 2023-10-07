@@ -23,7 +23,7 @@ function Index() {
 			prefix: searchParams.get('prefix'),
 			'start-after': nextMarker,
 		})
-		const res = await get(`http://localhost:3003/oss/listV2?${query}`)
+		const res = await get(`/oss/listV2?${query}`)
 
 		const objects = res.data.objects || []
 		const prefixes = res.data.prefixes || []

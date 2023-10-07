@@ -1,8 +1,9 @@
 import { Drawer, Button, Form, Input, Radio, Select, Space, message, Spin } from 'antd'
-import { useState, useEffect } from 'react'
+import { useState } from 'react'
+import { post } from '@/http/http'
 
 interface IProp {
-	onClose?: Function,
+	onClose?: Function
 	open: boolean
 }
 const initValue = {
@@ -20,50 +21,46 @@ const initValue = {
 }
 const Edit: React.FC<IProp> = props => {
 	const [loading, setLoading] = useState(false)
-  const [messageApi, contextHolder] = message.useMessage();
-
+	const [messageApi, contextHolder] = message.useMessage()
 
 	const onClose = () => {
 		console.log(90)
 		props.onClose && props.onClose()
 	}
 
-	const onFinish = (values: any) => {
+	const onFinish = async (values: any) => {
 		console.log(values)
 		setLoading(true)
-		fetch('http://localhost:3003/sms/send', {
-			method: 'POST',
-			body: JSON.stringify({
-				...values,
-				to: values.to.map((item: string) => {
-					return {
-						name: '',
-						email: item,
-						user_id: '',
-					}
-				}),
-			}),
-			headers: {
-				'content-type': 'application/json',
-				AuthToken: 'W88G0R46WEUP9JXKOF6H71WI',
-			},
-		})
-			.then(res => res.json())
-			.then(res => {
-				setLoading(false)
-				if (res.code === 200) {
-					messageApi.success('保存成功')
-					setTimeout(() => {
-						onClose()
-					}, 300)
+		const res = await post('/sms/send', {
+			...values,
+			to: values.to.map((item: string) => {
+				return {
+					name: '',
+					email: item,
+					user_id: '',
 				}
-			})
+			}),
+		})
+		setLoading(false)
+		if (res.code === 200) {
+			messageApi.success('保存成功')
+			setTimeout(() => {
+				onClose()
+			}, 300)
+		}
 	}
 
 	return (
 		<Spin spinning={loading} delay={500}>
-			 {contextHolder}
-			<Drawer title="Basic Drawer" closeIcon={false} destroyOnClose={true} size="large" onClose={onClose} open={props.open}>
+			{contextHolder}
+			<Drawer
+				title="Basic Drawer"
+				closeIcon={false}
+				destroyOnClose={true}
+				size="large"
+				onClose={onClose}
+				open={props.open}
+			>
 				<Form
 					labelCol={{ span: 4 }}
 					wrapperCol={{ span: 14 }}
