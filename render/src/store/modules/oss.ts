@@ -9,12 +9,12 @@ const ossSlice = createSlice({
 	} as StateData,
 	reducers: {
 		update(state, actions?) {
-			const payload = actions.payload as StateData
+			const payload = actions?.payload as StateData
 			state.files = [...state.files, ...payload.files] // payload.files
 			state.dirs = [...state.dirs, ...payload.dirs] // payload.dirs
 		},
 		reset(state, actions?) {
-			const payload = actions.payload as StateData
+			const payload = actions?.payload as StateData
 			state.files = payload.files
 			state.dirs = payload.dirs
 		},
