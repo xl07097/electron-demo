@@ -13,8 +13,8 @@ const config: RouteObject[] = [
 				element: Lazyload(lazy(() => import('@/views/index/AppIndex'))),
 			},
 			{
-				path: '/crypto',
-				element: Lazyload(lazy(() => import('@/views/crypto/Index'))),
+				path: '/screenCapture',
+				element: Lazyload(lazy(() => import('@/views/screen/Index'))),
 			},
 			{
 				path: '/message',
