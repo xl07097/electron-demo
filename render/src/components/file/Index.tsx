@@ -24,12 +24,12 @@ const FileItem: React.FC<FileProp> = props => {
 	const [visible, setVisible] = useState(false)
 
 	const click = () => {
-		if (props.fileType === 'dir') {
+		if (props.fileType === 'folder') {
 			navigate(props.url)
 		}
 	}
 
-	const name = props.fileType === 'dir' ? props.name.split('/').at(-2) : props.name.split('/').at(-1)
+	const name = props.fileType === 'folder' ? props.name.split('/').at(-2) : props.name.split('/').at(-1)
 	const size = props.fileType === 'file' ? formatSize(props.size as number) : '目录'
 
 	const isImage = /(\.jpg|\.jpeg|\.png|\.svg)$/.test(props.name.toLowerCase())

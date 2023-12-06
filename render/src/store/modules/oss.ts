@@ -5,18 +5,18 @@ const ossSlice = createSlice({
 	name: 'oss',
 	initialState: {
 		files: [],
-		dirs: [],
+		folders: [],
 	} as StateData,
 	reducers: {
 		update(state, actions?) {
 			const payload = actions?.payload as StateData
 			state.files = [...state.files, ...payload.files] // payload.files
-			state.dirs = [...state.dirs, ...payload.dirs] // payload.dirs
+			state.folders = [...state.folders, ...payload.folders] // payload.folders
 		},
 		reset(state, actions?) {
 			const payload = actions?.payload as StateData
 			state.files = payload.files
-			state.dirs = payload.dirs
+			state.folders = payload.folders
 		},
 	},
 })

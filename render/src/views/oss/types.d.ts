@@ -10,5 +10,5 @@ export interface Files {
 
 export type StateData = {
 	files: Files[]
-	dirs: any[]
+	folders: any[]
 }

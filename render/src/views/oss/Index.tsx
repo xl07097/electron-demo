@@ -14,7 +14,7 @@ function Index() {
 	const [hasMore, setHasMore] = useState(false)
 	const lastRef = useRef<Files>({ name: '', url: '' })
 
-	const {files, dirs, updateData, resetData} = useOss()
+	const {files, folders, updateData, resetData} = useOss()
 
 	const search = async (nextMarker: string | null, flag?: number) => {
 		let query = qs.stringify({
@@ -30,12 +30,12 @@ function Index() {
 		if(flag === 1){
 			resetData({
 				files: objects,
-				dirs: prefixes,
+				folders: prefixes,
 			})
 		}else{
 			updateData({
 				files: objects,
-				dirs: prefixes,
+				folders: prefixes,
 			})
 		}
 
@@ -63,8 +63,8 @@ function Index() {
 	return (
 		<>
 			<div className="file">
-				{dirs.map(dir => (
-					<FileItem key={dir} name={dir} url={`/oss?prefix=${dir}`} fileType={'dir'}></FileItem>
+				{folders.map(dir => (
+					<FileItem key={dir} name={dir} url={`/oss?prefix=${dir}`} fileType={'folder'}></FileItem>
 				))}
 				{files.map(file => (
 					<FileItem key={file.name} name={file.name} url={file.url} size={file.size} fileType={'file'}></FileItem>

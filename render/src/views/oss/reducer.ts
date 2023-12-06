@@ -6,7 +6,7 @@ import type { StateData, Files } from './types'
 const useOss = () => {
 	const dispatch = useDispatch()
 
-	const { files, dirs } = useSelector((state: RootState) => {
+	const { files, folders } = useSelector((state: RootState) => {
 		const data = state.ossReducer as StateData
 		return data
 	})
@@ -19,7 +19,7 @@ const useOss = () => {
 	}
 	return {
 		files,
-		dirs,
+		folders,
 		updateData,
 		resetData,
 	}
