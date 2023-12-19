@@ -2,11 +2,12 @@ import { createHashRouter } from 'react-router-dom'
 import type { RouteObject } from 'react-router'
 import { lazy } from 'react'
 import Lazyload from './Lazyload'
+import BasicLayout from '@/layout/BasicLayout'
 
 const config: RouteObject[] = [
 	{
 		path: '/',
-		element: Lazyload(lazy(() => import('@/layout/BasicLayout'))),
+		element: <BasicLayout></BasicLayout>,
 		children: [
 			{
 				path: '/',
