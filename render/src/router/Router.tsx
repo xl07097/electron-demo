@@ -10,7 +10,7 @@ const config: RouteObject[] = [
 		element: <BasicLayout></BasicLayout>,
 		children: [
 			{
-				path: '/',
+				index: true,
 				element: Lazyload(lazy(() => import('@/views/index/AppIndex'))),
 			},
 			{
