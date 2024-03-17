@@ -46,7 +46,7 @@
     "publish": [
       {
         "provider": "generic",
-        "url": "https://files.zhiqiuge.com/software/install/"
+        "url": "https://xiangshuye.oss-cn-shanghai.aliyuncs.com/software/install/"
       }
     ],
     "asarUnpack": [
