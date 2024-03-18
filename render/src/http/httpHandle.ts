@@ -1,10 +1,10 @@
 import { AxiosResponse } from 'axios'
 
 import { getExportName, saveFile } from './saveFile'
-import type { IResData, IConfig } from '@/interface/login'
+import type { IResponseData, IConfig } from '@/interface/login'
 
 // 响应状态码 弹框处理
-export const responseHandle = ({ code, msg }: IResData) => {
+export const responseHandle = ({ code, msg }: IResponseData) => {
 	switch (code) {
 		case 300:
 			// showMessage(message);

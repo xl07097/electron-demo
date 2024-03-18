@@ -1,9 +1,10 @@
 import axios from 'axios'
 import qs from 'qs'
 import { storage } from '@/utils/storage'
+import { responseHandle } from './httpHandle'
 
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
-import type { IResData, IConfig } from '@/interface/login'
+import type { IResponseData, IConfig } from '@/interface/login'
 
 class Http<T> {
 	instance: AxiosInstance
@@ -51,6 +52,7 @@ class Http<T> {
 					}
 				}
 			}
+			responseHandle(data)
 			return res.data
 		})
 	}
@@ -109,7 +111,7 @@ async function retryLogin(config: object) {
 	}
 }
 
-const http = new Http<IResData>({
+const http = new Http<IResponseData>({
 	baseURL: 'http://localhost:3003',
 })
 
