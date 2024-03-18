@@ -25,14 +25,14 @@ a {
 	outline: none;
 }
 .scrollbar {
-	overflow-x: hidden;
-	overflow-y: auto;
+	overflow: auto;
 	&::-webkit-scrollbar-track {
 		box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
 		background-color: transparent;
 	}
 	&::-webkit-scrollbar {
 		width: 6px;
+		height: 6px;
 		background-color: transparent;
 	}
 
@@ -61,6 +61,7 @@ ul {
 }
 #root {
 	height: calc(100%);
+	overflow: hidden;
 }
 .window-body-wrapper {
 	display: flex;
@@ -155,6 +156,7 @@ ul {
 	display: flex;
 	flex: 1;
 	height: calc(100% - var(--title-bar-height));
+	overflow: hidden;
 	.app-left-side {
 		flex: none;
 		width: 100px;
@@ -225,10 +227,13 @@ ul {
 		flex: auto;
 		padding: 10px;
 		height: calc(100%);
-		overflow-y: auto;
-		overflow-x: hidden;
-		background-color: #f3f5f7;
+		background-color: #F5F7FA;
 		user-select: auto;
+    overflow-x: hidden;
+	}
+	.app-right-main{
+		background-color: #fff;
+		overflow-y: auto;
 	}
 }
 

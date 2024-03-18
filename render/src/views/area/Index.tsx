@@ -63,6 +63,7 @@ function Index() {
 				title: '操作',
 				dataIndex: 'areaCode',
 				key: 'action',
+				fixed: 'right',
 				width: 160,
 				render: (text: string | number | boolean, record: object, index: number) => {
 					return (
@@ -99,6 +100,7 @@ function Index() {
 			size="small"
 			rowKey={'areaCode'}
 			columns={columns}
+			tableLayout='fixed'
 			dataSource={dataSource}
 			pagination={{ pageSize: 100 }}
 		></Table>
