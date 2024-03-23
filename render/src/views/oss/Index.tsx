@@ -1,4 +1,4 @@
-import {useEffect, useRef, useState } from 'react'
+import { useEffect, useRef, useState } from 'react'
 import { get } from '@/http/http'
 import { useSearchParams } from 'react-router-dom'
 import qs from 'qs'
@@ -14,12 +14,12 @@ function Index() {
 	const [hasMore, setHasMore] = useState(false)
 	const lastRef = useRef<Files>({ name: '', url: '' })
 
-	const {files, folders, updateData, resetData} = useOss()
+	const { files, folders, updateData, resetData } = useOss()
 
 	const search = async (nextMarker: string | null, flag?: number) => {
 		let query = qs.stringify({
 			delimiter: '/',
-			'max-keys': 200,
+			'max-keys': 50,
 			prefix: searchParams.get('prefix'),
 			'start-after': nextMarker,
 		})
@@ -27,12 +27,12 @@ function Index() {
 
 		const objects = res.data.objects || []
 		const prefixes = res.data.prefixes || []
-		if(flag === 1){
+		if (flag === 1) {
 			resetData({
 				files: objects,
 				folders: prefixes,
 			})
-		}else{
+		} else {
 			updateData({
 				files: objects,
 				folders: prefixes,
@@ -50,7 +50,7 @@ function Index() {
 
 	const loadMore = () => {
 		const nextMarker = lastRef.current?.name
-		search(nextMarker as string, !nextMarker? 1: 2)
+		search(nextMarker as string, !nextMarker ? 1 : 2)
 	}
 
 	useEffect(() => {

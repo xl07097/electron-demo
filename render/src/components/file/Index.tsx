@@ -51,7 +51,7 @@ const FileItem: React.FC<FileProp> = props => {
 				</div>
 				<div className="file-body">
 					<h4 className="file-title">
-						<Tooltip title={name} color={'var(--color-primary)'}>
+						<Tooltip title={name} placement="topLeft" destroyTooltipOnHide color={'var(--color-primary)'}>
 							{name}
 						</Tooltip>
 					</h4>
