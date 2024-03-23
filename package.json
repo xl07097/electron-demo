@@ -6,9 +6,9 @@
   "scripts": {
     "start": "npm run build:main && cross-env NODE_ENV=development electron ./dist/main.js",
     "precompiler": "cross-env NODE_ENV=production electron-builder build --x64",
-    "build:release": "electron-builder build --x64 && npm run upload:app",
+    "build:release": "electron-builder build --x64 && npm run upload:oss",
     "build:main": "tsc --build ./main/tsconfig.json",
-    "upload:app": "ts-node ./scripts/upload.ts",
+    "upload:oss": "ts-node ./scripts/upload.ts",
     "major": "npm version major",
     "minor": "npm version minor",
     "patch": "npm version patch",
