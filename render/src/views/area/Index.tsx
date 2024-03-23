@@ -6,7 +6,6 @@ import { Link, useSearchParams } from 'react-router-dom'
 import { get } from '@/http/http'
 
 function Index() {
-
 	const columns = useMemo(() => {
 		return [
 			{
@@ -63,7 +62,7 @@ function Index() {
 				title: '操作',
 				dataIndex: 'areaCode',
 				key: 'action',
-				fixed: 'right',
+				fixed: 'right' as const,
 				width: 160,
 				render: (text: string | number | boolean, record: object, index: number) => {
 					return (
@@ -100,7 +99,7 @@ function Index() {
 			size="small"
 			rowKey={'areaCode'}
 			columns={columns}
-			tableLayout='fixed'
+			tableLayout="fixed"
 			dataSource={dataSource}
 			pagination={{ pageSize: 100 }}
 		></Table>
