@@ -135,3 +135,5 @@ function initApplication() {
 initApplication()
 
 export { mainWindow }
+
+console.log(app.getPath('userData'))
