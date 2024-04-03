@@ -103,6 +103,7 @@ function initApplication() {
 		createTray(mainWindow)
 		createWindowEvent(mainWindow)
 		import('./appUpdate/index')
+		import('./database/index')
 
 		// globalShortcut.register('CommandOrControl+R', () => {
 		// 	console.log('CommandOrControl')
