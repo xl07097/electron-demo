@@ -6,8 +6,11 @@ import { responseHandle } from './httpHandle'
 import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
 import type { IResponseData, IConfig } from '@/interface/login'
 
-class Http<T> {
+class BaseRequest<T> {
 	instance: AxiosInstance
+	retryQueue: Function[] = [] // 需要重新请求的队列
+	isRefresh: boolean = false // 是否在重新自动登录
+
 	constructor(config?: IConfig) {
 		this.instance = axios.create({
 			baseURL: config?.baseURL,
@@ -39,13 +42,13 @@ class Http<T> {
 				const config = res.config
 				const url = res.config.url
 				if (!url?.includes('/login') && !url?.includes('/refreshToken')) {
-					if (!isRefresh) {
-						isRefresh = true
-						return retryLogin(config)
+					if (!this.isRefresh) {
+						this.isRefresh = true
+						return this.retryLogin(config)
 					} else {
 						return new Promise(resolve => {
 							// 将resolve放进队列，用一个函数形式来保存，等token刷新后直接执行
-							retryQueue.push(() => {
+							this.retryQueue.push(() => {
 								resolve(this.instance.request(config))
 							})
 						})
@@ -86,36 +89,32 @@ class Http<T> {
 		const res = await this.instance.request<any, T>(config)
 		return res
 	}
-}
 
-let isRefresh: boolean = false // 是否在重新自动登录
-
-let retryQueue: Function[] = [] // 需要重新请求的队列
-
-async function retryLogin(config: object) {
-	const accessToken = storage.getItem('accessToken')
-	if (!accessToken) {
-		return
-	}
-	const res = await get('/refreshToken', {
-		params: {
-			accessToken: accessToken,
-		},
-	})
-	if (res.code === 200) {
-		storage.setItem('token', res.data)
-		isRefresh = false
-		retryQueue.forEach(cb => cb())
-		retryQueue = []
-		return http.request(config)
+	async retryLogin(config: AxiosRequestConfig) {
+		const accessToken = storage.getItem('accessToken')
+		if (!accessToken) {
+			return
+		}
+		const res = await get('/refreshToken', {
+			params: {
+				accessToken: accessToken,
+			},
+		})
+		if (res.code === 200) {
+			storage.setItem('token', res.data)
+			this.isRefresh = false
+			this.retryQueue.forEach(cb => cb())
+			this.retryQueue = []
+			return this.request(config)
+		}
 	}
 }
 
-const http = new Http<IResponseData>({
+export default BaseRequest
+
+const http = new BaseRequest<IResponseData>({
 	baseURL: 'http://localhost:3003',
 })
-
-export default http
 
 export const get = http.get.bind(http)
 export const post = http.post.bind(http)
