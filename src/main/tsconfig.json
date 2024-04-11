@@ -1,8 +1,18 @@
 {
-  "extends": [
-    "../../tsconfig.json"
-  ],
   "compilerOptions": {
+    "baseUrl": "./",
+    "rootDir": "./",
+    "outDir": "../../dist",
+    "target": "es5",
+    "moduleResolution": "node",
+    "allowSyntheticDefaultImports": true,
+    "forceConsistentCasingInFileNames": true,
+    "noImplicitReturns": true,
+    "noImplicitThis": true,
+    "noImplicitAny": false,
+    "importHelpers": true,
+    "noUnusedLocals": false,
+    "skipLibCheck": true,
     "paths": {
       "@/*": [
         "./*"

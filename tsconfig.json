@@ -30,6 +30,11 @@
     "types": [
       "node",
       "vite/client"
-    ]
+    ],
+    "paths": {
+      "@/*": [
+        "./src/render/*"
+      ]
+    }
   }
 }

@@ -84,8 +84,8 @@
     },
     "files": [
       "assets",
-      "dist",
-      "preload",
+      "src/main",
+      "src/preload",
       "build",
       "exec"
     ],
