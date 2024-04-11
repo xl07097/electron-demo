@@ -10,7 +10,7 @@ function AppNavigation() {
 	}
 
 	return (
-		<div className="app-left-side scrollbar">
+		<aside className="app-left-side scrollbar">
 			<div className="app-left-side-inner">
 				<UserInfo></UserInfo>
 				<div className="app-left-setting" onClick={openSetting}>
@@ -18,7 +18,7 @@ function AppNavigation() {
 					&nbsp;设置
 				</div>
 			</div>
-		</div>
+		</aside>
 	)
 }
 

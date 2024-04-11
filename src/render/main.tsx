@@ -25,6 +25,12 @@ root.render(
 						colorPrimary: '#0a7042',
 					},
 					components: {
+						Layout:{
+							headerHeight: 34,
+							headerBg: '#ffffff',
+							headerPadding: 0,
+							siderBg: "#ffffff"
+						},
 						Menu: {
 							itemSelectedBg: '#fff2e8',
 							itemHoverBg: '#fff2e8',
