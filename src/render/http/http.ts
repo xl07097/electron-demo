@@ -107,6 +107,7 @@ class BaseRequest<T> {
 			this.retryQueue = []
 			return this.request(config)
 		}
+		return
 	}
 }
 
