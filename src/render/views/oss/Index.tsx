@@ -41,7 +41,7 @@ function Index() {
 
 		lastRef.current = objects.at(-1)
 
-		if (prefixes.length + objects.length < 200) {
+		if (prefixes.length + objects.length < 50) {
 			setHasMore(false)
 		} else {
 			setHasMore(true)
