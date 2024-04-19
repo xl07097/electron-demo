@@ -1,5 +1,6 @@
 import { ipcMain, dialog } from 'electron'
 import { screenshot } from './screen/snapshop'
+import { clearScreenDown } from 'readline'
 
 ipcMain.on('open-file-dialog', (event, ...args) => {
 	//'openDirectory', 'openFile'
@@ -41,5 +42,7 @@ const createWindowEvent = (mainWindow: Electron.CrossProcessExports.BrowserWindo
 		screenshot()
 	})
 }
+
+class CustomWindowEvent {}
 
 export default createWindowEvent
