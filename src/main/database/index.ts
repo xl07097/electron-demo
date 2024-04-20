@@ -20,17 +20,22 @@ const knexInstance = knex(config)
 
 const createTable = async () => {
 	const hasTable = await knexInstance.schema.hasTable('users')
+	const schema = knexInstance.schema.createSchema('users')
 	if (!hasTable) {
 		// 创建表格
-		await knexInstance.schema.createTable('users', table => {
-			table.increments('id') // 自增 ID 字段
+		await schema.createTable('users', async table => {
+			const hasId = await schema.hasColumn('users', 'id')
+			if (!hasId) {
+				table.increments('id').primary() // 自增 ID 字段
+			}
+
 			table.string('username') // 字符串类型的用户名字段
 			table.string('age') // 字符串类型的用户名字段
 			table.string('email') // 字符串类型的电子邮件字段
 		})
 	} else {
-		await knexInstance.schema.alterTable('users', table => {
-			table.increments('id') // 自增 ID 字段
+		await schema.alterTable('users', table => {
+			table.increments('id').primary() // 自增 ID 字段
 			table.string('username') // 字符串类型的用户名字段
 			table.string('age') // 字符串类型的用户名字段
 			table.string('email') // 字符串类型的电子邮件字段
