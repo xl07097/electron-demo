@@ -1,5 +1,5 @@
 import { app, BrowserWindow, IpcMainInvokeEvent, globalShortcut, session } from 'electron'
-import createTray from './tray/index'
+import { TrayClass } from './tray/index'
 import createWindowEvent from './custom-event'
 import * as path from 'path'
 import logger from './logger/index'
@@ -100,7 +100,7 @@ function initApplication() {
 
 	app.on('ready', async () => {
 		createWindow()
-		createTray(mainWindow)
+		TrayClass.init()
 		createWindowEvent(mainWindow)
 		import('./appUpdate/index')
 		import('./database/index')

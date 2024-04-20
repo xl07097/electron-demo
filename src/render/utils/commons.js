@@ -30,16 +30,6 @@ export const deepClone = target => {
 	return result
 }
 
-export const channelDeepClone = data => {
-	return new Promise(resovle => {
-		const { port1, port2 } = new MessageChannel()
-		port2.onmessage(event => {
-			resovle(event.data)
-		})
-		port1.postMessage(data)
-	})
-}
-
 /**
  * 数组数据转换成tree
  * @param {*} data
@@ -81,7 +71,7 @@ export const tree2Array = tree => {
 			...node,
 			children: null,
 		})
-		if (node.children && node.children.length) {
+		if (node && node.children && node.children.length) {
 			stack.push(...node.children)
 		}
 	}
@@ -153,7 +143,7 @@ export const copyRightConsole = packageInfo => {
 
 export const debounce = function (fn, delay = 300) {
 	let timerId = null
-	return function (...args) {
+	return (...args) => {
 		const ctx = this
 		if (timerId) {
 			clearTimeout(timerId)
