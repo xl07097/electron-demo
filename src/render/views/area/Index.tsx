@@ -4,6 +4,7 @@ import qs from 'qs'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
 import { get } from '@/http/http'
+import NoteContainer from '@/components/NoteContainer'
 
 function Index() {
 	const columns = useMemo(() => {
@@ -95,14 +96,17 @@ function Index() {
 	}, [searchParams.get('parentCode')])
 
 	return (
-		<Table
-			size="small"
-			rowKey={'areaCode'}
-			columns={columns}
-			tableLayout="fixed"
-			dataSource={dataSource}
-			pagination={{ pageSize: 100 }}
-		></Table>
+		<NoteContainer>
+			<Table
+				className="scrollbar"
+				size="small"
+				rowKey={'areaCode'}
+				columns={columns}
+				tableLayout="fixed"
+				dataSource={dataSource}
+				pagination={false}
+			></Table>
+		</NoteContainer>
 	)
 }
 

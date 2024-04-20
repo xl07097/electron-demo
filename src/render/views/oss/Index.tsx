@@ -7,6 +7,7 @@ import { Files } from './types'
 
 import FileItem from '@/components/file/Index'
 import LoadMore from '@/components/loadmore/Index'
+import NoteContainer from '@/components/NoteContainer'
 
 function Index() {
 	let [searchParams] = useSearchParams()
@@ -61,7 +62,7 @@ function Index() {
 	}, [searchParams.get('prefix')])
 
 	return (
-		<>
+		<NoteContainer>
 			<div className="file">
 				{folders.map(dir => (
 					<FileItem key={dir} name={dir} url={`/oss?prefix=${dir}`} fileType={'folder'}></FileItem>
@@ -71,7 +72,7 @@ function Index() {
 				))}
 			</div>
 			{hasMore && <LoadMore loadMore={loadMore}></LoadMore>}
-		</>
+		</NoteContainer>
 	)
 }
 
