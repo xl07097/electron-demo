@@ -29,7 +29,7 @@ class TrayClass {
 
 			tray.on('click', () => {
 				const mainWindow = getActiveWindow()
-				mainWindow.show()
+				mainWindow?.show()
 			})
 		})
 	}
