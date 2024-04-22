@@ -7,12 +7,12 @@
     "start": "npm run build:main && cross-env NODE_ENV=development electron ./dist/main.js",
     "precompiler": "cross-env NODE_ENV=production electron-builder build --x64",
     "build:release": "electron-builder build --x64 && npm run upload:oss",
-    "build:main": "tsc --build ./main/tsconfig.json",
+    "build:main": "tsc --build ./src/main/tsconfig.json",
     "upload:oss": "ts-node ./scripts/upload.ts",
     "major": "npm version major",
     "minor": "npm version minor",
     "patch": "npm version patch",
-    "watch:main": "tsc --build ./main/tsconfig.json -w"
+    "watch:main": "tsc --build ./src/main/tsconfig.json -w"
   },
   "dependencies": {
     "electron-log": "^5.0.1",
@@ -58,7 +58,7 @@
     "files": [
       "assets",
       "dist",
-      "preload",
+      "src/preload",
       "build",
       "exec"
     ],

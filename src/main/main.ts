@@ -22,7 +22,7 @@ function createWindow() {
 			webSecurity: true,
 			navigateOnDragDrop: true,
 			devTools: true,
-			preload: path.join(__dirname, '..', 'preload/index.js'),
+			preload: path.join(__dirname, '..', 'src/preload/index.js'),
 		},
 	})
 	//
@@ -103,7 +103,6 @@ function initApplication() {
 		createTray(mainWindow)
 		createWindowEvent(mainWindow)
 		import('./appUpdate/index')
-		import('./database/index')
 
 		// globalShortcut.register('CommandOrControl+R', () => {
 		// 	console.log('CommandOrControl')
