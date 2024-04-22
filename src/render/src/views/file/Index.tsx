@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { CloudUploadOutlined } from '@ant-design/icons';
 import type { UploadProps } from 'antd';
 import { message, Upload, Button } from 'antd';
-import { Outlet } from 'react-router-dom';
+import NoteContainer from '@/components/NoteContainer';
 
 const { Dragger } = Upload;
 
@@ -41,8 +41,13 @@ const Index: React.FC = () => {
   }
 
 
-  return (<div>
-    <Dragger {...props}>
+  return (
+  <NoteContainer>
+    <Dragger {...props} style={{
+      aspectRatio: 5/2,
+      width: '80%',
+      margin: 'auto'
+    }}>
       <p className="ant-upload-drag-icon">
         <CloudUploadOutlined />
       </p>
@@ -55,9 +60,7 @@ const Index: React.FC = () => {
         url && <Button type="link" onClick={copy}>复制地址</Button>
       }
     </div>
-
-    <Outlet></Outlet>
-  </div>)
+  </NoteContainer>)
 };
 
 export default Index;

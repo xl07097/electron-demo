@@ -10,7 +10,7 @@ function AppContent() {
 			<div className="window-container">
 				<AppLeft></AppLeft>
 				<div className="app-right-content">
-					<div className='app-right-main scrollbar'>
+					<div className='app-right-main'>
 						<Outlet></Outlet>
 					</div>
 				</div>

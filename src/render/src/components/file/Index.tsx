@@ -40,7 +40,6 @@ const FileItem: React.FC<FileProp> = props => {
 		}
 	}
 	return (
-		<>
 			<div className="file-item" onClick={click} onDoubleClick={doubleClick}>
 				<div className="file-img">
 					{isImage && (props.size as number) < 1024 * 1024 ? (
@@ -58,7 +57,6 @@ const FileItem: React.FC<FileProp> = props => {
 					<p className="file-tips">{size}</p>
 				</div>
 			</div>
-		</>
 	)
 }
 

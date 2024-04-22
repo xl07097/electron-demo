@@ -3,6 +3,7 @@ import { Button, Table } from 'antd'
 import qs from 'qs'
 import { useEffect, useMemo, useState } from 'react'
 import { Link, useSearchParams } from 'react-router-dom'
+import NoteContainer from '@/components/NoteContainer'
 import { get } from '@/http/http'
 
 function Index() {
@@ -95,14 +96,17 @@ function Index() {
 	}, [searchParams.get('parentCode')])
 
 	return (
-		<Table
-			size="small"
-			rowKey={'areaCode'}
-			columns={columns}
-			tableLayout="fixed"
-			dataSource={dataSource}
-			pagination={{ pageSize: 100 }}
-		></Table>
+		<NoteContainer>
+			<Table
+				size="small"
+				rowKey={'areaCode'}
+				columns={columns}
+				tableLayout="fixed"
+				dataSource={dataSource}
+				pagination={{ pageSize: 100 }}
+				scroll={{ x: '100%'} }
+			></Table>
+		</NoteContainer>
 	)
 }
 
