@@ -10,7 +10,7 @@ function AppNavigation() {
 	}
 
 	return (
-		<div className="app-left-side scrollbar">
+		<div className="app-left-side">
 			<div className="app-left-side-inner">
 				<UserInfo></UserInfo>
 				<div className="app-left-setting" onClick={openSetting}>
