@@ -1,45 +1,29 @@
-import { ipcMain, dialog } from 'electron'
+import { ipcMain } from 'electron'
 import { screenshot } from './screen/snapshop'
 
-ipcMain.on('open-file-dialog', (event, ...args) => {
-	//'openDirectory', 'openFile'
-	dialog
-		.showOpenDialog({
-			properties: [...args],
-			filters: [
-				{
-					name: 'All Files',
-					extensions: ['*'],
-				},
-			],
+class WindowEvent {
+	async bindEvent(mainWindow: Electron.BrowserWindow) {
+		ipcMain.on('window-close', function (event) {
+			mainWindow.hide()
 		})
-		.then(obj => {
-			if (obj.canceled === false) {
-				event.reply('selected-directory', obj.filePaths, ...args)
-			}
+		ipcMain.on('window-min', function () {
+			mainWindow.minimize()
 		})
-})
 
-const createWindowEvent = (mainWindow: Electron.CrossProcessExports.BrowserWindow) => {
-	ipcMain.on('window-close', function (event) {
-		mainWindow.hide()
-	})
+		ipcMain.on('window-max', function (event) {
+			mainWindow.maximize()
+		})
 
-	ipcMain.on('window-min', function () {
-		mainWindow.minimize()
-	})
+		ipcMain.on('window-normal', function (event) {
+			mainWindow.restore()
+		})
 
-	ipcMain.on('window-max', function (event) {
-		mainWindow.maximize()
-	})
-
-	ipcMain.on('window-normal', function (event) {
-		mainWindow.restore()
-	})
-
-	ipcMain.on('screenShop', () => {
-		screenshot()
-	})
+		ipcMain.on('screenShop', () => {
+			screenshot(mainWindow)
+		})
+	}
 }
 
-export default createWindowEvent
+const windowEvent = new WindowEvent()
+
+export { windowEvent }

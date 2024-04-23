@@ -1,10 +1,10 @@
 import { app, Tray, Menu } from 'electron'
 import * as path from 'path'
 
-const createTray = (mainWindow: Electron.CrossProcessExports.BrowserWindow) => {
-	let tray = null
-	app.whenReady().then(() => {
-		tray = new Tray(path.join(__dirname, '..', '..', 'assets/icons/64x64.ico'))
+class AppTray {
+	async create(mainWindow: Electron.CrossProcessExports.BrowserWindow) {
+		await app.whenReady()
+		const tray = new Tray(path.join(__dirname, '..', '..', 'assets/icons/64x64.ico'))
 		const contextMenu = Menu.buildFromTemplate([
 			{
 				label: '退出',
@@ -21,7 +21,9 @@ const createTray = (mainWindow: Electron.CrossProcessExports.BrowserWindow) => {
 		tray.on('click', () => {
 			mainWindow.show()
 		})
-	})
+	}
 }
 
-export default createTray
+const appTray = new AppTray()
+
+export { appTray }

@@ -1,6 +1,5 @@
 import { ipcMain } from 'electron'
-import { autoUpdater } from 'electron-updater'
-
+import { autoUpdater, ProgressInfo, UpdateInfo } from 'electron-updater'
 import {
 	checkingForUpdate,
 	updateNotAvailable,
@@ -11,54 +10,70 @@ import {
 } from './sendUpdateInfo'
 
 import logger from '../logger/index'
-
 autoUpdater.autoDownload = false
+class AppUpdateEvent {
+	private mainWindow: Electron.BrowserWindow
 
-autoUpdater.on('checking-for-update', () => {
-	checkingForUpdate()
-})
+	constructor() {}
 
-autoUpdater.on('update-not-available', info => {
-	logger.info(info)
-	updateNotAvailable(info)
-})
+	bindEvent(mainWindow: Electron.BrowserWindow) {
+		this.mainWindow = mainWindow
+		autoUpdater.on('checking-for-update', this.checkingForUpdate)
+		autoUpdater.on('update-not-available', this.updateNotAvailable)
+		autoUpdater.on('error', this.updateError)
+		autoUpdater.on('update-available', this.updateAvailable)
+		autoUpdater.on('download-progress', this.downloadProgress)
+		autoUpdater.on('update-downloaded', this.updateDownloaded)
+		// 监听是否下载新版本事件
+		ipcMain.on('downloadUpdate', this.downloadUpdate)
+		// 监听是否检查更新事件
+		ipcMain.on('checkForUpdate', this.checkForUpdates)
+	}
 
-autoUpdater.on('error', error => {
-	logger.error(error)
-	updateError(error)
-})
+	checkingForUpdate() {
+		checkingForUpdate(this.mainWindow)
+	}
 
-autoUpdater.on('update-available', info => {
-	logger.info(info)
-	updateAvailable(info)
-})
+	updateNotAvailable(info: UpdateInfo) {
+		logger.info(info)
+		updateNotAvailable(this.mainWindow, info)
+	}
 
-// 更新下载进度事件
-autoUpdater.on('download-progress', progressObj => {
-	logger.info('触发下载。。。')
-	downloadProgress(progressObj)
-})
+	updateError(error: Error) {
+		logger.error(error)
+		updateError(this.mainWindow, error)
+	}
 
-autoUpdater.on('update-downloaded', () => {
-	logger.info('下载完成。。。')
-	ipcMain.once('install-now', () => {
-		logger.info('开始更新。。。')
-		autoUpdater.quitAndInstall()
-	})
-	updateDownloaded()
-})
+	updateAvailable(info: UpdateInfo) {
+		logger.info(info)
+		updateAvailable(this.mainWindow, info)
+	}
 
-// 监听是否下载新版本事件
-ipcMain.on('downloadUpdate', () => {
-	logger.info('执行下载')
-	autoUpdater.downloadUpdate()
-})
+	downloadProgress(progressObj: ProgressInfo) {
+		logger.info('触发下载。。。')
+		downloadProgress(this.mainWindow, progressObj)
+	}
 
-// 监听是否检查更新事件
-ipcMain.on('checkForUpdate', () => {
-	logger.info('执行自动更新检查')
+	updateDownloaded() {
+		logger.info('下载完成。。。')
+		ipcMain.once('install-now', () => {
+			logger.info('开始更新。。。')
+			autoUpdater.quitAndInstall()
+		})
+		updateDownloaded(this.mainWindow)
+	}
 
-	autoUpdater.checkForUpdates()
-})
+	downloadUpdate() {
+		logger.info('执行下载')
+		autoUpdater.downloadUpdate()
+	}
 
-export default autoUpdater
+	checkForUpdates() {
+		logger.info('执行自动更新检查')
+		autoUpdater.checkForUpdates()
+	}
+}
+
+const appUpdateEvent = new AppUpdateEvent()
+
+export { appUpdateEvent }
