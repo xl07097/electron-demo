@@ -5,11 +5,11 @@ const modules: Record<string, Reducer> = import.meta.glob('./modules/*.ts', {
 	eager: true,
 })
 
-const reducers = Object.keys(modules).reduce((acc, modulePath) => {
+const reducers = Object.keys(modules).reduce((acc: Record<string, Reducer>, modulePath) => {
 	const moduleName = modulePath.replace(/\.\/modules\/(.*)\.ts/, '$1')
 	acc[`${moduleName}Reducer`] = modules[modulePath]
 	return acc
-}, {} as Record<string, Reducer>)
+}, {})
 
 const store = configureStore({
 	reducer: reducers,
