@@ -104,7 +104,7 @@ function Index() {
 				tableLayout="fixed"
 				dataSource={dataSource}
 				pagination={{ pageSize: 100 }}
-				scroll={{ x: '100%'} }
+				scroll={{ x: '100%', y: '600px'} }
 			></Table>
 		</NoteContainer>
 	)

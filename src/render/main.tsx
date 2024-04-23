@@ -35,6 +35,10 @@ root.render(
 							itemMarginInline: 0,
 							borderRadiusOuter: 0,
 						},
+						Table:{
+							headerBg: '#e6e6e6',
+							headerSplitColor: "#fff"
+						}
 					},
 				}}
 			>
