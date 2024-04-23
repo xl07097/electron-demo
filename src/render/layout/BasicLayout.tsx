@@ -1,6 +1,6 @@
 import { Outlet } from 'react-router-dom'
 
-import AppLeft from '@/layout/sider/AppLeft'
+import AppLeft from './sider/AppLeft'
 import AppHeader from './header/AppHeader'
 
 function AppContent() {
