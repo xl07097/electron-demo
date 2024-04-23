@@ -2,7 +2,7 @@ import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
 import * as path from 'path'
 import { appUpdateEvent } from './appUpdate/index'
 import { appTray } from './tray/index'
-import { windowEvent } from './custom-event'
+import { windowEvent } from './windowEvent'
 import logger from './logger/index'
 
 class MainWindow {
