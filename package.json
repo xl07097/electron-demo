@@ -17,6 +17,7 @@
     "watch:main": "tsc --build ./src/main/tsconfig.json -w"
   },
   "dependencies": {
+    "@deno/kv": "^0.7.0",
     "electron-log": "^5.0.1",
     "electron-updater": "^6.1.7",
     "tslib": "^2.6.2"
@@ -74,7 +75,8 @@
       }
     ],
     "asarUnpack": [
-      "exec"
+      "exec",
+      "node_modules/@deno"
     ],
     "asar": {
       "smartUnpack": true
