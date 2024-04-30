@@ -4,9 +4,10 @@ import normal from '../../image/normal.svg'
 import close from '../../image/close.svg'
 import { useEffect, useMemo, useState } from 'react'
 const { ipcRenderer } = require('electron')
+import { ElectronWindownStatus } from '../../../main/enum/ElectronWindow'
 
 function WindowControl() {
-	let [minmax, setMax] = useState(2)
+	let [minmax, setMax] = useState(ElectronWindownStatus.maximize)
 
 	function minimizeHandle() {
 		ipcRenderer.send('window-min')
@@ -32,7 +33,7 @@ function WindowControl() {
 	}, [])
 
 	const MaxMinControl = useMemo(() => {
-		if (minmax === 1) {
+		if (minmax === ElectronWindownStatus.minimize) {
 			return (
 				<span className="window-max-restore window-normal" onClick={normalHandle} data-windowflag="normal">
 					<img src={normal} alt="normal" />

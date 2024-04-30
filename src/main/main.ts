@@ -1,9 +1,8 @@
-import { app, BrowserWindow, IpcMainInvokeEvent } from 'electron'
+import { app, BrowserWindow } from 'electron'
 import * as path from 'path'
 import { appUpdateEvent } from './appUpdate/index'
 import { appTray } from './tray/index'
 import { windowEvent } from './windowEvent'
-import logger from './logger/index'
 
 class MainWindow {
 	mainWindow: BrowserWindow
@@ -35,24 +34,6 @@ class MainWindow {
 
 		this.mainWindow.once('ready-to-show', () => {
 			this.mainWindow.show()
-		})
-
-		this.mainWindow.on('maximize', (event: IpcMainInvokeEvent) => {
-			logger.info('maximize:')
-			this.mainWindow.webContents.send('window-max-min', 1)
-		})
-
-		this.mainWindow.on('unmaximize', (event: IpcMainInvokeEvent) => {
-			logger.info('unmaximize:')
-			this.mainWindow.webContents.send('window-max-min', 2)
-		})
-
-		this.mainWindow.on('enter-full-screen', (event: IpcMainInvokeEvent) => {
-			this.mainWindow.webContents.send('screen-full', 1)
-		})
-
-		this.mainWindow.on('leave-full-screen', (event: IpcMainInvokeEvent) => {
-			this.mainWindow.webContents.send('screen-full', 2)
 		})
 	}
 
