@@ -1,20 +1,21 @@
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 import path from 'path'
-import createImportPlugin from 'vite-plugin-import'
+import Components from 'unplugin-vue-components/vite'
 
 // https://vitejs.dev/config/
 export default defineConfig({
 	base: './',
 	plugins: [
 		react(),
-		createImportPlugin({
-			onlyBuild: false,
-			babelImportPluginOptions: [
-				{
-					libraryName: '@icon-park/react',
-					libraryDirectory: 'es/icons',
-					camel2DashComponentName: false, // default: true,
+		Components({
+			resolvers: [
+				() => {
+					return {
+						name: 'Icon',
+						from: '@icon-park/react',
+						sideEffects: '@icon-park/react/es/all',
+					}
 				},
 			],
 		}),
