@@ -1,5 +1,6 @@
 import { openKv, Kv, KvKey, KvListSelector } from '@deno/kv'
 import { app } from 'electron'
+import { mkdirs } from '../utils/common'
 
 class KV {
 	kv: Kv
@@ -9,8 +10,9 @@ class KV {
 
 	async init() {
 		const userData = app.getPath('userData')
-		console.log(userData)
-		this.kv = await openKv(`${userData}\\data.db`)
+		const path = `${userData}\\storage`
+		mkdirs(path)
+		this.kv = await openKv(`${path}\\data.db`)
 	}
 
 	async get(key: KvKey) {
