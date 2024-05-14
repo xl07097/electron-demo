@@ -26,7 +26,6 @@ const App: React.FC = () => {
 			{src && <Image width="calc(100%)" height={'calc(100%)'} src={src} preview={false} />}
 			<div className='refresh' onClick={fetchImage}>
 				<img className={loading?'loading':''} src="https://infinityicon.infinitynewtab.com/assets/windmill.svg" alt="windmill" />
-				<span></span>
 			</div>
 		</div>
 	)

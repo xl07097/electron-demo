@@ -1,9 +1,10 @@
 .refresh {
 	position: fixed;
-	right: 20px;
+	right: 30px;
 	bottom: 0px;
 	display: flex;
 	flex-direction: column;
+	height: 70px;
 	img {
 		z-index: 1;
 		cursor: pointer;
@@ -19,13 +20,15 @@
       animation-play-state: running;
     }
 	}
-	span {
+	&::after {
+		content: '';
+		position: absolute;
 		display: block;
-		margin-top: -30px;
-		margin-left: auto;
-		margin-right: auto;
+		bottom: 0;
 		width: 5px;
-		height: 56px;
+		height: 52px;
+		left: 50%;
+		transform: translateX(-50%);
 		background-color: rgb(254, 254, 254);
 	}
 }
