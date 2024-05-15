@@ -16,7 +16,6 @@ import './styles/style.less'
 const root = createRoot(document.getElementById('root') as HTMLElement)
 
 root.render(
-	<React.StrictMode>
 		<Provider store={store}>
 			<ConfigProvider
 				locale={zhCN}
@@ -45,5 +44,4 @@ root.render(
 				<App />
 			</ConfigProvider>
 		</Provider>
-	</React.StrictMode>
 )

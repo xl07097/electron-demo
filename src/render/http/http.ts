@@ -3,7 +3,7 @@ import qs from 'qs'
 import { storage } from '@/utils/storage'
 import { responseHandle } from './httpHandle'
 
-import type { AxiosInstance, AxiosRequestConfig, AxiosResponse } from 'axios'
+import type { AxiosInstance, AxiosRequestConfig, AxiosResponse, InternalAxiosRequestConfig } from 'axios'
 import type { IResponseData, IConfig } from '@/interface/login'
 
 class BaseRequest<T> {
@@ -19,7 +19,7 @@ class BaseRequest<T> {
 				'content-type': 'application/json',
 			},
 		})
-		this.instance.interceptors.request.use(config => {
+		this.instance.interceptors.request.use((config: InternalAxiosRequestConfig<any>) => {
 			const token = 'W88G0R46WEUP9JXKOF6H71WI' // storage.getItem('token')
 			if (token) {
 				config.headers = config.headers || {}
