@@ -18,16 +18,16 @@ class AppUpdateEvent {
 
 	bindEvent(mainWindow: Electron.BrowserWindow) {
 		this.mainWindow = mainWindow
-		autoUpdater.on('checking-for-update', this.checkingForUpdate)
-		autoUpdater.on('update-not-available', this.updateNotAvailable)
-		autoUpdater.on('error', this.updateError)
-		autoUpdater.on('update-available', this.updateAvailable)
-		autoUpdater.on('download-progress', this.downloadProgress)
-		autoUpdater.on('update-downloaded', this.updateDownloaded)
+		autoUpdater.on('checking-for-update', this.checkingForUpdate.bind(this))
+		autoUpdater.on('update-not-available', this.updateNotAvailable.bind(this))
+		autoUpdater.on('error', this.updateError.bind(this))
+		autoUpdater.on('update-available', this.updateAvailable.bind(this))
+		autoUpdater.on('download-progress', this.downloadProgress.bind(this))
+		autoUpdater.on('update-downloaded', this.updateDownloaded.bind(this))
 		// 监听是否下载新版本事件
-		ipcMain.on('downloadUpdate', this.downloadUpdate)
+		ipcMain.on('downloadUpdate', this.downloadUpdate.bind(this))
 		// 监听是否检查更新事件
-		ipcMain.on('checkForUpdate', this.checkForUpdates)
+		ipcMain.on('checkForUpdate', this.checkForUpdates.bind(this))
 	}
 
 	checkingForUpdate() {
