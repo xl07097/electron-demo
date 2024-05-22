@@ -1,9 +1,9 @@
 name: Publish
 
 on: 
-  tag:
-    branches:
-      - main
+  push:
+    tags:
+      - '*'
 
 jobs: 
   publish:
