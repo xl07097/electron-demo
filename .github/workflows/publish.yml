@@ -18,17 +18,14 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org
 
-      - name: Install
-        run: npm install
+      # - name: Install
+      #   run: npm install
 
-      - name: build:render
-        run: npm run build:render
+      # - name: build:render
+      #   run: npm run build:render
 
-      - name: build:main
-        run: npm run build:main
-
-      # - name: realease
-      #   run: npm run precompiler
+      # - name: build:main
+      #   run: npm run build:main
 
       - name: publish
         env:
@@ -37,4 +34,4 @@ jobs:
           # ACCESS_KEY_SECRET: ${{secrets.ACCESS_KEY_SECRET}}
           # bucket: ${{secrets.bucket}}
         # run: npm run upload:oss
-        echo: env.TEST_ENV
+        run: echo ${{ secrets.testEnv }}
