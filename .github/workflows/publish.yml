@@ -28,9 +28,4 @@ jobs:
       #   run: npm run build:main
 
       - name: publish
-        env:
-          # ACCESS_KEY_ID: ${{secrets.ACCESS_KEY_ID}}
-          # ACCESS_KEY_SECRET: ${{secrets.ACCESS_KEY_SECRET}}
-          # bucket: ${{secrets.bucket}}
-        # run: npm run upload:oss
         run: npx cross-env bucket=${{ secrets.bucket }} accessKeyId=${{ secrets.accessKeyId }} accessKeySecret=${{ secrets.accessKeySecret }} ts-node ./scripts/upload.ts
