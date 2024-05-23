@@ -25,4 +25,4 @@ package-lock.json
 *.sw*
 
 
-scripts/ali-key.ts
+# scripts/ali-key.ts
