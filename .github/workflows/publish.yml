@@ -27,11 +27,9 @@ jobs:
       - name: build:main
         run: npm run build:main
         
-      - name: set env
+      - name: publish
         env:
           bucket: ${{ secrets.bucket }}
           accessKeyId: ${{ secrets.accessKeyId }}
           accessKeySecret: ${{ secrets.accessKeySecret }}
-
-      - name: publish
         run: npm run upload:oss
