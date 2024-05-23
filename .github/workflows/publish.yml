@@ -9,14 +9,14 @@ jobs:
   publish:
     runs-on: windows-latest
     steps: 
-      # - name: Checkout
-      #   uses: actions/checkout@v3
+      - name: Checkout
+        uses: actions/checkout@v3
 
-      # - name: nodejs
-      #   uses: actions/setup-node@v4
-      #   with:
-      #     node-version: 18
-      #     registry-url: https://registry.npmjs.org
+      - name: nodejs
+        uses: actions/setup-node@v4
+        with:
+          node-version: 18
+          registry-url: https://registry.npmjs.org
 
       # - name: Install
       #   run: npm install
@@ -37,4 +37,4 @@ jobs:
           # ACCESS_KEY_SECRET: ${{secrets.ACCESS_KEY_SECRET}}
           # bucket: ${{secrets.bucket}}
         # run: npm run upload:oss
-        echo: ${{ secrets.testEnv }}
+        echo: env.TEST_ENV
