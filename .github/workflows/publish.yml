@@ -26,7 +26,10 @@ jobs:
 
       - name: build:main
         run: npm run build:main
-        
+
+      - name: precompiler
+        run: npm run precompiler
+
       - name: publish
         env:
           bucket: ${{ secrets.bucket }}
