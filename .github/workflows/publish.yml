@@ -18,14 +18,20 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org
 
-      # - name: Install
-      #   run: npm install
+      - name: Install
+        run: npm install
 
-      # - name: build:render
-      #   run: npm run build:render
+      - name: build:render
+        run: npm run build:render
 
-      # - name: build:main
-      #   run: npm run build:main
+      - name: build:main
+        run: npm run build:main
+        
+      - name: set env
+        env:
+          bucket: ${{ secrets.bucket }}
+          accessKeyId: ${{ secrets.accessKeyId }}
+          accessKeySecret: ${{ secrets.accessKeySecret }}
 
       - name: publish
-        run: npx cross-env bucket=${{ secrets.bucket }} accessKeyId=${{ secrets.accessKeyId }} accessKeySecret=${{ secrets.accessKeySecret }} ts-node ./scripts/upload.ts
+        run: npm run upload:oss
