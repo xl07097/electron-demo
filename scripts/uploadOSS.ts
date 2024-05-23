@@ -1,35 +1,14 @@
-// import * as OSS from 'ali-oss';
 const OSS = require('ali-oss')
-// import { ACCESS_KEY_ID, ACCESS_KEY_SECRET, bucket } from './ali-key'
-// const env = process.env
 
-// let buckets = bucket
-// let accessKeyId = ACCESS_KEY_ID
-// let accessKeySecret = ACCESS_KEY_SECRET
-// if (!buckets) {
-// 	buckets = env.buckets
-// 	accessKeyId = env.accessKeyId
-// 	accessKeySecret = env.accessKeySecret
-// }
+const client = new OSS({
+	bucket: process.env.buckets,
+	region: 'oss-cn-shanghai',
+	accessKeyId: process.env.accessKeyId,
+	accessKeySecret: process.env.accessKeySecret,
+	timeout: '100s',
+})
 
-// console.log(buckets)
-
-function uploadToOSS(
-	objName: string,
-	localFile: string,
-	buckets: String,
-	accessKeyId: String,
-	accessKeySecret: String
-) {
-	console.log(process.env.bucket)
-	const client = new OSS({
-		bucket: buckets,
-		region: 'oss-cn-shanghai',
-		accessKeyId: accessKeyId,
-		accessKeySecret: accessKeySecret,
-		timeout: '100s',
-	})
-
+function uploadToOSS(objName: string, localFile: string) {
 	return new Promise((resolve, reject) => {
 		console.log(`[UPLOAD] start to upload ${localFile}.`)
 		client
