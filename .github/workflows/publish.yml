@@ -1,14 +1,14 @@
 name: Publish
 
-on: 
+on:
   push:
     tags:
       - '*'
 
-jobs: 
+jobs:
   publish:
     runs-on: windows-latest
-    steps: 
+    steps:
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -35,4 +35,4 @@ jobs:
           bucket: ${{ secrets.bucket }}
           accessKeyId: ${{ secrets.accessKeyId }}
           accessKeySecret: ${{ secrets.accessKeySecret }}
-        run: npx cross-env bucket=${{env.bucket}} accessKeyId=${{env.accessKeyId}} accessKeySecret=${{env.accessKeySecret}} ts-node ./scripts/upload.ts 
+        run: npx cross-env bucket=${{secrets.bucket}} accessKeyId=${{secrets.accessKeyId}} accessKeySecret=${{secrets.accessKeySecret}} ts-node ./scripts/upload.ts
