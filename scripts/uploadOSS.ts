@@ -1,14 +1,4 @@
-const OSS = require('ali-oss')
-
-const client = new OSS({
-	bucket: process.env.buckets,
-	region: 'oss-cn-shanghai',
-	accessKeyId: process.env.accessKeyId,
-	accessKeySecret: process.env.accessKeySecret,
-	timeout: '100s',
-})
-
-function uploadToOSS(objName: string, localFile: string) {
+function uploadToOSS(client, objName: string, localFile: string) {
 	return new Promise((resolve, reject) => {
 		console.log(`[UPLOAD] start to upload ${localFile}.`)
 		client
