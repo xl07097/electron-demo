@@ -21,6 +21,7 @@ function uploadToOSS(
 	accessKeyId: String,
 	accessKeySecret: String
 ) {
+	console.log(process.env.bucket)
 	const client = new OSS({
 		bucket: buckets,
 		region: 'oss-cn-shanghai',
