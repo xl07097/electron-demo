@@ -18,14 +18,14 @@ jobs:
           node-version: 18
           registry-url: https://registry.npmjs.org
 
-      # - name: Install
-      #   run: npm install
+      - name: Install
+        run: npm install
 
-      # - name: build:render
-      #   run: npm run build:render
+      - name: build:render
+        run: npm run build:render
 
-      # - name: build:main
-      #   run: npm run build:main
+      - name: build:main
+        run: npm run build:main
 
       # - name: realease
       #   run: npm run precompiler
