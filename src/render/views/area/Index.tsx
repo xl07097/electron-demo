@@ -103,7 +103,7 @@ function Index() {
 				columns={columns}
 				tableLayout="fixed"
 				dataSource={dataSource}
-				pagination={{ pageSize: 100 }}
+				pagination={false}
 				scroll={{ x: '100%', y: '600px'} }
 			></Table>
 		</NoteContainer>
