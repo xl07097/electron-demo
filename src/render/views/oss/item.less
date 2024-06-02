@@ -1,0 +1,45 @@
+.bucket {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 14px;
+	padding: 10px;
+}
+.bucket-item {
+	flex: none;
+	position: relative;
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+	width: 200px;
+	height: 50px;
+	padding: 8px 6px;
+	cursor: pointer;
+	box-shadow: 0 0 10px rgba(0, 0, 0, 0.11);
+	border: 1px solid #f1eef1;
+	border-radius: 2px;
+	background-color: #fff;
+	box-sizing: border-box;
+	transition: all 0.2s ease-in-out;
+	&:hover {
+		transform: scale(0.945);
+		box-shadow: 0 0 10px rgba(0, 0, 0, 0.11);
+	}
+	.bucket-body {
+		display: flex;
+		flex-direction: column;
+		flex: 1;
+		box-sizing: border-box;
+		overflow: hidden;
+		.bucket-title {
+			height: 1.4rem;
+			line-height: 1.4rem;
+			margin: 0;
+			color: #333;
+			font-size: 14px;
+			font-weight: 600;
+			overflow: hidden;
+			white-space: nowrap;
+			text-overflow: ellipsis;
+		}
+	}
+}
