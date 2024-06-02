@@ -35,7 +35,7 @@ function Index() {
 		<>
 			<div className="bucket">
 				{buckets.map(bucket => (
-					<Item key={bucket.name} name={bucket.name} onDoubleClick={() => onDoubleClick(bucket)}></Item>
+					<Item key={bucket.name} {...bucket} onDoubleClick={() => onDoubleClick(bucket)}></Item>
 				))}
 			</div>
 		</>

@@ -1,9 +1,11 @@
 import React from 'react'
-import { Tooltip } from 'antd'
+import { Tooltip, Image } from 'antd'
+import db from '@/assets/db.png'
 import './item.less'
 
 interface IProp {
 	name: string
+	region: string
 	lastModified?: string
 	storageClass?: string
 	onDoubleClick?: () => void
@@ -15,12 +17,15 @@ const Item: React.FC<IProp> = props => {
 	}
 	return (
 		<div className="bucket-item" onDoubleClick={doubleClick}>
+			<Image width={28} height={28} alt={props.name} preview={false} src={db} />
+
 			<div className="bucket-body">
 				<h4 className="bucket-title">
 					<Tooltip title={props.name} placement="topLeft" destroyTooltipOnHide color={'var(--color-primary)'}>
 						{props.name}
 					</Tooltip>
 				</h4>
+				<div className="bucket-region">{props.region}</div>
 			</div>
 		</div>
 	)
