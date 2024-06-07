@@ -10,13 +10,9 @@ jobs:
     strategy:
       matrix:
         os: [windows-latest]
-        version: [a, b, c]
 
     runs-on: ${{ matrix.os }}
     steps:
-      - name: print version
-        run: echo ${{ matrix.version }}
-
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -44,9 +40,18 @@ jobs:
           accessKeyId: ${{ secrets.accessKeyId }}
           accessKeySecret: ${{ secrets.accessKeySecret }}
         run: npm run upload:oss
-      
+
+      - name: Get Package Version
+        id: package_version
+        run: |
+          PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[" ]//g' | tr -d '[',']')
+          echo "Package Version: $PACKAGE_VERSION"
+
+      - name: Print Package Version
+          run: echo "Package Version: ${{ steps.package_version.outputs.version }}"
+
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: 创客-${{ matrix.version }}
-          path: release/创客-${{ matrix.version }}.exe
+          name: 创客-${{ steps.package_version.outputs.version }}
+          path: release/创客-${{ steps.package_version.outputs.version }}.exe
