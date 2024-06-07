@@ -41,14 +41,8 @@ jobs:
           accessKeySecret: ${{ secrets.accessKeySecret }}
         run: npm run upload:oss
 
-      - name: Get Package Version
-        id: package_version
-        run: |
-          PACKAGE_VERSION=$(cat package.json | grep version | head -1 | awk -F: '{ print $2 }' | sed 's/[" ]//g' | tr -d '[',']')
-          echo "Package Version: $PACKAGE_VERSION"
-
       - name: Upload
         uses: actions/upload-artifact@v4
         with:
-          name: 创客-${{ steps.package_version.outputs.version }}
-          path: release/创客-${{ steps.package_version.outputs.version }}.exe
+          name: 创客
+          path: release/*.exe
