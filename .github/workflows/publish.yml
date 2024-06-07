@@ -7,8 +7,16 @@ on:
 
 jobs:
   publish:
-    runs-on: windows-latest
+    strategy:
+      matrix:
+        os: [windows-latest]
+        version: [a, b, c]
+
+    runs-on: ${{ matrix.os }}
     steps:
+      - name: print version
+        run: echo ${{ matrix.version }}
+
       - name: Checkout
         uses: actions/checkout@v3
 
@@ -36,3 +44,9 @@ jobs:
           accessKeyId: ${{ secrets.accessKeyId }}
           accessKeySecret: ${{ secrets.accessKeySecret }}
         run: npm run upload:oss
+      
+      - name: Upload
+        uses: actions/upload-artifact@v4
+        with:
+          name: 创客-${{ matrix.version }}
+          path: release/创客-${{ matrix.version }}.exe
