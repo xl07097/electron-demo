@@ -12,7 +12,7 @@ const {
 
 	const fileLists = [
 		{ ossObjectFile: `latest.yml`, localFile: `latest.yml` },
-		{ ossObjectFile: `${productName}-${version}.exe`, localFile: `${productName}-${version}.exe` },
+		{ ossObjectFile: `${productName}-v${version}.exe`, localFile: `${productName}-v${version}.exe` },
 	]
 
 	await Promise.all(
