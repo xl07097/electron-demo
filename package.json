@@ -90,7 +90,7 @@
     ],
     "win": {
       "icon": "assets/icons/256x256.ico",
-      "artifactName": "${productName}-${version}.${ext}",
+      "artifactName": "${productName}-v${version}.${ext}",
       "target": "nsis"
     },
     "nsis": {
