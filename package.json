@@ -41,7 +41,7 @@
     "dayjs": "^1.11.11",
     "devtron": "^1.4.0",
     "electron": "^32.0.1",
-    "electron-builder": "^24.13.3",
+    "electron-builder": "^25.0.5",
     "events": "^3.3.0",
     "less": "^4.2.0",
     "qs": "^6.12.1",
