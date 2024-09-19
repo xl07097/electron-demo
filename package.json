@@ -20,6 +20,8 @@
     "@deno/kv": "^0.8.0",
     "electron-log": "^5.1.5",
     "electron-updater": "^6.2.1",
+    "quill": "^2.0.2",
+    "quill-better-table": "^1.2.10",
     "tslib": "^2.6.3"
   },
   "devDependencies": {
