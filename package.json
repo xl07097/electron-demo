@@ -19,7 +19,7 @@
   "dependencies": {
     "@deno/kv": "^0.8.0",
     "electron-log": "^5.1.5",
-    "electron-updater": "^6.2.1",
+    "electron-updater": "^6.3.0",
     "tslib": "^2.6.3"
   },
   "devDependencies": {
