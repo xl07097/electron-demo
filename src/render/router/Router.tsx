@@ -46,6 +46,10 @@ const config: RouteObject[] = [
 				element: Lazyload(lazy(() => import('@/views/wallpaper/Index'))),
 			},
 			{
+				path: '/excalidraw',
+				element: Lazyload(lazy(() => import('@/views/excalidraw/Index'))),
+			},
+			{
 				path: '*',
 				element: Lazyload(lazy(() => import('@/components/404/Index'))),
 			},

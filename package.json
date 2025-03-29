@@ -18,16 +18,17 @@
   },
   "dependencies": {
     "@deno/kv": "^0.8.0",
+    "@excalidraw/excalidraw": "^0.18.0",
     "electron-log": "^5.1.5",
+    "electron-updater": "^6.3.0",
     "quill": "^2.0.2",
     "quill-better-table": "^1.2.10",
-    "electron-updater": "^6.3.0",
     "tslib": "^2.6.3"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.3.7",
     "@icon-park/react": "^1.4.2",
-    "@reduxjs/toolkit": "^2.3.0",
+    "@reduxjs/toolkit": "^2.6.1",
     "@types/ali-oss": "^6.16.11",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.14.2",
@@ -36,7 +37,7 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
     "ali-oss": "^6.20.0",
-    "antd": "^5.22.1",
+    "antd": "^5.24.4",
     "axios": "^1.7.2",
     "cross-env": "^7.0.3",
     "crypto-js": "^4.2.0",
