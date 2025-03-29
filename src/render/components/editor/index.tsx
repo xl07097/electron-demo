@@ -39,7 +39,6 @@ import { useEffect, useRef } from 'react'
 // }
 
 import Quill from 'quill'
-import QuillBetterTable from 'quill-better-table'
 import 'quill/dist/quill.core.css'
 import 'quill/dist/quill.snow.css'
 import 'quill/dist/quill.bubble.css'
@@ -53,28 +52,10 @@ const Editor: React.FC<Props> = props => {
 	const editorRef = useRef<HTMLDivElement>(null)
 
 	useEffect(() => {
-		Quill.register(
-			{
-				'modules/better-table': QuillBetterTable,
-			},
-			true
-		)
 		const options = {
 			theme: props.theme || 'snow',
 			modules: {
 				table: false, // disable table module
-				'better-table': {
-					operationMenu: {
-						items: {
-							unmergeCells: {
-								text: 'Another unmerge cells name',
-							},
-						},
-					},
-				},
-				keyboard: {
-					bindings: QuillBetterTable.keyboardBindings,
-				},
 				toolbar: props.toolbar,
 			},
 			placeholder: props.placeholder,
