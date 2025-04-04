@@ -17,13 +17,12 @@
     "watch:main": "tsc --build ./src/main/tsconfig.json -w"
   },
   "dependencies": {
-    "@deno/kv": "^0.8.0",
+    "@deno/kv": "^0.10.0",
     "@excalidraw/excalidraw": "^0.18.0",
-    "electron-log": "^5.1.5",
-    "electron-updater": "^6.3.0",
-    "quill": "^2.0.2",
-    "quill-better-table": "^1.2.10",
-    "tslib": "^2.6.3"
+    "electron-log": "^5.3.3",
+    "electron-updater": "^6.6.2",
+    "quill": "^2.0.3",
+    "tslib": "^2.8.1"
   },
   "devDependencies": {
     "@ant-design/icons": "^5.3.7",
@@ -37,8 +36,8 @@
     "@types/react-dom": "^18.3.0",
     "@vitejs/plugin-react": "^4.3.0",
     "ali-oss": "^6.20.0",
-    "antd": "^5.24.4",
-    "axios": "^1.7.2",
+    "antd": "^5.24.6",
+    "axios": "^1.8.4",
     "cross-env": "^7.0.3",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.11",
