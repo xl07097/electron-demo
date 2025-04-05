@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react'
 import { Image } from 'antd'
 import './styles.less'
 
-
 const App: React.FC = () => {
 	const [loading, setLoading] = useState(false)
 	const [src, setSrc] = useState<string>()
@@ -22,10 +21,14 @@ const App: React.FC = () => {
 	}, [])
 
 	return (
-		<div>
+		<div className="wallpaper">
 			{src && <Image width="calc(100%)" height={'calc(100%)'} src={src} preview={false} />}
-			<div className='refresh' onClick={fetchImage}>
-				<img className={loading?'loading':''} src="https://infinityicon.infinitynewtab.com/assets/windmill.svg" alt="windmill" />
+			<div className="refresh" onClick={fetchImage}>
+				<img
+					className={loading ? 'loading' : ''}
+					src="https://infinityicon.infinitynewtab.com/assets/windmill.svg"
+					alt="windmill"
+				/>
 			</div>
 		</div>
 	)

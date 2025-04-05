@@ -1,3 +1,8 @@
+.wallpaper {
+	width: 100%;
+	height: 100%;
+	position: relative;
+}
 .refresh {
 	position: fixed;
 	right: 30px;
@@ -16,9 +21,9 @@
 		// animation-iteration-count: infinite;
 		animation-fill-mode: forwards;
 		animation-play-state: paused;
-    &.loading{
-      animation-play-state: running;
-    }
+		&.loading {
+			animation-play-state: running;
+		}
 	}
 	&::after {
 		content: '';
@@ -33,10 +38,10 @@
 	}
 }
 @keyframes turn {
-  0%{
-    transform: rotate(0);
-  }
-  100%{
-    transform: rotate(1turn);
-  }
+	0% {
+		transform: rotate(0);
+	}
+	100% {
+		transform: rotate(1turn);
+	}
 }
