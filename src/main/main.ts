@@ -27,7 +27,7 @@ class MainWindow {
 		})
 		//
 		if (process.env.NODE_ENV === 'development') {
-			this.mainWindow.loadURL('http://localhost:5173')
+			this.mainWindow.loadURL('http://localhost:3000')
 		} else {
 			this.mainWindow.loadFile(path.resolve(__dirname, '..', 'build/index.html'))
 		}
