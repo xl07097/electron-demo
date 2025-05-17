@@ -79,7 +79,7 @@
       }
     ],
     "asarUnpack": [
-      "exec",
+      "assets/exec",
       "node_modules/@deno"
     ],
     "asar": {
@@ -93,7 +93,7 @@
       "assets/exec"
     ],
     "win": {
-      "icon": "icons/256x256.ico",
+      "icon": "assets/icons/256x256.ico",
       "artifactName": "${productName}-v${version}.${ext}",
       "target": "nsis"
     },
@@ -103,7 +103,7 @@
       "allowToChangeInstallationDirectory": true,
       "allowElevation": true,
       "deleteAppDataOnUninstall": true,
-      "installerIcon": "icons/256x256.ico",
+      "installerIcon": "assets/icons/256x256.ico",
       "createDesktopShortcut": true
     }
   }
