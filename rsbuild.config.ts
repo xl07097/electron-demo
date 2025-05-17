@@ -25,7 +25,7 @@ export default defineConfig({
 		assetPrefix: './',
 		cleanDistPath: true,
 		distPath: {
-			root: path.resolve('./build'),
+			root: path.resolve('./dist/render'),
 		},
 	},
 	tools: {

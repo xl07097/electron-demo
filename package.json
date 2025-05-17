@@ -2,10 +2,10 @@
   "name": "electron-demo",
   "version": "1.3.20",
   "description": "electron demo",
-  "main": "dist/main.js",
+  "main": "dist/main/main.js",
   "scripts": {
     "dev:render": "rsbuild dev",
-    "dev:main": "npm run build:main && cross-env NODE_ENV=development electron ./dist/main.js",
+    "dev:main": "npm run build:main && cross-env NODE_ENV=development electron ./dist/main/main.js",
     "build:render": "rsbuild build",
     "build:main": "tsc --build ./src/main/tsconfig.json",
     "build:publish": "electron-builder build --x64 && npm run upload:oss",
@@ -86,14 +86,14 @@
       "smartUnpack": true
     },
     "files": [
-      "assets",
-      "dist",
+      "dist/main",
+      "dist/render",
       "src/preload",
-      "build",
-      "exec"
+      "assets/icons",
+      "assets/exec"
     ],
     "win": {
-      "icon": "assets/icons/256x256.ico",
+      "icon": "icons/256x256.ico",
       "artifactName": "${productName}-v${version}.${ext}",
       "target": "nsis"
     },
@@ -103,7 +103,7 @@
       "allowToChangeInstallationDirectory": true,
       "allowElevation": true,
       "deleteAppDataOnUninstall": true,
-      "installerIcon": "assets/icons/256x256.ico",
+      "installerIcon": "icons/256x256.ico",
       "createDesktopShortcut": true
     }
   }
