@@ -22,14 +22,14 @@ class MainWindow {
 				webSecurity: true,
 				navigateOnDragDrop: true,
 				devTools: true,
-				preload: path.join(__dirname, '..', 'src/preload/index.js'),
+				preload: path.join(__dirname, '..', '..', 'src/preload/index.js'),
 			},
 		})
 		//
 		if (process.env.NODE_ENV === 'development') {
 			this.mainWindow.loadURL('http://localhost:3000')
 		} else {
-			this.mainWindow.loadFile(path.resolve(__dirname, '..', 'build/index.html'))
+			this.mainWindow.loadFile(path.resolve(__dirname, '..', 'render/index.html'))
 		}
 
 		this.mainWindow.once('ready-to-show', () => {

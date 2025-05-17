@@ -7,9 +7,9 @@ import { kv } from '../store/index'
 const appPath = app.getAppPath()
 
 export const screenshot = (mainWindow: Electron.BrowserWindow) => {
-	let exPath = join(appPath, '..', `app.asar.unpacked/exec/PrintScr.exe`)
+	let exPath = join(appPath, '..', `app.asar.unpacked/assets/exec/PrintScr.exe`)
 	if (process.env.NODE_ENV === 'development') {
-		exPath = join(appPath, '..', `exec/PrintScr.exe`)
+		exPath = join(appPath, '..', '..', `assets/exec/PrintScr.exe`)
 	}
 	logger.info(exPath)
 	logger.info(process.env.NODE_ENV)
