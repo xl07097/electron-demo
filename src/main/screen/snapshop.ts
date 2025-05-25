@@ -2,7 +2,6 @@ import { app, clipboard } from 'electron'
 import { execFile } from 'child_process'
 import { join } from 'path'
 import logger from '../logger/index'
-import { kv } from '../store/index'
 
 const appPath = app.getAppPath()
 
@@ -21,6 +20,4 @@ export const screenshot = (mainWindow: Electron.BrowserWindow) => {
 			mainWindow.webContents.send('screenShop', pngs)
 		}
 	})
-
-	kv.set(['text', 'msg'], 'ahah')
 }

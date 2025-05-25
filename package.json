@@ -5,9 +5,9 @@
   "main": "dist/main/main.js",
   "scripts": {
     "dev:render": "rsbuild dev",
-    "dev:main": "npm run build:main && cross-env NODE_ENV=development electron ./dist/main/main.js",
+    "dev:main": "cross-env NODE_ENV=development electron ./dist/main/main.js",
     "build:render": "rsbuild build",
-    "build:main": "tsc --build ./src/main/tsconfig.json",
+    "build:main": "rspack build",
     "build:publish": "electron-builder build --x64 && npm run upload:oss",
     "upload:oss": "ts-node ./scripts/upload.ts",
     "major": "npm version major",
@@ -32,6 +32,8 @@
     "@rsbuild/plugin-node-polyfill": "^1.3.0",
     "@rsbuild/plugin-react": "^1.3.0",
     "@rsbuild/plugin-sass": "^1.3.1",
+    "@rspack/cli": "^1.3.10",
+    "@rspack/core": "^1.3.10",
     "@types/ali-oss": "^6.16.11",
     "@types/crypto-js": "^4.2.2",
     "@types/node": "^20.14.2",
@@ -88,7 +90,7 @@
     "files": [
       "dist/main",
       "dist/render",
-      "src/preload",
+      "dist/preload",
       "assets/icons",
       "assets/exec"
     ],

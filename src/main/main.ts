@@ -22,7 +22,7 @@ class MainWindow {
 				webSecurity: true,
 				navigateOnDragDrop: true,
 				devTools: true,
-				preload: path.join(__dirname, '..', '..', 'src/preload/index.js'),
+				preload: path.join(__dirname, '..', 'preload/preload.js'),
 			},
 		})
 		//
