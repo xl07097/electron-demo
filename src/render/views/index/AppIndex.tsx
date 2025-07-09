@@ -22,6 +22,7 @@ const AppIndex: React.FC<{}> = () => {
 			<LinkCard img={<MessageOne theme="outline" size="24" fill="#333" />} title="buckets" link="/buckets"></LinkCard>
 			<LinkCard img={<MessageOne theme="outline" size="24" fill="#333" />} title="壁纸" link="/wallpaper"></LinkCard>
 			<LinkCard img={<MessageOne theme="outline" size="24" fill="#333" />} title="手绘" link="/excalidraw"></LinkCard>
+			<LinkCard img={<MessageOne theme="outline" size="24" fill="#333" />} title="工具箱" link="/toolbox"></LinkCard>
 		</div>
 	)
 }

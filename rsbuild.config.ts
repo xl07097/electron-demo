@@ -14,6 +14,9 @@ export default defineConfig({
 	html: {
 		template: './index.html',
 	},
+	dev: {
+		hmr: true,
+	},
 	plugins: [pluginReact(), pluginSass(), pluginNodePolyfill()],
 	resolve: {
 		alias: {
