@@ -2,7 +2,6 @@ import path from 'node:path'
 import { defineConfig } from '@rsbuild/core'
 import { pluginReact } from '@rsbuild/plugin-react'
 import { pluginSass } from '@rsbuild/plugin-sass'
-import { pluginLess } from '@rsbuild/plugin-less'
 import { pluginNodePolyfill } from '@rsbuild/plugin-node-polyfill'
 
 export default defineConfig({
@@ -15,7 +14,7 @@ export default defineConfig({
 	html: {
 		template: './index.html',
 	},
-	plugins: [pluginReact(), pluginSass(), pluginLess(), pluginNodePolyfill()],
+	plugins: [pluginReact(), pluginSass(), pluginNodePolyfill()],
 	resolve: {
 		alias: {
 			'@': './',

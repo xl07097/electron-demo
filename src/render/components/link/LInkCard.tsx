@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import './style.less'
+import './style.scss'
 import React from 'react'
 
 interface LinkCardProp {

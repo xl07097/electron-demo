@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from 'react'
 import { Image } from 'antd'
-import './styles.less'
+import './styles.scss'
 
 const App: React.FC = () => {
 	const [loading, setLoading] = useState(false)

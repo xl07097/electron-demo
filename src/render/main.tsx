@@ -11,7 +11,7 @@ import './plugin/index'
 import store from './store/store'
 import App from './views/App'
 
-import './styles/style.less'
+import './styles/style.scss'
 
 const root = createRoot(document.getElementById('root') as HTMLElement)
 

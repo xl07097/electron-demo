@@ -1,5 +1,5 @@
 import { Spin } from 'antd'
-import './style.less'
+import './style.scss'
 
 function Index() {
 	return (
@@ -7,7 +7,9 @@ function Index() {
 			<div className="app-loading-logo">
 				<img src="https://xiangshuye.oss-cn-shanghai.aliyuncs.com/images/logos/logo3.png" />
 			</div>
-			<div><Spin size="large" /></div>
+			<div>
+				<Spin size="large" />
+			</div>
 			<div className="app-loading-title">香树叶</div>
 		</div>
 	)

@@ -1,5 +1,5 @@
 import { useNavigate } from 'react-router-dom'
-import './style.less'
+import './style.scss'
 import React, { useState } from 'react'
 import { formatSize } from '@/utils/commons'
 import { Image, Tooltip } from 'antd'
@@ -40,23 +40,23 @@ const FileItem: React.FC<FileProp> = props => {
 		}
 	}
 	return (
-			<div className="file-item" onClick={click} onDoubleClick={doubleClick}>
-				<div className="file-img">
-					{isImage && (props.size as number) < 1024 * 1024 ? (
-						<Image width={32} height={32} alt={name} src={props.url} />
-					) : (
-						<Image width={28} height={28} alt={name} preview={false} src={fiels} />
-					)}
-				</div>
-				<div className="file-body">
-					<h4 className="file-title">
-						<Tooltip title={name} placement="topLeft" destroyTooltipOnHide color={'var(--color-primary)'}>
-							{name}
-						</Tooltip>
-					</h4>
-					<p className="file-tips">{size}</p>
-				</div>
+		<div className="file-item" onClick={click} onDoubleClick={doubleClick}>
+			<div className="file-img">
+				{isImage && (props.size as number) < 1024 * 1024 ? (
+					<Image width={32} height={32} alt={name} src={props.url} />
+				) : (
+					<Image width={28} height={28} alt={name} preview={false} src={fiels} />
+				)}
 			</div>
+			<div className="file-body">
+				<h4 className="file-title">
+					<Tooltip title={name} placement="topLeft" destroyTooltipOnHide color={'var(--color-primary)'}>
+						{name}
+					</Tooltip>
+				</h4>
+				<p className="file-tips">{size}</p>
+			</div>
+		</div>
 	)
 }
 

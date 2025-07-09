@@ -1,7 +1,7 @@
 import React from 'react'
 import { Tooltip, Image } from 'antd'
 import db from '@/assets/db.png'
-import './item.less'
+import './item.scss'
 
 interface IProp {
 	name: string

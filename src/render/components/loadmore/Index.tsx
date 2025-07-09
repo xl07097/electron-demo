@@ -1,6 +1,6 @@
 import { useEffect, useRef } from 'react'
 import { Spin } from 'antd'
-import './style.less'
+import './style.scss'
 
 interface IProps {
 	loadMore?: () => void
