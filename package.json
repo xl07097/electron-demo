@@ -48,7 +48,7 @@
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.11",
     "devtron": "^1.4.0",
-    "electron": "^36.1.0",
+    "electron": "^36.8.1",
     "electron-builder": "^26.0.12",
     "events": "^3.3.0",
     "qs": "^6.12.1",
