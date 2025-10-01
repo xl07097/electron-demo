@@ -17,11 +17,11 @@ const Item: React.FC<IProp> = props => {
 	}
 	return (
 		<div className="bucket-item" onDoubleClick={doubleClick}>
-			<Image width={28} height={28} alt={props.name} preview={false} src={db} />
+			<Image width={32} height={32} alt={props.name} preview={false} src={db} />
 
 			<div className="bucket-body">
 				<h4 className="bucket-title">
-					<Tooltip title={props.name} placement="topLeft" destroyTooltipOnHide color={'var(--color-primary)'}>
+					<Tooltip title={props.name} placement="topLeft" color={'var(--color-primary)'}>
 						{props.name}
 					</Tooltip>
 				</h4>
