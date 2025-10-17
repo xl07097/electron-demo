@@ -47,7 +47,6 @@
     "cross-env": "^10.1.0",
     "crypto-js": "^4.2.0",
     "dayjs": "^1.11.11",
-    "devtron": "^1.4.0",
     "electron": "^38.2.0",
     "electron-builder": "^26.0.12",
     "events": "^3.3.0",
@@ -70,7 +69,7 @@
   "license": "ISC",
   "build": {
     "productName": "创客",
-    "appId": "com.xueliang.xiangshuye",
+    "appId": "com.xueliang.electron-demo",
     "directories": {
       "output": "release"
     },
