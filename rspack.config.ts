@@ -1,10 +1,9 @@
-import { Configuration } from '@rspack/core'
+import { defineConfig } from '@rspack/cli'
 import * as path from 'node:path'
 
-/**
- * @type {Configuration}
- */
-const mainConfig = {
+// const __dirname = path.dirname(new URL(import.meta.url).pathname)
+
+const mainConfig = defineConfig({
 	target: 'electron-main',
 	entry: {
 		main: './src/main/main.ts',
@@ -36,12 +35,9 @@ const mainConfig = {
 	resolve: {
 		extensions: ['.ts', '.js', '.json'],
 	},
-}
+})
 
-/**
- * @type {Configuration}
- */
-const preloadConfig = {
+const preloadConfig = defineConfig({
 	target: 'electron-preload',
 	entry: {
 		preload: './src/preload/index.js',
@@ -51,6 +47,6 @@ const preloadConfig = {
 		path: path.resolve(__dirname, 'dist/preload'),
 	},
 	// 其他配置...
-}
+})
 
 export default [mainConfig, preloadConfig]
