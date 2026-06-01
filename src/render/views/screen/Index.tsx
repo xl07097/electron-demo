@@ -1,5 +1,5 @@
 import { SetStateAction, useEffect, useState } from 'react'
-const { ipcRenderer } = require('electron')
+import { ipcRenderer } from 'electron'
 import { Button, Image } from 'antd'
 import { IpcRendererEvent } from 'electron'
 

@@ -45,5 +45,5 @@ root.render(
 				<App />
 			</AppWrapper>
 		</ConfigProvider>
-	</Provider>
+	</Provider>,
 )

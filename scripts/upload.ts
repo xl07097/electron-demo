@@ -1,6 +1,6 @@
 import * as path from 'path'
 import uploadToOSS from './uploadOSS'
-const packageJson = require('../package.json')
+import packageJson from '../package.json'
 const {
 	version,
 	build: { productName },
@@ -18,6 +18,6 @@ const {
 	await Promise.all(
 		fileLists.map(({ ossObjectFile, localFile }) => {
 			return uploadToOSS(`${OSSObjectDir}/${ossObjectFile}`, path.join(buildDir, localFile))
-		})
+		}),
 	)
 })()

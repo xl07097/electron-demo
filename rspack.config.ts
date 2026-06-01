@@ -1,8 +1,6 @@
 import { defineConfig } from '@rspack/cli'
 import * as path from 'node:path'
 
-// const __dirname = path.dirname(new URL(import.meta.url).pathname)
-
 const mainConfig = defineConfig({
 	target: 'electron-main',
 	entry: {

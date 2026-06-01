@@ -1,7 +1,7 @@
 import { useEffect } from 'react'
-const { ipcRenderer } = require('electron')
+import { ipcRenderer } from 'electron'
 import type { IpcRendererEvent } from 'electron'
-const { readdir } = require('fs')
+import { readdir } from 'node:fs'
 
 const handleFile = (event: IpcRendererEvent, path: string | undefined, ...args: string[]) => {
 	console.log(path)

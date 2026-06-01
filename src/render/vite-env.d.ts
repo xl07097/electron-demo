@@ -1,0 +1,17 @@
+/// <reference types="vite/client" />
+
+declare module '*.scss' {
+	const content: { [className: string]: string }
+	export default content
+}
+
+declare module '*.css' {
+	const content: { [className: string]: string }
+	export default content
+}
+
+// 或者使用字符串路径的方式
+declare module '*.svg' {
+	const content: string
+	export default content
+}

@@ -3,7 +3,7 @@ import max from '../../image/max.svg'
 import normal from '../../image/normal.svg'
 import close from '../../image/close.svg'
 import { useEffect, useMemo, useState } from 'react'
-const { ipcRenderer } = require('electron')
+import { ipcRenderer } from 'electron'
 import { ElectronWindownStatus } from '../../../main/enum/ElectronWindow'
 
 function WindowControl() {

@@ -1,10 +1,10 @@
-const OSS = require('ali-oss')
+import OSS from 'ali-oss'
 
 const client = new OSS({
 	bucket: process.env.bucket,
 	region: 'oss-cn-shanghai',
-	accessKeyId: process.env.accessKeyId,
-	accessKeySecret: process.env.accessKeySecret,
+	accessKeyId: process.env.accessKeyId as string,
+	accessKeySecret: process.env.accessKeySecret as string,
 	timeout: '100s',
 })
 

@@ -1,4 +1,3 @@
-// const electron  = require('electron')
 import electron from 'electron'
 const ipcRenderer = electron.ipcRenderer
 import { message } from 'antd'
