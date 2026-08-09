@@ -31,8 +31,8 @@ jobs:
       - name: build:main
         run: npm run build:main
 
-      - name: precompiler
-        run: npm run precompiler
+      - name: build:precompiler
+        run: npm run build:precompiler
 
       - name: publish
         env:
