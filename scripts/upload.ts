@@ -1,11 +1,13 @@
 import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import uploadToOSS from './uploadOSS.ts';
 import packageJson from '../package.json' with { type: 'json' };
 const {
 	version,
 	build: { productName },
 } = packageJson;
-const __dirname = path.dirname(new URL(import.meta.url).pathname);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 (async function () {
 	const OSSObjectDir = 'software/install';
