@@ -5,6 +5,7 @@ const {
 	version,
 	build: { productName },
 } = packageJson;
+const __dirname = path.dirname(new URL(import.meta.url).pathname);
 
 (async function () {
 	const OSSObjectDir = 'software/install';
