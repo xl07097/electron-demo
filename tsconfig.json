@@ -1,8 +1,10 @@
 {
   "compilerOptions": {
+    "module": "esnext",
     "allowSyntheticDefaultImports": true,
-    "allowImportingTsExtensions": false,
+    "allowImportingTsExtensions": true,
     "forceConsistentCasingInFileNames": true,
+    "noEmit": true,
     "noImplicitReturns": true,
     "noImplicitThis": true,
     "noImplicitAny": false,
