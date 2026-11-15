@@ -6,7 +6,7 @@ import { ConfigProvider, App as AppWrapper } from 'antd';
 import zhCN from 'antd/locale/zh_CN.js';
 import 'dayjs/locale/zh-cn';
 
-// import './plugin/index.js'
+import './plugin/index.ts';
 
 import store from './store/store.js';
 import App from './views/App.js';

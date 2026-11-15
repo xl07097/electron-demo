@@ -1,6 +1,7 @@
 import { app } from 'electron';
 import { AppWindow } from './AppWindow';
 import { createTray } from './tray';
+import { registerUpdateEvent } from './appUpdate';
 
 let mainWindow: AppWindow;
 
@@ -40,6 +41,9 @@ app
 	.then(createWindowModule)
 	.then(() => {
 		createTray(mainWindow);
+	})
+	.then(() => {
+		registerUpdateEvent(mainWindow);
 	});
 
 process.on('uncaughtException', (error: Error) => {

@@ -7,7 +7,7 @@ import logger from './logger';
 import { createTray } from './tray';
 
 export class AppWindow {
-	private window: BrowserWindow;
+	window: BrowserWindow;
 
 	private isQuitting: boolean;
 
@@ -66,6 +66,10 @@ export class AppWindow {
 		});
 
 		registerscreenShop(this.window);
+	}
+
+	get webContent() {
+		return this.window.webContents;
 	}
 
 	isMinimized() {
