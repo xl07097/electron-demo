@@ -1,0 +1,35 @@
+{
+  "name": "@electron-monorepo/main",
+  "version": "1.0.0",
+  "description": "",
+  "main": "src/main.ts",
+  "keywords": [],
+  "type": "module",
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@12.4.1",
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development NODE_OPTIONS=--import=tsx electron ./src/main.ts",
+    "start": "electron ./dist/main.js",
+    "build": "rspack build --mode production"
+  },
+  "dependencies": {
+    "@electron-monorepo/preload": "workspace:^",
+    "builder-util-runtime": "^9.7.0",
+    "electron": "catalog:",
+    "electron-log": "^5.4.4",
+    "electron-updater": "^6.8.11",
+    "import-meta-resolve": "^4.2.0"
+  },
+  "devDependencies": {
+    "@rspack/cli": "catalog:",
+    "@rspack/core": "catalog:",
+    "@types/node": "catalog:",
+    "cross-env": "^10.1.0",
+    "tsx": "^4.23.15",
+    "typescript": "catalog:"
+  },
+  "build": {
+    "npmRebuild": false
+  }
+}

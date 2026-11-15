@@ -2,75 +2,53 @@
   "name": "electron-demo",
   "version": "1.3.30",
   "description": "electron demo",
-  "main": "dist/main/main.js",
+  "main": "main.js",
   "scripts": {
-    "dev:render": "rsbuild dev",
-    "dev:main": "electron ./dist/main/main.js",
-    "build:render": "rsbuild build",
-    "build:main": "rspack build --mode production",
-    "build:main:dev": "rspack build --mode development",
-    "build:publish": "electron-builder build --x64 && npm run upload:oss",
+    "start:main": "pnpm --filter @electron-monorepo/main start",
+    "build:main": "pnpm --filter @electron-monorepo/main build",
+    "build:preload": "pnpm --filter @electron-monorepo/preload build",
+    "build:render": "pnpm --filter @electron-monorepo/render build",
+    "build:shared": "pnpm --filter @electron-monorepo/shared build",
+    "start:render": "pnpm --filter @electron-monorepo/render start",
+    "build": "pnpm run build:shared && pnpm run build:preload && pnpm run build:render && pnpm run build:main",
     "build:precompiler": "electron-builder build --x64",
     "upload:oss": "node ./scripts/upload.ts",
     "major": "npm version major",
     "minor": "npm version minor",
-    "patch": "npm version patch",
-    "watch:main": "tsc --build ./src/main/tsconfig.json -w"
+    "patch": "npm version patch"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@12.4.1",
+  "engines": {
+    "node": ">=20",
+    "pnpm": ">=10"
   },
   "dependencies": {
-    "@deno/kv": "^0.14.0",
+    "@deno/kv": "catalog:",
     "electron-log": "^5.4.4",
-    "electron-updater": "^6.8.9",
-    "tslib": "^2.8.1"
+    "electron-updater": "^6.8.11",
+    "tslib": "^2.9.1"
   },
   "devDependencies": {
-    "@ant-design/icons": "^6.3.2",
-    "@excalidraw/excalidraw": "^0.18.1",
-    "@icon-park/react": "^1.4.2",
-    "@reduxjs/toolkit": "^2.12.0",
-    "@rsbuild/core": "^2.1.10",
-    "@rsbuild/plugin-node-polyfill": "^1.4.6",
-    "@rsbuild/plugin-react": "^2.1.0",
-    "@rsbuild/plugin-sass": "^2.0.1",
-    "@rspack/cli": "^2.1.8",
-    "@rspack/core": "^2.1.8",
+    "@electron/get": "^3.0.0",
     "@types/ali-oss": "^6.23.3",
-    "@types/crypto-js": "^4.2.2",
-    "@types/node": "^24.13.3",
-    "@types/qs": "^6.15.1",
-    "@types/react": "^19.2.18",
-    "@types/react-dom": "^19.2.4",
     "ali-oss": "^6.23.0",
-    "antd": "^6.5.4",
-    "axios": "^1.19.0",
-    "codemirror": "^6.0.2",
     "cross-env": "^10.1.0",
-    "crypto-js": "^4.2.0",
-    "dayjs": "^1.11.21",
-    "electron": "^43.3.0",
+    "dayjs": "^1.11.23",
+    "electron": "catalog:",
     "electron-builder": "^26.15.3",
     "events": "^3.3.0",
-    "qs": "^6.15.3",
-    "quill": "^2.0.3",
-    "react": "^19.2.8",
-    "react-dom": "^19.2.8",
-    "react-infinite-scroll-component": "^7.2.1",
-    "react-redux": "^9.3.0",
-    "react-router-dom": "^7.18.2",
-    "redux": "^5.0.1",
+    "qs": "^6.14.0",
     "typescript": "^6.0.3"
   },
-  "repository": {
-    "type": "git",
-    "url": "git@github.com:xl07097/electron-demo.git"
-  },
-  "author": "xueliang",
-  "license": "ISC",
   "build": {
     "productName": "创客",
     "appId": "com.xueliang.electron-demo",
     "directories": {
-      "output": "release"
+      "output": "release",
+      "buildResources": "buildResources"
     },
     "publish": [
       {
@@ -79,23 +57,36 @@
       }
     ],
     "asarUnpack": [
-      "assets/exec",
+      "buildResources/exec",
       "node_modules/@deno"
     ],
-    "asar": {
-      "smartUnpack": true
-    },
+    "asar": false,
     "files": [
-      "dist/main",
-      "dist/render",
-      "dist/preload",
-      "assets/icons",
-      "assets/exec"
+      {
+        "from": "apps/main/dist",
+        "to": "."
+      },
+      {
+        "from": "apps/render/dist",
+        "to": "."
+      },
+      {
+        "from": "buildResources",
+        "to": "buildResources"
+      },
+      "package.json"
     ],
     "win": {
-      "icon": "assets/icons/256x256.ico",
+      "icon": "buildResources/icons/256x256.ico",
       "artifactName": "${productName}-v${version}.${ext}",
-      "target": "nsis"
+      "target": [
+        {
+          "target": "nsis",
+          "arch": [
+            "x64"
+          ]
+        }
+      ]
     },
     "nsis": {
       "oneClick": false,
@@ -103,7 +94,7 @@
       "allowToChangeInstallationDirectory": true,
       "allowElevation": true,
       "deleteAppDataOnUninstall": true,
-      "installerIcon": "assets/icons/256x256.ico",
+      "installerIcon": "buildResources/icons/256x256.ico",
       "createDesktopShortcut": true
     }
   }

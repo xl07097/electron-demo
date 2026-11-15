@@ -1,0 +1,28 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "types": [
+      "node"
+    ],
+    "lib": [
+      "ESNext"
+    ],
+    "rootDir": "./",
+    "outDir": "./dist",
+    "target": "es2022",
+    "paths": {
+      "@electron-monorepo/preload": [
+        "../preload"
+      ],
+    }
+  },
+  "include": [
+    "src"
+  ],
+  "exclude": [
+    "node_modules",
+    "dist",
+    "backup",
+    "test",
+  ]
+}

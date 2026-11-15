@@ -1,0 +1,34 @@
+{
+  "name": "@electron-monorepo/shared",
+  "version": "1.0.0",
+  "description": "共享代码",
+  "main": "./dist/index.js",
+  "module": "./dist/index.js",
+  "type": "module",
+  "scripts": {
+    "build": "rspack build --mode production",
+    "build:tsc": "tsc"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@12.4.1",
+  "files": [
+    "dist",
+    "package.json"
+  ],
+  "exports": {
+    ".": {
+      "import": "./dist/preload.js",
+      "require": "./dist/preload.js",
+      "types": "./dist/index.d.ts"
+    },
+    "./package.json": "./package.json"
+  },
+  "devDependencies": {
+    "@rspack/cli": "catalog:",
+    "@rspack/core": "catalog:",
+    "@types/node": "catalog:",
+    "typescript": "catalog:"
+  }
+}

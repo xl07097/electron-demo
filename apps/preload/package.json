@@ -1,0 +1,33 @@
+{
+  "name": "@electron-monorepo/preload",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/preload.js",
+  "module": "./dist/preload.js",
+  "type": "module",
+  "scripts": {
+    "build": "rspack build --mode production"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "packageManager": "pnpm@12.4.1",
+  "exports": {
+    ".": {
+      "default": "./dist/preload.js",
+      "import": "./dist/preload.js",
+      "require": "./dist/preload.js"
+    },
+    "./package.json": "./package.json"
+  },
+  "dependencies": {
+    "@electron-monorepo/shared": "workspace:^"
+  },
+  "devDependencies": {
+    "@rspack/cli": "catalog:",
+    "@rspack/core": "catalog:",
+    "@types/node": "catalog:",
+    "electron": "catalog:",
+    "typescript": "catalog:"
+  }
+}

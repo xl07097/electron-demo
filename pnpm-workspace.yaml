@@ -1,0 +1,16 @@
+packages:
+  - 'apps/*'
+  - 'packages/*'
+
+allowBuilds:
+  electron: true
+  electron-winstaller: true
+  esbuild: true
+
+catalog:
+  electron: ^45.3.1
+  '@deno/kv': ^0.14.0
+  '@types/node': ^24.10.4
+  '@rspack/cli': ^2.3.2
+  '@rspack/core': ^2.3.2
+  'typescript': ^6.0.3
