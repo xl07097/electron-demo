@@ -4,19 +4,12 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'import-meta-resolve';
 import { registerscreenShop } from './screen/snapshop';
 import logger from './logger';
+import { createTray } from './tray';
 
 export class AppWindow {
 	window: BrowserWindow;
 
 	constructor() {
-		// let preloadjs;
-
-		// if (process.env.NODE_ENV === 'development') {
-		// 	preloadjs = fileURLToPath(resolve('@electron-monorepo/preload', import.meta.url));
-		// } else {
-		// 	preloadjs = path.join(__dirname, 'preload.js');
-		// }
-
 		const window = new BrowserWindow({
 			title: '创客',
 			width: 1000,
@@ -63,6 +56,8 @@ export class AppWindow {
 		});
 
 		registerscreenShop(this.window);
+
+		createTray(this.window);
 	}
 
 	isMinimized() {

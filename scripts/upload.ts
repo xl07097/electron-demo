@@ -15,7 +15,10 @@ const __dirname = path.dirname(__filename);
 
 	const fileLists = [
 		{ ossObjectFile: `latest.yml`, localFile: `latest.yml` },
-		{ ossObjectFile: `${productName}-v${version}.exe`, localFile: `${productName}-v${version}.exe` },
+		{
+			ossObjectFile: `${productName}-v${version}.exe`,
+			localFile: `${productName}-v${version}.exe`,
+		},
 	];
 
 	await Promise.all(

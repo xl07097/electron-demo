@@ -1,16 +1,17 @@
 import { app, ipcMain, clipboard } from 'electron';
 import { execFile } from 'node:child_process';
-import { join } from 'node:path';
+import * as path from 'node:path';
+import { fileURLToPath } from 'node:url';
 import logger from '../logger/index';
-
-const appPath = app.getAppPath();
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 export const screenshot = (mainWindow: Electron.BrowserWindow) => {
 	let exPath;
 	if (process.env.NODE_ENV === 'development') {
-		exPath = join(appPath, '..', '..', '..', `buildResources/exec/PrintScr.exe`);
+		exPath = path.join(__dirname, '..', '..', '..', '..', `buildResources/exec/PrintScr.exe`);
 	} else {
-		exPath = join(__dirname, `buildResources/exec/PrintScr.exe`);
+		exPath = path.join(__dirname, `buildResources/exec/PrintScr.exe`);
 	}
 	logger.info(exPath);
 	logger.info(process.env.NODE_ENV);

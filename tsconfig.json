@@ -17,6 +17,7 @@
     "isolatedModules": true,
     "noUncheckedSideEffectImports": true,
     "allowSyntheticDefaultImports": true,
+    "rewriteRelativeImportExtensions": true,
     "esModuleInterop": true,
     "skipLibCheck": true,
     "moduleDetection": "force"
