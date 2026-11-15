@@ -1,13 +1,11 @@
-import { app, Tray, Menu } from 'electron';
+import { Tray, Menu } from 'electron';
 import * as path from 'node:path';
-import { fileURLToPath } from 'node:url';
-const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+import { AppWindow } from '../AppWindow';
 
 class AppTray {
 	constructor() {}
 
-	create(mainWindow: Electron.BrowserWindow) {
+	create(mainWindow: AppWindow) {
 		let tray;
 		if (process.env.NODE_ENV === 'development') {
 			tray = new Tray(
@@ -22,7 +20,7 @@ class AppTray {
 				label: '退出',
 				click: () => {
 					if (process.platform !== 'darwin') {
-						app.quit();
+						mainWindow.quit();
 					}
 				},
 			},
@@ -36,7 +34,7 @@ class AppTray {
 	}
 }
 
-export function createTray(mainWindow: Electron.BrowserWindow) {
+export function createTray(mainWindow: AppWindow) {
 	const tray = new AppTray();
 	tray.create(mainWindow);
 }

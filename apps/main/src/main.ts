@@ -1,5 +1,6 @@
 import { app } from 'electron';
 import { AppWindow } from './AppWindow';
+import { createTray } from './tray';
 
 let mainWindow: AppWindow;
 
@@ -34,7 +35,12 @@ app.on('second-instance', (event, commandLine, workingDirectory) => {
 	}
 });
 
-app.whenReady().then(createWindowModule);
+app
+	.whenReady()
+	.then(createWindowModule)
+	.then(() => {
+		createTray(mainWindow);
+	});
 
 process.on('uncaughtException', (error: Error) => {
 	console.group('Uncaught Exception');

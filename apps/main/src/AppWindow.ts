@@ -7,7 +7,9 @@ import logger from './logger';
 import { createTray } from './tray';
 
 export class AppWindow {
-	window: BrowserWindow;
+	private window: BrowserWindow;
+
+	private isQuitting: boolean;
 
 	constructor() {
 		const window = new BrowserWindow({
@@ -31,6 +33,7 @@ export class AppWindow {
 			},
 		});
 		this.window = window;
+		this.isQuitting = false;
 	}
 
 	public load() {
@@ -55,9 +58,14 @@ export class AppWindow {
 			}
 		});
 
-		registerscreenShop(this.window);
+		this.window.on('close', event => {
+			if (!this.isQuitting) {
+				event.preventDefault();
+				this.window.hide();
+			}
+		});
 
-		createTray(this.window);
+		registerscreenShop(this.window);
 	}
 
 	isMinimized() {
@@ -103,5 +111,10 @@ export class AppWindow {
 			}
 			this.window.focus();
 		}
+	}
+
+	quit() {
+		this.isQuitting = true;
+		app.quit();
 	}
 }

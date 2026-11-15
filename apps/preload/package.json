@@ -4,7 +4,6 @@
   "description": "",
   "main": "./dist/preload.js",
   "module": "./dist/preload.js",
-  "type": "module",
   "scripts": {
     "build": "rspack build --mode production"
   },
