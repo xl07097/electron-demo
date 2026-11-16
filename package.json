@@ -1,6 +1,6 @@
 {
   "name": "ShuDesktop",
-  "version": "1.3.30",
+  "version": "1.4.0",
   "description": "electron desktop demo",
   "main": "main.js",
   "scripts": {
