@@ -27,21 +27,16 @@
   },
   "dependencies": {
     "@deno/kv": "catalog:",
-    "electron-log": "^5.4.4",
-    "electron-updater": "^6.8.11",
-    "tslib": "^2.9.1"
+    "electron-log": "catalog:",
+    "electron-updater": "^6.8.11"
   },
   "devDependencies": {
-    "@electron/get": "^3.0.0",
     "@types/ali-oss": "^6.23.3",
     "ali-oss": "^6.23.0",
-    "cross-env": "^10.1.0",
-    "dayjs": "^1.11.23",
+    "cross-env": "catalog:",
     "electron": "catalog:",
-    "electron-builder": "^26.15.3",
-    "events": "^3.3.0",
-    "qs": "^6.14.0",
-    "typescript": "^6.0.3"
+    "electron-builder": "^26.18.0",
+    "typescript": "catalog:"
   },
   "build": {
     "productName": "创客",

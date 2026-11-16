@@ -16,15 +16,15 @@
     "@desktop/preload": "workspace:^",
     "builder-util-runtime": "^9.7.0",
     "electron": "catalog:",
-    "electron-log": "^5.4.4",
-    "electron-updater": "^6.8.11",
+    "electron-log": "catalog:",
+    "electron-updater": "catalog:",
     "import-meta-resolve": "^4.2.0"
   },
   "devDependencies": {
     "@rspack/cli": "catalog:",
     "@rspack/core": "catalog:",
     "@types/node": "catalog:",
-    "cross-env": "^10.1.0",
+    "cross-env": "catalog:",
     "tsx": "^4.23.15",
     "typescript": "catalog:"
   },
