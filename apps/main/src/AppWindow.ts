@@ -29,7 +29,7 @@ export class AppWindow {
 				navigateOnDragDrop: true,
 				sandbox: true,
 				devTools: true,
-				preload: fileURLToPath(resolve('@electron-monorepo/preload', import.meta.url)),
+				preload: fileURLToPath(resolve('@desktop/preload', import.meta.url)),
 			},
 		});
 		this.window = window;

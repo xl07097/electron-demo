@@ -1,19 +1,19 @@
 {
-  "name": "@electron-monorepo/main",
+  "name": "@desktop/main",
   "version": "1.0.0",
   "description": "",
   "main": "src/main.ts",
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.21.0",
   "scripts": {
     "dev": "cross-env NODE_ENV=development NODE_OPTIONS=--import=tsx electron ./src/main.ts",
     "start": "electron ./dist/main.js",
     "build": "rspack build --mode production"
   },
   "dependencies": {
-    "@electron-monorepo/preload": "workspace:^",
+    "@desktop/preload": "workspace:^",
     "builder-util-runtime": "^9.7.0",
     "electron": "catalog:",
     "electron-log": "^5.4.4",

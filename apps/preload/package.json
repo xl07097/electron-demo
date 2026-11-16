@@ -1,5 +1,5 @@
 {
-  "name": "@electron-monorepo/preload",
+  "name": "@desktop/preload",
   "version": "1.0.0",
   "description": "",
   "main": "./dist/preload.js",
@@ -10,7 +10,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.21.0",
   "exports": {
     ".": {
       "default": "./dist/preload.js",
@@ -20,7 +20,7 @@
     "./package.json": "./package.json"
   },
   "dependencies": {
-    "@electron-monorepo/shared": "workspace:^"
+    "@desktop/shared": "workspace:^"
   },
   "devDependencies": {
     "@rspack/cli": "catalog:",

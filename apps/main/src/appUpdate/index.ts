@@ -1,5 +1,6 @@
 import { ipcMain } from 'electron';
 import { autoUpdater, ProgressInfo, UpdateInfo } from 'electron-updater';
+import electronUpdater, { type AppUpdater } from 'electron-updater';
 import {
 	checkingForUpdate,
 	updateNotAvailable,
@@ -19,6 +20,7 @@ class AppUpdateEvent {
 
 	constructor(mainWindow: AppWindow) {
 		this.window = mainWindow.window;
+		const updater = this.getAutoUpdater();
 		autoUpdaterWithEvents.on('checking-for-update', this.checkingForUpdate.bind(this));
 		autoUpdaterWithEvents.on('update-not-available', this.updateNotAvailable.bind(this));
 		autoUpdaterWithEvents.on('error', this.updateError.bind(this));
@@ -29,6 +31,13 @@ class AppUpdateEvent {
 		ipcMain.on('downloadUpdate', this.downloadUpdate.bind(this));
 		// 监听是否检查更新事件
 		ipcMain.on('checkForUpdate', this.checkForUpdates.bind(this));
+	}
+
+	getAutoUpdater(): AppUpdater {
+		// Using destructuring to access autoUpdater due to the CommonJS module of 'electron-updater'.
+		// It is a workaround for ESM compatibility issues, see https://github.com/electron-userland/electron-builder/issues/7976.
+		const { autoUpdater } = electronUpdater;
+		return autoUpdater;
 	}
 
 	checkingForUpdate() {

@@ -5,7 +5,7 @@ import type {
 	IpcEventArgs,
 	IpcRequestChannel,
 	IpcRequestArgs,
-} from '@electron-monorepo/shared';
+} from '@desktop/shared';
 
 const electronHandler = {
 	app: { getVersion: () => ipcRenderer.invoke('app:get-version') },

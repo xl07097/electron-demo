@@ -1,4 +1,4 @@
-import type { ElectronHandler } from '@electron-monorepo/preload';
+import type { ElectronHandler } from '@desktop/preload';
 
 declare global {
 	interface Window {

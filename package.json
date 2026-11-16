@@ -1,15 +1,15 @@
 {
   "name": "ShuDesktop",
   "version": "1.3.30",
-  "description": "electron demo",
+  "description": "electron desktop demo",
   "main": "main.js",
   "scripts": {
-    "start:main": "pnpm --filter @electron-monorepo/main start",
-    "build:main": "pnpm --filter @electron-monorepo/main build",
-    "build:preload": "pnpm --filter @electron-monorepo/preload build",
-    "build:render": "pnpm --filter @electron-monorepo/render build",
-    "build:shared": "pnpm --filter @electron-monorepo/shared build",
-    "start:render": "pnpm --filter @electron-monorepo/render start",
+    "start:main": "pnpm --filter @desktop/main start",
+    "build:main": "pnpm --filter @desktop/main build",
+    "build:preload": "pnpm --filter @desktop/preload build",
+    "build:render": "pnpm --filter @desktop/render build",
+    "build:shared": "pnpm --filter @desktop/shared build",
+    "start:render": "pnpm --filter @desktop/render start",
     "build": "pnpm run build:shared && pnpm run build:preload && pnpm run build:render && pnpm run build:main",
     "build:precompiler": "electron-builder build --x64",
     "upload:oss": "node ./scripts/upload.ts",
@@ -20,7 +20,7 @@
   "keywords": [],
   "author": "",
   "license": "ISC",
-  "packageManager": "pnpm@12.4.1",
+  "packageManager": "pnpm@12.21.0",
   "engines": {
     "node": ">=20",
     "pnpm": ">=10"
