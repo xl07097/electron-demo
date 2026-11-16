@@ -5,11 +5,11 @@
   "main": "main.js",
   "scripts": {
     "start:main": "pnpm --filter @desktop/main start",
+    "start:render": "pnpm --filter @desktop/render start",
     "build:main": "pnpm --filter @desktop/main build",
     "build:preload": "pnpm --filter @desktop/preload build",
     "build:render": "pnpm --filter @desktop/render build",
-    "build:shared": "pnpm --filter @desktop/shared build",
-    "start:render": "pnpm --filter @desktop/render start",
+    "build:shared": "pnpm --filter @desktop/shared build:tsc",
     "build": "pnpm run build:shared && pnpm run build:preload && pnpm run build:render && pnpm run build:main",
     "build:precompiler": "electron-builder build --x64",
     "upload:oss": "node ./scripts/upload.ts",

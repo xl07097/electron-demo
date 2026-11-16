@@ -23,23 +23,20 @@ jobs:
           registry-url: https://registry.npmjs.org
 
       - name: Install
-        run: npm install
+        run: pnpm install
 
-      - name: build:render
-        run: npm run build:render
-
-      - name: build:main
-        run: npm run build:main
+      - name: build
+        run: pnpm run build
 
       - name: build:precompiler
-        run: npm run build:precompiler
+        run: pnpm run build:precompiler
 
       - name: publish
         env:
           bucket: ${{ secrets.bucket }}
           accessKeyId: ${{ secrets.accessKeyId }}
           accessKeySecret: ${{ secrets.accessKeySecret }}
-        run: npm run upload:oss
+        run: pnpm run upload:oss
 
       - name: Create Release
         id: create_release
