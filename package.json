@@ -13,6 +13,7 @@
     "build": "pnpm run build:shared && pnpm run build:preload && pnpm run build:render && pnpm run build:main",
     "build:precompiler": "electron-builder build --x64",
     "upload:oss": "node ./scripts/upload.ts",
+    "create:release": "node ./scripts/create-release.ts",
     "major": "npm version major",
     "minor": "npm version minor",
     "patch": "npm version patch"
@@ -73,7 +74,7 @@
     ],
     "win": {
       "icon": "buildResources/icons/256x256.ico",
-      "artifactName": "${productName}-v${version}.${ext}",
+      "artifactName": "${productName}-${platform}-${arch}-v${version}.${ext}",
       "target": [
         {
           "target": "nsis",

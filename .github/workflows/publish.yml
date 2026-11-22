@@ -7,6 +7,8 @@ on:
 
 jobs:
   publish:
+    permissions:
+      contents: write
     strategy:
       matrix:
         os: [windows-latest]
@@ -33,6 +35,11 @@ jobs:
 
       - name: build:precompiler
         run: pnpm run build:precompiler
+
+      - name: Create GitHub release
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: pnpm run create:release
 
       - name: publish
         env:

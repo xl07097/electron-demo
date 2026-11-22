@@ -1,54 +1,44 @@
-import { Drawer, Button, Form, Input, Radio, Select, Space, message, Spin } from 'antd'
-import { useState } from 'react'
-import { post } from '@/http/http'
+import { Drawer, Button, Form, Input, Radio, Select, Space, message, Spin } from 'antd';
+import { useState } from 'react';
+import { post } from '@/http/http';
 
 interface IProp {
-	onClose?: Function
-	open: boolean
+	onClose?: Function;
+	open: boolean;
 }
 const initValue = {
 	type: 'email',
 	to: [],
-	from: {
-		name: '',
-		email: '',
-	},
+	from: { name: '', email: '' },
 	subject: '接口测试',
-	content: {
-		type: 'html',
-		value: '接口测试',
-	},
-}
+	content: { type: 'html', value: '接口测试' },
+};
 const Edit: React.FC<IProp> = props => {
-	const [loading, setLoading] = useState(false)
-	const [messageApi, contextHolder] = message.useMessage()
+	const [loading, setLoading] = useState(false);
+	const [messageApi, contextHolder] = message.useMessage();
 
 	const onClose = () => {
-		console.log(90)
-		props.onClose && props.onClose()
-	}
+		console.log(90);
+		props.onClose && props.onClose();
+	};
 
 	const onFinish = async (values: any) => {
-		console.log(values)
-		setLoading(true)
+		console.log(values);
+		setLoading(true);
 		const res = await post('/sms/send', {
 			...values,
 			to: values.to.map((item: string) => {
-				return {
-					name: '',
-					email: item,
-					user_id: '',
-				}
+				return { name: '', email: item, user_id: '' };
 			}),
-		})
-		setLoading(false)
+		});
+		setLoading(false);
 		if (res.code === 200) {
-			messageApi.success('保存成功')
+			messageApi.success('保存成功');
 			setTimeout(() => {
-				onClose()
-			}, 300)
+				onClose();
+			}, 300);
 		}
-	}
+	};
 
 	return (
 		<Spin spinning={loading} delay={500}>
@@ -56,7 +46,7 @@ const Edit: React.FC<IProp> = props => {
 			<Drawer
 				title="Basic Drawer"
 				closeIcon={false}
-				destroyOnClose={true}
+				destroyOnHidden={true}
 				size="large"
 				onClose={onClose}
 				open={props.open}
@@ -69,7 +59,11 @@ const Edit: React.FC<IProp> = props => {
 					style={{ maxWidth: 600 }}
 					initialValues={initValue}
 				>
-					<Form.Item label="消息类别" name="type" rules={[{ required: true, message: '消息类别必选' }]}>
+					<Form.Item
+						label="消息类别"
+						name="type"
+						rules={[{ required: true, message: '消息类别必选' }]}
+					>
 						<Radio.Group buttonStyle="solid">
 							<Radio.Button value="sms">短信</Radio.Button>
 							<Radio.Button value="email">邮件</Radio.Button>
@@ -95,15 +89,28 @@ const Edit: React.FC<IProp> = props => {
 					<Form.Item label="主题" name="subject" rules={[{ required: true, message: '主题必填' }]}>
 						<Input placeholder="主题" />
 					</Form.Item>
-					<Form.Item label="内容格式" name={['content', 'type']} rules={[{ required: true, message: '内容格式必填' }]}>
+					<Form.Item
+						label="内容格式"
+						name={['content', 'type']}
+						rules={[{ required: true, message: '内容格式必填' }]}
+					>
 						<Radio.Group buttonStyle="solid">
 							<Radio.Button value="txt">文本</Radio.Button>
 							<Radio.Button value="html">html</Radio.Button>
 							<Radio.Button value="markdown">markdown</Radio.Button>
 						</Radio.Group>
 					</Form.Item>
-					<Form.Item label="内容" name={['content', 'value']} rules={[{ required: true, message: '内容必填' }]}>
-						<Input.TextArea showCount maxLength={100} style={{ height: 120, marginBottom: 24 }} placeholder="内容" />
+					<Form.Item
+						label="内容"
+						name={['content', 'value']}
+						rules={[{ required: true, message: '内容必填' }]}
+					>
+						<Input.TextArea
+							showCount
+							maxLength={100}
+							style={{ height: 120, marginBottom: 24 }}
+							placeholder="内容"
+						/>
 					</Form.Item>
 					<Form.Item wrapperCol={{ span: 12, offset: 4 }}>
 						<Space>
@@ -116,7 +123,7 @@ const Edit: React.FC<IProp> = props => {
 				</Form>
 			</Drawer>
 		</Spin>
-	)
-}
+	);
+};
 
-export default Edit
+export default Edit;
