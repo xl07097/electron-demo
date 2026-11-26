@@ -59,7 +59,7 @@ function parseRelease(value: unknown): Release {
 async function getReleaseAssets(): Promise<string[]> {
 	const scriptDirectory = path.dirname(fileURLToPath(import.meta.url));
 	const releaseDirectory = path.resolve(scriptDirectory, '../release');
-	const installerName = `${build.productName}-v${version}.exe`;
+	const installerName = `${build.productName}-win-x64-v${version}.exe`; //${productName}-${os}-${arch}-v${version}.${ext}
 	const expectedAssets = new Set([installerName, `${installerName}.blockmap`, 'latest.yml']);
 	const files = await readdir(releaseDirectory, { withFileTypes: true });
 	const assets = files

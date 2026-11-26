@@ -16,8 +16,8 @@ const __dirname = path.dirname(__filename);
 	const fileLists = [
 		{ ossObjectFile: `latest.yml`, localFile: `latest.yml` },
 		{
-			ossObjectFile: `${productName}-v${version}.exe`,
-			localFile: `${productName}-v${version}.exe`,
+			ossObjectFile: `${productName}-win-x64-v${version}.exe`, //${productName}-${os}-${arch}-v${version}.${ext}",
+			localFile: `${productName}-win-x64-v${version}.exe`,
 		},
 	];
 

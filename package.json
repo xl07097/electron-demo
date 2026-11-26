@@ -76,7 +76,7 @@
     ],
     "win": {
       "icon": "buildResources/icons/256x256.ico",
-      "artifactName": "${productName}-${os}-${platform}-${arch}-v${version}.${ext}",
+      "artifactName": "${productName}-${os}-${arch}-v${version}.${ext}",
       "target": [
         {
           "target": "nsis",
