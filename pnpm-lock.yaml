@@ -183,7 +183,7 @@ catalogs:
       specifier: ^2.3.2
       version: 2.3.2
     '@types/node':
-      specifier: ^24.10.4
+      specifier: ^24.19.2
       version: 24.19.2
     cross-env:
       specifier: ^10.1.0
@@ -218,6 +218,9 @@ importers:
       '@types/ali-oss':
         specifier: ^6.23.3
         version: 6.23.4
+      '@types/node':
+        specifier: 'catalog:'
+        version: 24.19.2
       ali-oss:
         specifier: ^6.23.0
         version: 6.23.0(supports-color@8.1.1)

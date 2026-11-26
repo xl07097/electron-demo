@@ -3,11 +3,7 @@ import path from 'node:path';
 import { fileURLToPath } from 'node:url';
 import packageJson from '../package.json' with { type: 'json' };
 
-type Release = {
-	id: number;
-	upload_url: string;
-	html_url: string;
-};
+type Release = { id: number; upload_url: string; html_url: string };
 
 const token = process.env.GITHUB_TOKEN;
 const repository = process.env.GITHUB_REPOSITORY;
@@ -30,7 +26,7 @@ async function requestGitHub(url: string, init: RequestInit): Promise<unknown> {
 		headers: {
 			Accept: 'application/vnd.github+json',
 			Authorization: `Bearer ${token}`,
-			'X-GitHub-Api-Version': '2022-11-28',
+			'X-GitHub-Api-Version': '2026-03-10',
 			...init.headers,
 		},
 	});
@@ -67,8 +63,8 @@ async function getReleaseAssets(): Promise<string[]> {
 	const expectedAssets = new Set([installerName, `${installerName}.blockmap`, 'latest.yml']);
 	const files = await readdir(releaseDirectory, { withFileTypes: true });
 	const assets = files
-		.filter((file) => file.isFile() && expectedAssets.has(file.name))
-		.map((file) => file.name);
+		.filter(file => file.isFile() && expectedAssets.has(file.name))
+		.map(file => file.name);
 
 	if (!assets.includes(installerName)) {
 		throw new Error(`Release installer not found: ${path.join(releaseDirectory, installerName)}`);
