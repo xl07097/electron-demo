@@ -1,24 +1,28 @@
-import React, { useEffect, useState } from 'react'
-import { Image } from 'antd'
-import './styles.scss'
+import React, { useEffect, useState } from 'react';
+import { Image } from 'antd';
+// @ts-ignore -- TypeScript does not have a declaration for SCSS side-effect imports.
+import './styles.scss';
 
 const App: React.FC = () => {
-	const [loading, setLoading] = useState(false)
-	const [src, setSrc] = useState<string>()
+	const [loading, setLoading] = useState(false);
+	const [src, setSrc] = useState<string>();
 
 	const fetchImage = async () => {
 		if (loading) {
-			return
+			return;
 		}
-		setLoading(true)
-		const res = await fetch('https://api.vvhan.com/api/bing?size=1920x1080&rand=sj').then(res => res.blob())
-		setSrc(window.URL.createObjectURL(res))
-		setLoading(false)
-	}
+		setLoading(true);
+		const res = await fetch('http://localhost:3003/unsplash/image/random?query=lake').then(res =>
+			res.json()
+		);
+
+		setSrc(res.data?.urls?.regular);
+		setLoading(false);
+	};
 
 	useEffect(() => {
-		fetchImage()
-	}, [])
+		fetchImage();
+	}, []);
 
 	return (
 		<div className="wallpaper">
@@ -31,7 +35,7 @@ const App: React.FC = () => {
 				/>
 			</div>
 		</div>
-	)
-}
+	);
+};
 
-export default App
+export default App;

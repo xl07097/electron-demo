@@ -11,7 +11,8 @@
     "build:render": "pnpm --filter @desktop/render build",
     "build:shared": "pnpm --filter @desktop/shared build:tsc",
     "build": "pnpm run build:shared && pnpm run build:preload && pnpm run build:render && pnpm run build:main",
-    "build:precompiler": "electron-builder build --x64",
+    "build:precompiler": "electron-builder build --x64 --dir",
+    "build:package": "electron-builder --win --x64",
     "upload:oss": "node ./scripts/upload.ts",
     "create:release": "node ./scripts/create-release.ts",
     "major": "npm version major",
@@ -74,7 +75,7 @@
     ],
     "win": {
       "icon": "buildResources/icons/256x256.ico",
-      "artifactName": "${productName}-${platform}-${arch}-v${version}.${ext}",
+      "artifactName": "${productName}-${os}-${platform}-${arch}-v${version}.${ext}",
       "target": [
         {
           "target": "nsis",

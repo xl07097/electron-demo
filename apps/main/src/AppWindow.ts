@@ -4,7 +4,6 @@ import { fileURLToPath } from 'node:url';
 import { resolve } from 'import-meta-resolve';
 import { registerscreenShop } from './screen/snapshop';
 import logger from './logger';
-import { createTray } from './tray';
 
 export class AppWindow {
 	window: BrowserWindow;
